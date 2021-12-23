@@ -3,7 +3,7 @@ import axios from 'axios'
 class Signup extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       username: '',
       email: '',
       password: '',
@@ -47,7 +47,7 @@ handleErrors = () => {
       <div>
         <ul>{this.state.errors.map((error) => {
           return <li key={error}>{error}</li>
-        })}</ul> 
+        })}</ul>
       </div>
     )
   }
@@ -71,7 +71,7 @@ return (
             value={email}
             onChange={this.handleChange}
           />
-          <input 
+          <input
             placeholder="password"
             type="password"
             name="password"
@@ -85,11 +85,11 @@ return (
             value={password_confirmation}
             onChange={this.handleChange}
           />
-        
+
           <button placeholder="submit" type="submit">
             Sign Up
           </button>
-      
+
         </form>
         <div>
           {
