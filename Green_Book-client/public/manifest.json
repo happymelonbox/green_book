@@ -1,0 +1,8 @@
+{
+  "short_name": "Green_Book",
+  "name": "Maternal and Child Health Services - My Health, Learning and Development",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

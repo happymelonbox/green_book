@@ -1,25 +1,41 @@
-class UsersController < ApplicationController
-
-    def new
-      @user = User.new
-    end
- 
+class Api::V1::SessionsController < ApplicationController
+    
     def create
-      @user = User.new(user_params)
-      if @user.save
-        session[:user_id] = @user.id
-        redirect_to user_path(@user)
-      else
-        render :new
-      end
-    end
- 
-    def show
-      @user = User.find(params[:id])
-    end
- 
-    private
-    def user_params
-      params.require(:user).permit(:user_name, :password, :first_name, :last_name, :email_address)
-    end
+       @user = User.find_by(username: session_params[:username])
+       if @user && @user.authenticate(session_params[:password])
+         session[:user_id] = @user.id
+         render json: {
+           user: UserSerializer.new(@user)
+         }
+       else
+         render json: { 
+           status: 401, 
+           error: "Could not authenticate your account"
+         }
+       end
+     end
+       def is_logged_in?
+       @current_user = User.find(session[:user_id]) if session[:user_id]
+       if @current_user
+         render json: {
+           logged_in: true,
+           user: UserSerializer.new(@current_user)
+         }
+       else
+         render json: {
+           logged_in: false
+         }
+       end
+     end
+     def destroy
+       session.delete :user_id
+       render json: {
+         status: 200,
+         logged_out: true
+       }
+     end
+private
+   def session_params
+       params.require(:user).permit(:username, :password)
+   end
 end
