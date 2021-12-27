@@ -1,0 +1,2 @@
+class TwoWeekVisit < ApplicationRecord
+end

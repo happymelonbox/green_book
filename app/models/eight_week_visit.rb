@@ -1,0 +1,2 @@
+class EightWeekVisit < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class HepatitisBVaccine < ApplicationRecord
+end

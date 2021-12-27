@@ -1,0 +1,2 @@
+class VitaminK < ApplicationRecord
+end

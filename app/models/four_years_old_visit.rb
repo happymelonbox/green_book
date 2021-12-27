@@ -1,0 +1,2 @@
+class FourYearsOldVisit < ApplicationRecord
+end

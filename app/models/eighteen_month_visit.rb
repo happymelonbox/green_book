@@ -1,0 +1,2 @@
+class EighteenMonthVisit < ApplicationRecord
+end

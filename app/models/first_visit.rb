@@ -1,0 +1,2 @@
+class FirstVisit < ApplicationRecord
+end

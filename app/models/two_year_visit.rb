@@ -1,0 +1,2 @@
+class TwoYearVisit < ApplicationRecord
+end
