@@ -8,7 +8,7 @@ class Signup extends Component {
       email: '',
       password: '',
       password_confirmation: '',
-      errors: ''
+      errors: []
      };
   }
 handleChange = (event) => {
@@ -28,12 +28,13 @@ handleSubmit = (event) => {
     }
 axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
     .then(response => {
+      console.log(response.data)
       if (response.data.status === 'created') {
         this.props.handleLogin(response.data)
         this.redirect()
       } else {
         this.setState({
-          errors: response.data.errors
+          errors: this.state.errors.push(response.data.errors)
         })
       }
     })
