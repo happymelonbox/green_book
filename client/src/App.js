@@ -4,6 +4,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Home from './components/Home'
 import Login from './components/registrations/Login'
 import Signup from './components/registrations/Signup'
+import Navbar from './containers/Navbar'
 
 class App extends Component {
   constructor(props) {
@@ -45,12 +46,12 @@ class App extends Component {
     user: {}
     })
   }
-// write code to render the log in page if not logged in
 
   render() {
     return (
       <div>
         <BrowserRouter>
+        <Navbar loggedInStatus = {this.state.isLoggedIn} handleClick = {this.handleLogout}/>
           <Switch>
             <Route 
               exact path='/' 
@@ -72,7 +73,6 @@ class App extends Component {
             />
           </Switch>
         </BrowserRouter>
-        
       </div>
     );
   }
