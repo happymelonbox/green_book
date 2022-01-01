@@ -1,14 +1,8 @@
 import React from 'react'
-import {BrowserRouter, Switch, Route, Link} from 'react-router-dom'
-import Home from '../components/Home'
-import Login from '../components/registrations/Login'
-import Signup from '../components/registrations/Signup'
+import { Link} from 'react-router-dom'
 import '../style/index.css'
 
 class Navbar extends React.Component {
-  constructor(props){
-    super(props);
-  }
 
   render() {
     return (

@@ -41,22 +41,26 @@ class App extends Component {
   }
 
   handleLogout = () => {
-    this.setState({
-    isLoggedIn: false,
-    user: {}
+    axios.delete('http://localhost:3001/logout', {withCredentials: true})
+    .then(response => {
+      this.setState({
+        isLoggedIn: false,
+        user: {}
+      })
     })
+    .catch(error => console.log(error))
   }
 
   render() {
     return (
       <div>
         <BrowserRouter>
-        <Navbar loggedInStatus = {this.state.isLoggedIn} handleClick = {this.handleLogout}/>
+        {this.state.isLoggedIn ? <Navbar loggedInStatus = {this.state.isLoggedIn} handleClick = {this.handleLogout}/> : null }
           <Switch>
             <Route 
               exact path='/' 
               render={props => (
-              <Home {...props} handleLogout={this.handleLogout} loggedInStatus={this.state.isLoggedIn}/>
+              <Home {...props} handleLogout={this.handleLogout} loggedInStatus={this.state.isLoggedIn} handleLogin = {this.handleLogin} user={this.state.user}/>
               )}
             />
             <Route 
