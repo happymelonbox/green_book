@@ -14,14 +14,15 @@ const Home = (props) => {
 
   return (
     <div>
-      <Link to='/login'>Log In</Link>
-      <br></br>
-      <Link to='/signup'>Sign Up</Link>
-      <br></br>
       {
         props.loggedInStatus ?
         <Link to='/logout' onClick={handleClick}>Log Out</Link> :
-        null
+        <div>
+          <Link to='/login'>Log In</Link>
+          <br></br>
+          <Link to='/signup'>Sign Up</Link>
+          <br></br>
+        </div>
       }
     </div>
   );

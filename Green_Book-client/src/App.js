@@ -19,7 +19,9 @@ class App extends Component {
   }
 
   loginStatus = () => {
-    axios.get('http://localhost:3001/logged_in', {withCredentials: true})
+    axios.get('http://localhost:3001/logged_in', {
+      withCredentials: true,
+    })
     .then(response => {
       if (response.data.logged_in) {
         this.handleLogin(response)
@@ -43,6 +45,7 @@ class App extends Component {
     user: {}
     })
   }
+// write code to render the log in page if not logged in
 
   render() {
     return (
@@ -69,6 +72,7 @@ class App extends Component {
             />
           </Switch>
         </BrowserRouter>
+        
       </div>
     );
   }

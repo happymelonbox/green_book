@@ -1,24 +1,36 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
-import '../style/App.css'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import Home from '../components/Home'
+import Login from '../components/registrations/Login'
+import Signup from '../components/registrations/Signup'
+import '../style/index.css'
 
 class Navbar extends React.Component {
   render() {
     return (
       <div className="navbar-container">
-        <h2 className="navbar-title">Green_Book</h2>
-        <NavLink className="navbar-link"
-          to="/stock"
-        >Stock</NavLink>
-        <NavLink className="navbar-link"
-          to="/suppliers"
-        >Suppliers</NavLink>
-        <NavLink className="navbar-link"
-          to="/recipeHome"
-        >Recipes</NavLink>
-        <NavLink className="navbar-link"
-          to="/"
-        >Home</NavLink>
+        <BrowserRouter>
+          <Switch>
+            <Route 
+              exact path='/' 
+              render={props => (
+              <Home {...props} handleLogout={this.handleLogout} loggedInStatus={this.state.isLoggedIn}/>
+              )}
+            />
+            <Route 
+              exact path='/login' 
+              render={props => (
+              <Login {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
+              )}
+            />
+            <Route 
+              exact path='/signup' 
+              render={props => (
+              <Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
+              )}
+            />
+          </Switch>
+        </BrowserRouter>
       </div>
     )
   }
