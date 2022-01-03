@@ -6,9 +6,12 @@ class Dashboard extends React.Component {
         return(
             <div>
                 <h3>Welcome {this.props.user.username} </h3>
-                <Link to='/children' onClick={this.props.handleClick}>Children</Link> 
-                <Link to='/important_information'>Important Information</Link>
+                <Link to='/children'>Children</Link>
+                <Link to='/appointments_to_keep'>Appointments To Keep</Link>
+                <Link to='/growth_and_health_record'>Growth and Health Record</Link>
+                <Link to='/immunisation_records'>Immunisation Records</Link>
                 <Link to='/visits'>Visits</Link>
+                <Link to='/useful_information'>Useful Information</Link>
             </div>
         )
     }
