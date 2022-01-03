@@ -1,16 +1,16 @@
 import React from 'react';
 import Login from './registrations/Login'
-import Dashboard from '../containers/Dashboard'
+import Dashboard from './dashboard/Dashboard'
 
 
 
-const Home = ({ loggedInStatus, handleLogin }) => {
+const Home = ({ loggedInStatus, handleLogin, user }) => {
 
   return (
     <div>
       {!loggedInStatus ? 
       <Login handleLogin = {handleLogin}/> : 
-      <Dashboard />
+      <Dashboard user = {user}/>
       }
     </div>
   );

@@ -5,6 +5,7 @@ import Home from './components/Home'
 import Login from './components/registrations/Login'
 import Signup from './components/registrations/Signup'
 import Navbar from './containers/Navbar'
+import Footer from './containers/Footer'
 
 class App extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class App extends Component {
     })
     .then(response => {
       if (response.data.logged_in) {
-        this.handleLogin(response)
+        this.handleLogin(response.data)
       } else {
         this.handleLogout()
       }
@@ -55,7 +56,7 @@ class App extends Component {
     return (
       <div>
         <BrowserRouter>
-        {this.state.isLoggedIn ? <Navbar loggedInStatus = {this.state.isLoggedIn} handleClick = {this.handleLogout}/> : null }
+        {this.state.isLoggedIn ? <Navbar loggedInStatus={this.state.isLoggedIn} handleClick = {this.handleLogout} user={this.state.user}/> : null }
           <Switch>
             <Route 
               exact path='/' 
@@ -76,6 +77,7 @@ class App extends Component {
               )}
             />
           </Switch>
+          <Footer />
         </BrowserRouter>
       </div>
     );
