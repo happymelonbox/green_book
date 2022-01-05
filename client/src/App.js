@@ -4,6 +4,12 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Home from './components/Home'
 import Login from './components/registrations/Login'
 import Signup from './components/registrations/Signup'
+import Children from './components/children/Children'
+import Appointments from './components/appointments/Appointments'
+import GrowthAndHealth from './components/growthAndHealth/GrowthAndHealth'
+import Immunisations from './components/immunisations/Immunisations'
+import UsefulInformation from './components/usefulInformation/UsefulInformation'
+import Visits from './components/visits/Visits'
 import Navbar from './containers/Navbar'
 import Footer from './containers/Footer'
 
@@ -74,6 +80,42 @@ class App extends Component {
               exact path='/signup' 
               render={props => (
               <Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
+              )}
+            />
+            <Route 
+              exact path='/children' 
+              render={props => (
+              <Children {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
+              )}
+            />
+            <Route 
+              exact path='/appointments_to_keep' 
+              render={props => (
+              <Appointments {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
+              )}
+            />
+            <Route 
+              exact path='/growth_and_health' 
+              render={props => (
+              <GrowthAndHealth {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
+              )}
+            />
+            <Route 
+              exact path='/immunisations' 
+              render={props => (
+              <Immunisations {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
+              )}
+            />
+            <Route 
+              exact path='/visits' 
+              render={props => (
+              <Visits {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
+              )}
+            />
+            <Route 
+              exact path='/useful_information' 
+              render={props => (
+              <UsefulInformation {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
               )}
             />
           </Switch>

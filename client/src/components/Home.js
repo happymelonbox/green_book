@@ -5,7 +5,6 @@ import Dashboard from './dashboard/Dashboard'
 
 
 const Home = ({ loggedInStatus, handleLogin, user }) => {
-
   return (
     <div>
       {!loggedInStatus ? 

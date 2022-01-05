@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 import axios from 'axios'
+
 class Signup extends Component {
   constructor(props) {
     super(props);
@@ -56,6 +58,7 @@ render() {
 return (
       <div>
         <h1>Sign Up</h1>
+        <Link to="/">Home</Link>
         <form onSubmit={this.handleSubmit}>
           <input
             placeholder="username"
