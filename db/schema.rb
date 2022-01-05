@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2022_01_05_112728) do
   end
 
   create_table "notes", force: :cascade do |t|
+    t.string "title"
     t.string "content"
     t.string "notable_type"
     t.bigint "notable_id"
@@ -99,9 +100,12 @@ ActiveRecord::Schema.define(version: 2022_01_05_112728) do
   create_table "questions", force: :cascade do |t|
     t.string "genre"
     t.string "question"
+    t.string "questionable_type"
+    t.bigint "questionable_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["questionable_type", "questionable_id"], name: "index_questions_on_questionable"
   end
 
   create_table "users", force: :cascade do |t|
