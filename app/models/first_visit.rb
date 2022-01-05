@@ -1,2 +1,0 @@
-class FirstVisit < ApplicationRecord
-end

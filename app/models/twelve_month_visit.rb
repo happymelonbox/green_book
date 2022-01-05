@@ -1,2 +1,0 @@
-class TwelveMonthVisit < ApplicationRecord
-end

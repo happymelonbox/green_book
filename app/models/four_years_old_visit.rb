@@ -1,2 +1,0 @@
-class FourYearsOldVisit < ApplicationRecord
-end

@@ -1,2 +1,0 @@
-class FourWeekVisit < ApplicationRecord
-end

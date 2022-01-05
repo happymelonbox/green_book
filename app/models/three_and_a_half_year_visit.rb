@@ -1,2 +1,0 @@
-class ThreeAndAHalfYearVisit < ApplicationRecord
-end
