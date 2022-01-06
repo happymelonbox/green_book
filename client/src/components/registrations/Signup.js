@@ -7,6 +7,16 @@ class Signup extends Component {
     super(props);
     this.state = {
       username: '',
+      first_name: '',
+      last_name: '',
+      contact_number: '',
+      address_unit_number: '',
+      address_street_number: '',
+      address_street_name: '',
+      address_suburb: '',
+      address_city: '',
+      address_state: '',
+      address_country: '',
       email: '',
       password: '',
       password_confirmation: '',
@@ -21,12 +31,38 @@ handleChange = (event) => {
   };
 handleSubmit = (event) => {
     event.preventDefault()
-    const {username, email, password, password_confirmation} = this.state
+    const {
+      username,
+      first_name,
+      last_name,
+      contact_number,
+      address_unit_number,
+      address_street_number,
+      address_street_name,
+      address_suburb,
+      address_city,
+      address_state,
+      address_country,
+      email,
+      password,
+      password_confirmation
+    } = this.state
+
     let user = {
       username: username,
+      first_name: first_name,
+      last_name: last_name,
+      contact_number: contact_number,
+      address_unit_number: address_unit_number,
+      address_street_number: address_street_number,
+      address_street_name: address_street_name,
+      address_suburb: address_suburb,
+      address_city: address_city,
+      addres_state: address_state,
+      address_country: address_country,
       email: email,
       password: password,
-      password_confirmation: password_confirmation
+      password_confirmation: password_confirmation,
     }
 axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
     .then(response => {
@@ -35,7 +71,7 @@ axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
         this.redirect()
       } else {
         this.setState({
-          errors: this.state.errors.push(response.data.errors)
+          errors: [...this.state.errors, response.data.errors]
         })
       }
     })
@@ -54,7 +90,22 @@ handleErrors = () => {
     )
   }
 render() {
-    const {username, email, password, password_confirmation} = this.state
+  const {
+    username,
+    first_name,
+    last_name,
+    contact_number,
+    address_unit_number,
+    address_street_number,
+    address_street_name,
+    address_suburb,
+    address_city,
+    address_country,
+    email,
+    password,
+    password_confirmation
+  } = this.state
+
 return (
       <div>
         <h1>Sign Up</h1>
@@ -65,6 +116,69 @@ return (
             type="text"
             name="username"
             value={username}
+            onChange={this.handleChange}
+          />
+          <input
+            placeholder="first_name"
+            type="text"
+            name="first_name"
+            value={first_name}
+            onChange={this.handleChange}
+          />
+          <input
+            placeholder="last_name"
+            type="text"
+            name="last_name"
+            value={last_name}
+            onChange={this.handleChange}
+          />
+          <input
+            placeholder="contact_number"
+            type="text"
+            name="contact_number"
+            value={contact_number}
+            onChange={this.handleChange}
+          />
+          <input
+            placeholder="address_unit_number"
+            type="text"
+            name="address_unit_number"
+            value={address_unit_number}
+            onChange={this.handleChange}
+          />
+          <input
+            placeholder="address_street_number"
+            type="text"
+            name="address_street_number"
+            value={address_street_number}
+            onChange={this.handleChange}
+          />
+          <input
+            placeholder="address_street_name"
+            type="text"
+            name="address_street_name"
+            value={address_street_name}
+            onChange={this.handleChange}
+          />
+          <input
+            placeholder="address_suburb"
+            type="text"
+            name="address_suburb"
+            value={address_suburb}
+            onChange={this.handleChange}
+          />
+          <input
+            placeholder="address_city"
+            type="text"
+            name="address_city"
+            value={address_city}
+            onChange={this.handleChange}
+          />
+          <input
+            placeholder="address_country"
+            type="text"
+            name="address_country"
+            value={address_country}
             onChange={this.handleChange}
           />
           <input

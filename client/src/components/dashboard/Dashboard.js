@@ -5,7 +5,7 @@ class Dashboard extends React.Component {
     render(){
         return(
             <div>
-                <h3>Welcome {this.props.user.username} </h3>
+                <h3>Welcome {this.props.user.first_name} </h3>
                 <DashboardNav />
             </div>
         )
