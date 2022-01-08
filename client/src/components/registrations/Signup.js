@@ -58,7 +58,7 @@ handleSubmit = (event) => {
       address_street_name: address_street_name,
       address_suburb: address_suburb,
       address_city: address_city,
-      addres_state: address_state,
+      address_state: address_state,
       address_country: address_country,
       email: email,
       password: password,
@@ -66,6 +66,7 @@ handleSubmit = (event) => {
     }
 axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
     .then(response => {
+      console.log(response)
       if (response.data.status === 'created') {
         this.props.handleLogin(response.data)
         this.redirect()
@@ -99,6 +100,7 @@ render() {
     address_street_number,
     address_street_name,
     address_suburb,
+    address_state,
     address_city,
     address_country,
     email,
@@ -173,6 +175,13 @@ return (
             name="address_city"
             value={address_city}
             onChange={this.handleChange}
+          />
+          <input
+          placeholder = "State"
+          type= "text"
+          name= "address_state"
+          value={address_state}
+          onChange={this.handleChange}
           />
           <input
             placeholder="address_country"

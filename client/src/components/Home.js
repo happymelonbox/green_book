@@ -4,15 +4,18 @@ import Dashboard from './dashboard/Dashboard'
 
 
 
-const Home = ({ loggedInStatus, handleLogin, user }) => {
-  return (
-    <div>
-      {!loggedInStatus ? 
-      <Login handleLogin = {handleLogin}/> : 
-      <Dashboard user = {user}/>
-      }
-    </div>
-  );
-};
+class Home extends React.Component{
+  render(){
+    return (
+      <div>
+        {this.props.loggedInStatus ? 
+        <Dashboard user={this.props.user} handleLogout={this.props.handleLogout}/>
+        :
+        <Login handleLogin={this.props.handleLogin}/>
+  }
+      </div>
+    )
+  }
+}
 
 export default Home;

@@ -1,6 +1,5 @@
 
 import React from 'react'
-import { Link } from 'react-router-dom'
 import '../style/index.css'
 
 class Navbar extends React.Component {
@@ -9,7 +8,7 @@ class Navbar extends React.Component {
     return (
       <div>
         <h2 className='Logo'>Green_Book</h2>
-        <Link to='/' onClick={this.props.handleClick} className="logout_link">Log Out</Link>
+        <button onClick={this.props.handleLogout} className="logout_link">Log Out</button>
       </div>
     );
   }

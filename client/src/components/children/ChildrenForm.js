@@ -9,6 +9,7 @@ class ChildrenForm extends Component {
             first_name: '',
             middle_name: '',
             last_name: '',
+            user_id: this.props.user.id,
             errors: []
         }
     }
@@ -25,19 +26,21 @@ class ChildrenForm extends Component {
         const {
             first_name,
             middle_name,
-            last_name
+            last_name,
+            user_id
         } = this.state
 
         let child = {
             first_name: first_name,
             middle_name: middle_name,
-            last_name: last_name
+            last_name: last_name,
+            user_id: user_id
         }
 
-        axios.post('http://localhost:3001/children', {child}, {withCredentials: true})
+        axios.post('http://localhost:3001/api/v1/children.json', {child}, {withCredentials: true})
         .then(response => {
-            console.log(response.data)
             if (response.data.status === 'created') {
+                console.log("Child created")
                 this.props.handleCreateChildren(response.data)
                 this.redirect()
             } else {
@@ -67,7 +70,7 @@ class ChildrenForm extends Component {
         const {
             first_name,
             middle_name,
-            last_name
+            last_name,
         } = this.state
 
         return(
@@ -95,6 +98,10 @@ class ChildrenForm extends Component {
                         name="last_name"
                         value={last_name}
                         onChange={this.handleChange}
+                    />
+                    <input 
+                    type="hidden"
+                    value={this.props.user.id}
                     />
                     <button placeholder="submit" type="submit">
                     Add Child

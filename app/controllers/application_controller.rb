@@ -25,4 +25,8 @@ class ApplicationController < ActionController::Base
     session.clear
   end
 
+  def authentication_redirect
+    redirect_to root_path unless logged_in?
+  end
+
 end

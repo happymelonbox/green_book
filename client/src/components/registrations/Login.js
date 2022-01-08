@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import { HISTORY } from '../../App'
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -35,7 +36,7 @@ class Login extends Component {
         this.redirect()
       } else {
         this.setState({
-          errors: response.data.errors
+          errors: [...this.state.errors, response.data.errors]
         })
       }
     })
@@ -43,7 +44,7 @@ class Login extends Component {
   };
 
   redirect = () => {
-    this.props.history.push('/')
+    HISTORY.push('/')
   }
 
   handleErrors = () => {
@@ -92,7 +93,6 @@ class Login extends Component {
           <div>
             or <Link to='/signup'>sign up</Link>
           </div>
-          
           </form>
           <div>
           {

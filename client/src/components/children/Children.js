@@ -5,17 +5,17 @@ import Child from './Child'
 
 class Children extends React.Component {
     render(){
+        console.log(this.props)
         return(
             <div>
-                {this.props.user.children ?
                     <div>
                         <h1>Children</h1>
                         {this.props.user.children.map(child =>
-                            <Child child={child}>{child.name}</Child>)}
+                            <Child child={child} key={child}/>)
+                        }
                     </div>
-                :
                     <Link to='/add_a_child'>Add a new child</Link>
-                }
+                
             </div>
         )
     }

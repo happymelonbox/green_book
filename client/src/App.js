@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {BrowserRouter, Route} from 'react-router-dom'
+import { createBrowserHistory } from 'history'
 import Home from './components/Home'
 import Login from './components/registrations/Login'
 import Signup from './components/registrations/Signup'
@@ -11,8 +12,9 @@ import GrowthAndHealth from './components/growthAndHealth/GrowthAndHealth'
 import Immunisations from './components/immunisations/Immunisations'
 import UsefulInformation from './components/usefulInformation/UsefulInformation'
 import Visits from './components/visits/Visits'
-import Navbar from './containers/Navbar'
-import Footer from './containers/Footer'
+
+
+export const HISTORY = createBrowserHistory()
 
 
 class App extends Component {
@@ -28,6 +30,7 @@ class App extends Component {
   componentDidMount() {
     this.loginStatus()
   }
+
 
   loginStatus = () => {
     axios.get('http://localhost:3001/logged_in', {
@@ -57,85 +60,85 @@ class App extends Component {
         isLoggedIn: false,
         user: {}
       })
+      this.redirect("/")
     })
     .catch(error => console.log(error))
   }
 
   handleCreateChildren = (data) => {
-    console.log(data)
     this.setState({
       children: [...this.state.children, data.child]
     })
+  }
+
+  redirect = (string) => {
+    HISTORY.push(string)
   }
 
   render() {
     return (
       <div>
         <BrowserRouter>
-        {this.state.isLoggedIn ? <Navbar loggedInStatus={this.state.isLoggedIn} handleClick = {this.handleLogout} user={this.state.user}/> : null }
-          <Switch>
             <Route 
               exact path='/' 
               render={props => (
-              <Home {...props} handleLogout={this.handleLogout} loggedInStatus={this.state.isLoggedIn} handleLogin = {this.handleLogin} user={this.state.user}/>
+              <Home {...props} loggedInStatus = {this.state.isLoggedIn} user={this.state.user} handleLogout={this.handleLogout} handleLogin={this.handleLogin}/>
               )}
             />
             <Route 
               exact path='/login' 
               render={props => (
-              <Login {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} user={this.state.user}/>
+              <Login {...props} />
               )}
             />
             <Route 
               exact path='/signup' 
               render={props => (
-              <Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} user={this.state.user}/>
+              <Signup {...props} />
               )}
             />
             <Route 
               exact path='/children' 
               render={props => (
-              <Children {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} user={this.state.user}/>
+              <Children {...props} />
               )}
             />
             <Route 
               exact path='/appointments_to_keep' 
               render={props => (
-              <Appointments {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} user={this.state.user}/>
+              <Appointments {...props} />
               )}
             />
             <Route 
               exact path='/growth_and_health' 
               render={props => (
-              <GrowthAndHealth {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} user={this.state.user}/>
+              <GrowthAndHealth {...props} />
               )}
             />
             <Route 
               exact path='/immunisations' 
               render={props => (
-              <Immunisations {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} user={this.state.user}/>
+              <Immunisations {...props} />
               )}
             />
             <Route 
               exact path='/visits' 
               render={props => (
-              <Visits {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} user={this.state.user}/>
+              <Visits {...props} />
               )}
             />
             <Route 
               exact path='/useful_information' 
               render={props => (
-              <UsefulInformation {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} user={this.state.user}/>
+              <UsefulInformation {...props} />
               )}
             />
             <Route
             exact path='/add_a_child'
             render={props => (
-              <ChildrenForm {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} handleCreateChildren = {this.handleCreateChildren} user={this.state.user}/>
+              <ChildrenForm {...props} />
             )}
             />
-          </Switch>
-          <Footer />
         </BrowserRouter>
       </div>
     );

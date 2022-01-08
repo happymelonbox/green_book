@@ -12,4 +12,10 @@ Rails.application.routes.draw do
   resources :children
   resources :notes
 
+  namespace :api do
+    namespace :v1 do
+      resources :children, only: [:index, :create, :destroy, :update]
+    end
+  end
+
 end
