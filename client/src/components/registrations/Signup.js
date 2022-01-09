@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import axios from 'axios'
 
 class Signup extends Component {
@@ -79,7 +79,8 @@ axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
     .catch(error => console.log('api errors:', error))
   };
 redirect = () => {
-    this.props.history.push('/')
+    let history = useHistory()
+    history.push("/")
   }
 handleErrors = () => {
     return (

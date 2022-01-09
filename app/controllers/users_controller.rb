@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 def show
      @user = User.find(params[:id])
+     @children = @user.children.all
          if @user
             render json: {
             user: @user

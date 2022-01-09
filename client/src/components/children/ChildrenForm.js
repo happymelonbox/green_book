@@ -40,15 +40,15 @@ class ChildrenForm extends Component {
         axios.post('http://localhost:3001/api/v1/children.json', {child}, {withCredentials: true})
         .then(response => {
             if (response.data.status === 'created') {
+                console.log(response.data)
                 console.log("Child created")
                 this.props.handleCreateChildren(response.data)
                 this.redirect()
             } else {
-                this.setState({
-                    errors: [...this.state.errors, response.data.errors]
-                })
-            }
-        })
+                this.state.errors.push(response.data.errors)
+                }
+            })
+        
         .catch(error => console.log('api errors: ', error))
     }
 
@@ -60,7 +60,8 @@ class ChildrenForm extends Component {
         return (
             <div>
                 <ul>{this.state.errors.map((error) => {
-                    return <li key={error}>{error}</li>
+                    console.log({error})
+                    return <li key="{error}">{error}</li>
                 })}</ul>
             </div>
         )
@@ -71,6 +72,7 @@ class ChildrenForm extends Component {
             first_name,
             middle_name,
             last_name,
+            user_id
         } = this.state
 
         return(
@@ -82,26 +84,26 @@ class ChildrenForm extends Component {
                         placeholder="First Name"
                         type="text"
                         name="first_name"
-                        value={first_name}
+                        value={first_name||""}
                         onChange={this.handleChange}
                     />
                     <input
                         placeholder="Middle Name"
                         type="text"
                         name="middle_name"
-                        value={middle_name}
+                        value={middle_name||""}
                         onChange={this.handleChange}
                     />
                     <input
                         placeholder="Last Name"
                         type="text"
                         name="last_name"
-                        value={last_name}
+                        value={last_name||""}
                         onChange={this.handleChange}
                     />
                     <input 
                     type="hidden"
-                    value={this.props.user.id}
+                    defaultValue={user_id}
                     />
                     <button placeholder="submit" type="submit">
                     Add Child

@@ -94,13 +94,13 @@ class App extends Component {
             <Route 
               exact path='/signup' 
               render={props => (
-              <Signup {...props} />
+              <Signup {...props} handleLogin={this.handleLogin}/>
               )}
             />
             <Route 
               exact path='/children' 
               render={props => (
-              <Children {...props} />
+              <Children {...props} user={this.state.user}/>
               )}
             />
             <Route 
@@ -136,7 +136,7 @@ class App extends Component {
             <Route
             exact path='/add_a_child'
             render={props => (
-              <ChildrenForm {...props} />
+              <ChildrenForm {...props} user={this.state.user} handleCreateChildren={this.handleCreateChildren} />
             )}
             />
         </BrowserRouter>

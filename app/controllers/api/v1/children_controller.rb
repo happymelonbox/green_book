@@ -3,23 +3,57 @@ class Api::V1::ChildrenController < Api::V1::BaseController
     before_action :current_user, :only => [:show]
 
     def index
-        respond_with Child.all
+        @children = Child.all
+        if @children
+            render json: {
+                children: @children
+            }
+        else
+            render json:{
+                status: 500,
+                errors: ['no children found']
+            }
+        end
     end
 
     def create
         @user ||= current_user
-        respond_with :api, :v1, @user.children.new(child_params)
+        @child = @user.children.new(child_params)
+        if @child.save
+            render json: {
+                status: :created,
+                user: @user,
+                child: @child
+            }
+        else 
+            render json: {
+                status: 500,
+                errors: @user.errors.full_messages
+            }
+        end
     end
 
     def update
         @user ||= current_user
-        child = @user.children.find(params['id'])
-        child.update_attributes(child_params)
-        respond_with child, json: child
+        @child = @user.children.find(params[:id])
+        if @child.update
+            render json: {
+                status: :created,
+                user: @user,
+                child: @child
+            }
+        else 
+            render json: {
+                status: 500,
+                errors: @user.errors.full_messages
+            }
+        end
     end
 
+
     def destroy
-        respond_with Child.destroy(params['id'])
+        @user ||= current_user
+        @user.children.destroy(params[:id])
     end
 
   private

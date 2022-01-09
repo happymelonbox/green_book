@@ -1,5 +1,5 @@
 class Child < ApplicationRecord
 
     has_one :birth
-    belongs_to :user
+    has_one :user, through: :user_child
 end
