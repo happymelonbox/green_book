@@ -5,6 +5,7 @@ import { createBrowserHistory } from 'history'
 import Home from './components/Home'
 import Login from './components/registrations/Login'
 import Signup from './components/registrations/Signup'
+import Child from './components/children/Child'
 import Children from './components/children/Children'
 import ChildrenForm  from './components/children/ChildrenForm'
 import Appointments from './components/appointments/Appointments'
@@ -31,6 +32,15 @@ class App extends Component {
     this.loginStatus()
   }
 
+  getChildren = () => {
+    axios.get('http://localhost:3001/api/v1/children', {
+      withCredentials: true,
+  })
+    .then(response => {
+      this.handleChildren(response.data.children)
+    })
+  }
+
 
   loginStatus = () => {
     axios.get('http://localhost:3001/logged_in', {
@@ -47,6 +57,7 @@ class App extends Component {
   }
 
   handleLogin = (data) => {
+    this.getChildren()
     this.setState({
       isLoggedIn: true,
       user: data.user
@@ -65,7 +76,17 @@ class App extends Component {
     .catch(error => console.log(error))
   }
 
+  handleChildren = (data) => {
+    console.log(data)
+      data.map(child => 
+        this.setState({
+          children: [...this.state.children, child]
+        })
+      )}
+  
+
   handleCreateChildren = (data) => {
+    console.log(data)
     this.setState({
       children: [...this.state.children, data.child]
     })
@@ -100,8 +121,20 @@ class App extends Component {
             <Route 
               exact path='/children' 
               render={props => (
-              <Children {...props} user={this.state.user}/>
+              <Children {...props} user={this.state.user} children={this.state.children}/>
               )}
+            />
+            <Route
+            exact path='/add_a_child'
+            render={props => (
+              <ChildrenForm {...props} user={this.state.user} handleCreateChildren={this.handleCreateChildren} />
+            )}
+            />
+            <Route
+            exact path='/child'
+            render={props => (
+              <Child {...props} user={this.state.user} child={this.props.child}/>
+            )}
             />
             <Route 
               exact path='/appointments_to_keep' 
@@ -133,12 +166,7 @@ class App extends Component {
               <UsefulInformation {...props} />
               )}
             />
-            <Route
-            exact path='/add_a_child'
-            render={props => (
-              <ChildrenForm {...props} user={this.state.user} handleCreateChildren={this.handleCreateChildren} />
-            )}
-            />
+            
         </BrowserRouter>
       </div>
     );

@@ -50,6 +50,10 @@ class Api::V1::ChildrenController < Api::V1::BaseController
         end
     end
 
+    def show
+        @user ||= current_user
+        @child = @user.children.find(params[:id])
+    end
 
     def destroy
         @user ||= current_user

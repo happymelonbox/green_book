@@ -5,7 +5,7 @@ class Child extends Component{
         // console.log(this.props.child)
     return(
         <div>
-            <h4>{this.props.child}</h4>
+            <h4>{this.props.child.first_name}</h4>
         </div>
     )
 }
