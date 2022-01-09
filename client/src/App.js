@@ -78,11 +78,10 @@ class App extends Component {
 
   handleChildren = (data) => {
     console.log(data)
-      data.map(child => 
-        this.setState({
-          children: [...this.state.children, child]
-        })
-      )}
+      this.setState({
+        children: data
+      })
+    }
   
 
   handleCreateChildren = (data) => {

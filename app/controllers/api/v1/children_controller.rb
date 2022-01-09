@@ -3,7 +3,8 @@ class Api::V1::ChildrenController < Api::V1::BaseController
     before_action :current_user, :only => [:show]
 
     def index
-        @children = Child.all
+        @user ||= current_user
+        @children = Child.all.where("user_id = ?", @user.id)
         if @children
             render json: {
                 children: @children
