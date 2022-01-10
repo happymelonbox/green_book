@@ -1,3 +1,4 @@
 class Birth < ApplicationRecord
-    belongs_to :child
+    has_one :child_birth
+    has_one :birth, through: :child_birth
 end

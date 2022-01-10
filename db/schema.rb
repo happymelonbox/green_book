@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_09_025154) do
+ActiveRecord::Schema.define(version: 2022_01_09_234536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 2022_01_09_025154) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "child_births", force: :cascade do |t|
+    t.integer "child_id"
+    t.integer "birth_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "children", force: :cascade do |t|
     t.string "first_name"
     t.string "middle_name"
@@ -52,6 +59,13 @@ ActiveRecord::Schema.define(version: 2022_01_09_025154) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_children_on_user_id"
+  end
+
+  create_table "create_child_births", force: :cascade do |t|
+    t.integer "child_id"
+    t.integer "birth_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "fathers", force: :cascade do |t|

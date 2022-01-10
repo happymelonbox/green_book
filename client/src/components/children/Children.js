@@ -10,10 +10,10 @@ class Children extends React.Component {
             <div>
                 <div>
                     <h1>Children</h1>
-                    {console.log(this.props.children)}
-                    {/* {this.props.children.map(child => {
-                        <Child child={child}/>
-                    })} */}
+                    {this.props.children.map(child => {
+                        console.log(child)
+                        return (<Child key={child.id} child={child}/>)
+                    })}
                 </div>
                 <Link to='/add_a_child'>Add a new child</Link>
             </div>

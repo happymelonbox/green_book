@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
+import BirthRecord from '../births/BirthRecord'
+import BirthsForm from '../births/BirthsForm'
+
 
 class Child extends Component{
     render(){
-        // console.log(this.props.child)
     return(
         <div>
             <h4>{this.props.child.first_name}</h4>
+            {this.props.child.birth_id ? 
+            <BirthRecord child={this.props.child}/> :
+           <BirthsForm child={this.props.child}/>}
         </div>
     )
 }
