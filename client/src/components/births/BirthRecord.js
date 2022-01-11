@@ -6,7 +6,7 @@ class BirthRecord extends Component{
     return(
         <div>
             <h4>Birth Record</h4>
-            <h5>{child.first_name}</h5>
+            <h5></h5>
 
         </div>
     )

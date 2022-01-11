@@ -11,10 +11,12 @@ Rails.application.routes.draw do
   resources :mothers
   resources :children
   resources :notes
+  resources :hospitals
 
   namespace :api do
     namespace :v1 do
       resources :children, only: [:index, :create, :destroy, :update]
+      resources :hospitals, only: [:index, :create, :destroy, :update]
     end
   end
 
