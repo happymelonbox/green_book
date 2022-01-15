@@ -8,7 +8,7 @@ class Child extends Component{
     return(
         <div>
             <h4>{this.props.child.first_name}</h4>
-            {this.props.child.birth_id ? 
+            {this.props.child.birth ? 
             <BirthRecord child={this.props.child}/> :
            <BirthsForm child={this.props.child}/>}
         </div>

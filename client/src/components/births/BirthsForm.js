@@ -1,24 +1,52 @@
 import axios from 'axios'
 import React, { Component } from 'react'
+import { Link, withRouter } from 'react-router-dom'
 
 
 class BirthsForm extends Component {
     constructor(props){
         super(props)
         this.state = {
-            hospitalSelectOptions : []
+            hospitalSelectOptions : [],
+            hospital_name: "",
+            errors: [],
+            birth: {
+                child_id: this.props.child.id,
+                birth_day: 0,
+                birth_month: 0,
+                birth_year: 0,
+                home_birth: false,
+                hospital_id: '',
+                examiner_name: '',
+                delivery_method: '',
+                delivery_time: '',
+                severe_jaundice: false,
+                weight: 0,
+                length: 0,
+                head_circumference: 0,
+                estimated_gestation: 0,
+                exchange_transfusion_for_jaundice: false,
+                newborn_bloodspot_screening_test_completed: false,
+                bloodspot_sample_date: '',
+                apgar_one_minute: 0,
+                apgar_five_minute: 0,
+                problems_requiring_treatment: '',
+                admission_to_intensive_care_nursery_48hours: false,
+                intensive_care_reason: '',
+                admission_to_special_care_nursery_48hours: false,
+                special_care_reason: ''
+            }
         }
     }
     componentDidMount(){
         this.getHospitalOptions()
     }
 
-    getHospitalOptions = () => {
+    async getHospitalOptions(){
         axios.get('http://localhost:3001/api/v1/hospitals', {
             withCredentials: true,})
         .then(response => {
-            console.log(response)
-            const options = response.data.map(data => ({
+            const options = response.data.hospitals.map(data => ({
                 "value": data.id,
                 "label": data.name
             }))
@@ -27,24 +55,202 @@ class BirthsForm extends Component {
             })
         })
     }
+
+    hospitalChange(event){
+        this.setState({
+            birth:{
+                ...this.state.birth,
+                hospital_id: event.target.value
+            }
+        })
+    }
+    
+    booleanChange(event){
+        let value = false
+        let name = event.target.name
+        if (event.target.value === "Yes"){
+            value = true
+        } else {
+            value = false
+        }
+        this.setState({
+            birth:{
+                ...this.state.birth,
+                [name]: value
+            }
+        })
+    }
+
+    handleChange(event){
+        const name = event.target.name
+        const value = event.target.value
+        this.setState({
+            birth: {
+                ...this.state.birth,
+                [name]: value
+            }
+        })
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+        const {
+                child_id,
+                birth_day,
+                birth_month,
+                birth_year,
+                home_birth,
+                hospital_id,
+                examiner_name,
+                delivery_method,
+                delivery_time,
+                severe_jaundice,
+                weight,
+                length,
+                head_circumference,
+                estimated_gestation,
+                exchange_transfusion_for_jaundice,
+                newborn_bloodspot_screening_test_completed,
+                bloodspot_sample_date,
+                apgar_one_minute,
+                apgar_five_minute,
+                problems_requiring_treatment,
+                admission_to_intensive_care_nursery_48hours,
+                intensive_care_reason,
+                admission_to_special_care_nursery_48hours,
+                special_care_reason
+            } = this.state.birth
+
+            let birth = {
+                child_id: child_id,
+                birth_day: birth_day,
+                birth_month: birth_month,
+                birth_year: birth_year,
+                home_birth: home_birth,
+                hospital_id: hospital_id,
+                examiner_name: examiner_name,
+                delivery_method: delivery_method,
+                delivery_time: delivery_time,
+                severe_jaundice: severe_jaundice,
+                weight: weight,
+                length: length,
+                head_circumference: head_circumference,
+                estimated_gestation: estimated_gestation,
+                exchange_transfusion_for_jaundice: exchange_transfusion_for_jaundice,
+                newborn_bloodspot_screening_test_completed: newborn_bloodspot_screening_test_completed,
+                bloodspot_sample_date: bloodspot_sample_date,
+                apgar_one_minute: apgar_one_minute,
+                apgar_five_minute: apgar_five_minute,
+                problems_requiring_treatment: problems_requiring_treatment,
+                admission_to_intensive_care_nursery_48hours: admission_to_intensive_care_nursery_48hours,
+                intensive_care_reason: intensive_care_reason,
+                admission_to_special_care_nursery_48hours: admission_to_special_care_nursery_48hours,
+                special_care_reason: special_care_reason
+            }
+            axios.post('http://localhost:3001/api/v1/births', {birth}, {withCredentials: true})
+            .then(response => {
+                console.log(response)
+                if (response.data.status === 'created'){
+                    this.redirect()
+                } else {
+                    this.setState({
+                        errors: [...this.state.errors, response.data.errors]
+                    })
+                }
+            })
+            .catch( error => console.log('api errors:', error))
+        };
+
+    redirect = () => {
+        this.props.history.push("/children")
+    }
     render(){
         return(
             <div>
                 <h4>Add Birth Details</h4>
-                <input type="number" name="birth_day" placeholder="Birth day"/>
-                <input type="number" name="birth_month" placeholder="Birth month"/>
-                <input type="number" name="birth_year" placeholder="Birth year"/>
+                <form onSubmit={this.handleSubmit.bind(this)}>
+                <label> Birth Day: <input type="number" name="birth_day" onChange={this.handleChange.bind(this)}/></label>
                 <br/>
-                <select>
-                    <option>Home Birth?</option>
-                    <option>Yes</option>
-                    <option>No</option>
+                <label> Birth Month: <input type="number" name="birth_month" onChange={this.handleChange.bind(this)}/></label>
+                <br/>
+                <label> Birth Year: <input type="number" name="birth_year" onChange={this.handleChange.bind(this)}/></label>
+                <br/>
+                <label> Home Birth? <select name="home_birth" onChange={this.booleanChange.bind(this)}>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
                 </select>
+                </label>
                 <br/>
-                
+                <label> Hospital: <select name="hospital" onChange={this.hospitalChange.bind(this)}>
+                    <option>--</option>
+                    {this.state.hospitalSelectOptions.map(option => {
+                        return <option key={option.value} value={option.value} id={option.value}>{option.label}</option>
+                    })}
+                </select> If your hospital isn't available please click <Link to={'/add_a_hospital'}>here</Link> to add it
+                </label>
+                <br/>
+                <label>Examiner Name: <input type='text' name="examiner_name" onChange={this.handleChange.bind(this)}/></label>
+                <br/>
+                <label>Delivery Method: <select name="delivery_method" onChange={this.handleChange.bind(this)}>
+                        <option value="Natural">Natural</option>
+                        <option value="Induced">Induced</option>
+                        <option value="Selective Caesarian">Selective Caesarian</option>
+                        <option value="Emergency Caesarian">Emergency Caesarian</option>
+                    </select> 
+                </label>
+                <br/>
+                <label>Delivery Time: <input name="delivery_time" type="time" onChange={this.handleChange.bind(this)}/></label>
+                <br/>
+                <label>Severe Jaundice? <select name="severe_jaundice" onChange={this.booleanChange.bind(this)}>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select> </label>
+                <br/>
+                <label>Weight: <input type="number" name="weight" onChange={this.handleChange.bind(this)}/></label>
+                <br/>
+                <label>Height: <input type="number" name="height" onChange={this.handleChange.bind(this)}/></label>
+                <br/>
+                <label>Head Circumference: <input type="number" name="head_circumference" onChange={this.handleChange.bind(this)}/></label>
+                <br/>
+                <label>Estimated Gestation: <input type="number" name="estimated_gestation" onChange={this.handleChange.bind(this)}/></label>
+                <br/>
+                <label>Exchange Transfusion for Jaundice: <select name="exchange_transfusion_for_jaundice" onChange={this.booleanChange.bind(this)}>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select> </label>
+                <br/>
+                <label>Newborn Bloodspot Screening Test Completed: <select name="newborn_bloodspot_screening_test_completed" onChange={this.booleanChange.bind(this)}>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select> </label>
+                <br/>
+                <label>Bloodspot Sample Data: <input type="date" name="bloodspot_sample_date" onChange={this.handleChange.bind(this)}/></label>
+                <br/>
+                <label>Apgar One Minute: <input type="number" name="apgar_one_minute" onChange={this.handleChange.bind(this)}/></label>
+                <br/>
+                <label>Apgar Five Minute: <input type="number" name="apgar_5_minute" onChange={this.handleChange.bind(this)}/></label>
+                <br/>
+                <label>Problems Requiring Treatment: <input type="text" name="problems_requiring_treatmeant" onChange={this.handleChange.bind(this)}/></label>
+                <br/>
+                <label>Admission to Intensive Care Nursery 48hours: <select name="admission_to_intensive_care_nursery_48hours" onChange={this.booleanChange.bind(this)}>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select> </label>
+                <br/>
+                <label>Intensive Care Reason: <input type="text" name="intensive_care_reason" onChange={this.handleChange.bind(this)}/></label>
+                <br/>
+                <label>Admission to Special Care Nursery 48hours: <select name="admission_to_special_care_nursery_48hours" onChange={this.booleanChange.bind(this)}>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select> </label>
+                <br/>
+                <label>Special Care Reason: <input type="text" name="special_care_reason" onChange={this.handleChange.bind(this)}/></label>
+                <br/>
+                <button type="submit">Submit</button>
+                </form>
             </div>
         )
     }
 }
 
-export default BirthsForm
+export default withRouter(BirthsForm)

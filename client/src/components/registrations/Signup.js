@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link, useHistory} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import axios from 'axios'
 
 class Signup extends Component {
@@ -62,7 +62,7 @@ handleSubmit = (event) => {
       address_country: address_country,
       email: email,
       password: password,
-      password_confirmation: password_confirmation,
+      password_confirmation: password_confirmation
     }
 axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
     .then(response => {
@@ -79,8 +79,7 @@ axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
     .catch(error => console.log('api errors:', error))
   };
 redirect = () => {
-    let history = useHistory()
-    history.push("/")
+    this.props.history.push('/')
   }
 handleErrors = () => {
     return (
@@ -227,4 +226,4 @@ return (
     );
   }
 }
-export default Signup;
+export default withRouter(Signup);

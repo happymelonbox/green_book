@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_11_103939) do
+ActiveRecord::Schema.define(version: 2022_01_15_140638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2022_01_11_103939) do
     t.integer "birth_month"
     t.integer "birth_year"
     t.boolean "home_birth"
-    t.integer "hospital_id"
     t.string "examiner_name"
     t.string "delivery_method"
     t.time "delivery_time"
@@ -33,39 +32,32 @@ ActiveRecord::Schema.define(version: 2022_01_11_103939) do
     t.boolean "newborn_bloodspot_screening_test_completed"
     t.date "bloodspot_sample_date"
     t.integer "apgar_one_minute"
-    t.integer "apgar_5_minute"
-    t.string "problems_requiring_treatmeant"
+    t.integer "apgar_five_minute"
+    t.string "problems_requiring_treatment"
     t.boolean "admission_to_intensive_care_nursery_48hours"
     t.string "intensive_care_reason"
     t.boolean "admission_to_special_care_nursery_48hours"
     t.string "special_care_reason"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "child_births", force: :cascade do |t|
-    t.integer "child_id"
-    t.integer "birth_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "father_id"
+    t.bigint "mother_id"
+    t.bigint "hospital_id"
+    t.index ["father_id"], name: "index_births_on_father_id"
+    t.index ["hospital_id"], name: "index_births_on_hospital_id"
+    t.index ["mother_id"], name: "index_births_on_mother_id"
   end
 
   create_table "children", force: :cascade do |t|
     t.string "first_name"
     t.string "middle_name"
     t.string "last_name"
-    t.integer "birth_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "birth_id"
+    t.index ["birth_id"], name: "index_children_on_birth_id"
     t.index ["user_id"], name: "index_children_on_user_id"
-  end
-
-  create_table "create_child_births", force: :cascade do |t|
-    t.integer "child_id"
-    t.integer "birth_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "fathers", force: :cascade do |t|
@@ -88,6 +80,8 @@ ActiveRecord::Schema.define(version: 2022_01_11_103939) do
     t.string "given_by"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "child_id"
+    t.index ["child_id"], name: "index_hepatitis_b_vaccines_on_child_id"
   end
 
   create_table "hospitals", force: :cascade do |t|
@@ -98,9 +92,9 @@ ActiveRecord::Schema.define(version: 2022_01_11_103939) do
     t.string "address_state"
     t.integer "address_postcode"
     t.string "address_country"
+    t.string "address_city"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "address_city"
   end
 
   create_table "mothers", force: :cascade do |t|
@@ -131,17 +125,11 @@ ActiveRecord::Schema.define(version: 2022_01_11_103939) do
     t.string "question"
     t.string "questionable_type"
     t.bigint "questionable_id"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["questionable_type", "questionable_id"], name: "index_questions_on_questionable"
-  end
-
-  create_table "user_children", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "child_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -184,5 +172,5 @@ ActiveRecord::Schema.define(version: 2022_01_11_103939) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "children", "users"
+  add_foreign_key "questions", "users"
 end

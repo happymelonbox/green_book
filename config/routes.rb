@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :children, only: [:index, :create, :destroy, :update]
       resources :hospitals, only: [:index, :create, :destroy, :update]
+      resources :births, only: [:index, :create, :destroy, :update]
     end
   end
 

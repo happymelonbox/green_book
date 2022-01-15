@@ -8,6 +8,8 @@ class CreateHospitals < ActiveRecord::Migration[7.0]
       t.string :address_state
       t.integer :address_postcode
       t.string :address_country
+      t.string :address_city
+      
 
       t.timestamps
     end

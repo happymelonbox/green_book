@@ -1,7 +1,9 @@
 class Child < ApplicationRecord
-    has_one :child_birth
-    has_one :birth, through: :child_birth
-    has_one :user, through: :user_child
+    belongs_to :user
+    belongs_to :birth
     has_one :father, through: :birth
     has_one :mother, through: :birth
+    has_one :hepatitis_b_vaccine
+    has_many :visits
+    has_many :vitamin_k
 end

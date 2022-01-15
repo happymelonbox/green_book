@@ -5,7 +5,6 @@ class CreateBirths < ActiveRecord::Migration[7.0]
       t.integer :birth_month
       t.integer :birth_year
       t.boolean :home_birth
-      t.integer :hospital_id
       t.string :examiner_name
       t.string :delivery_method
       t.time :delivery_time
@@ -18,13 +17,12 @@ class CreateBirths < ActiveRecord::Migration[7.0]
       t.boolean :newborn_bloodspot_screening_test_completed
       t.date :bloodspot_sample_date
       t.integer :apgar_one_minute
-      t.integer :apgar_5_minute
-      t.string :problems_requiring_treatmeant
+      t.integer :apgar_five_minute
+      t.string :problems_requiring_treatment
       t.boolean :admission_to_intensive_care_nursery_48hours
       t.string :intensive_care_reason
       t.boolean :admission_to_special_care_nursery_48hours
       t.string :special_care_reason
-
       t.timestamps
     end
   end

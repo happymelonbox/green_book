@@ -1,6 +1,7 @@
 class Api::V1::ChildrenController < Api::V1::BaseController
     before_action :authentication_redirect, :only => [:index, :show]
-    before_action :current_user, :only => [:show]
+    before_action :current_user
+    before_action :set_child, :only => [:edit, :show, :update, :destroy]
 
     def index
         @user ||= current_user
@@ -36,8 +37,8 @@ class Api::V1::ChildrenController < Api::V1::BaseController
 
     def update
         @user ||= current_user
-        @child = @user.children.find(params[:id])
-        if @child.update
+        @child = Children.find(params[:id])
+        if @child.update.(child_params)
             render json: {
                 status: :created,
                 user: @user,
@@ -51,17 +52,16 @@ class Api::V1::ChildrenController < Api::V1::BaseController
         end
     end
 
-    def show
-        @user ||= current_user
-        @child = @user.children.find(params[:id])
-    end
-
     def destroy
         @user ||= current_user
         @user.children.destroy(params[:id])
     end
 
   private
+
+    def set_child
+        @child = Child.find(params[:id])
+    end
       
      def child_params
          params.require(:child).permit(:first_name, :middle_name, :last_name, :user_id)

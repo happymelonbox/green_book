@@ -15,6 +15,7 @@ import UsefulInformation from './components/usefulInformation/UsefulInformation'
 import Visits from './components/visits/Visits'
 import BirthRecord from './components/births/BirthRecord';
 import BirthsForm from './components/births/BirthsForm';
+import HospitalForm from './components/hospitals/HospitalForm'
 
 
 export const HISTORY = createBrowserHistory()
@@ -83,7 +84,6 @@ class App extends Component {
         children: data
       })
     }
-  
 
   handleCreateChildren = (data) => {
     console.log(data)
@@ -176,6 +176,12 @@ class App extends Component {
               exact path='/add_a_birth_record' 
               render={props => (
               <BirthsForm {...props}/>
+              )}
+            />
+            <Route
+              exact path ='/add_a_hospital'
+              render={props => (
+                <HospitalForm {...props} />
               )}
             />
         </BrowserRouter>
