@@ -21,7 +21,7 @@ class Api::V1::ChildrenController < Api::V1::BaseController
     def create
         @user ||= current_user
         @child = @user.children.new(child_params)
-        if @child.save
+        if @child.save!
             render json: {
                 status: :created,
                 user: @user,
@@ -36,8 +36,6 @@ class Api::V1::ChildrenController < Api::V1::BaseController
     end
 
     def update
-        @user ||= current_user
-        @child = Children.find(params[:id])
         if @child.update.(child_params)
             render json: {
                 status: :created,
@@ -53,8 +51,7 @@ class Api::V1::ChildrenController < Api::V1::BaseController
     end
 
     def destroy
-        @user ||= current_user
-        @user.children.destroy(params[:id])
+        @child.destroy
     end
 
   private

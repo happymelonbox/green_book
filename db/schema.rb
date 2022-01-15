@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_140638) do
     t.bigint "father_id"
     t.bigint "mother_id"
     t.bigint "hospital_id"
+    t.bigint "child_id"
+    t.index ["child_id"], name: "index_births_on_child_id"
     t.index ["father_id"], name: "index_births_on_father_id"
     t.index ["hospital_id"], name: "index_births_on_hospital_id"
     t.index ["mother_id"], name: "index_births_on_mother_id"
@@ -55,8 +57,6 @@ ActiveRecord::Schema.define(version: 2022_01_15_140638) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.bigint "birth_id"
-    t.index ["birth_id"], name: "index_children_on_birth_id"
     t.index ["user_id"], name: "index_children_on_user_id"
   end
 

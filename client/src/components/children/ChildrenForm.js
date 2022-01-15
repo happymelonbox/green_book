@@ -26,15 +26,13 @@ class ChildrenForm extends Component {
         const {
             first_name,
             middle_name,
-            last_name,
-            user_id
+            last_name
         } = this.state
 
         let child = {
             first_name: first_name,
             middle_name: middle_name,
-            last_name: last_name,
-            user_id: user_id
+            last_name: last_name
         }
 
         axios.post('http://localhost:3001/api/v1/children.json', {child}, {withCredentials: true})
@@ -72,7 +70,6 @@ class ChildrenForm extends Component {
             first_name,
             middle_name,
             last_name,
-            user_id
         } = this.state
 
         return(
@@ -100,10 +97,6 @@ class ChildrenForm extends Component {
                         name="last_name"
                         value={last_name||""}
                         onChange={this.handleChange}
-                    />
-                    <input 
-                    type="hidden"
-                    defaultValue={user_id}
                     />
                     <button placeholder="submit" type="submit">
                     Add Child
