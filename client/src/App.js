@@ -35,14 +35,7 @@ class App extends Component {
     this.loginStatus()
   }
 
-  getChildren = () => {
-    axios.get('http://localhost:3001/api/v1/children', {
-      withCredentials: true,
-  })
-    .then(response => {
-      this.handleChildren(response.data.children)
-    })
-  }
+  
 
 
   loginStatus = () => {
@@ -60,7 +53,6 @@ class App extends Component {
   }
 
   handleLogin = (data) => {
-    this.getChildren()
     this.setState({
       isLoggedIn: true,
       user: data.user
@@ -79,16 +71,11 @@ class App extends Component {
     .catch(error => console.log(error))
   }
 
-  handleChildren = (data) => {
-      this.setState({
-        children: data
-      })
-    }
 
   handleCreateChildren = (data) => {
     console.log(data)
     this.setState({
-      children: [...this.state.children, data.child]
+      children: [...this.state.children, data]
     })
   }
 

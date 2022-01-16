@@ -7,9 +7,13 @@ class Api::V1::ChildrenController < Api::V1::BaseController
         @user ||= current_user
         @children = Child.all.where("user_id = ?", @user.id)
         if @children
-            render json: {
-                children: @children
-            }
+            render json: @children.to_json(include: {
+                birth: {},
+                user: {}
+                # hepatitis_b_vaccine: {},
+                # visits: {},
+                # vitamin_ks: {}
+            })
         else
             render json:{
                 status: 500,
@@ -19,15 +23,13 @@ class Api::V1::ChildrenController < Api::V1::BaseController
     end
 
     def create
-        @user ||= current_user
-        @child = @user.children.new(child_params)
-        if @child.save!
+        @child = Child.new(child_params)
+        @child.save
+        if @child.save
             render json: {
-                status: :created,
-                user: @user,
-                child: @child
+                status: :created
             }
-        else 
+        else
             render json: {
                 status: 500,
                 errors: @user.errors.full_messages
@@ -36,13 +38,12 @@ class Api::V1::ChildrenController < Api::V1::BaseController
     end
 
     def update
-        if @child.update.(child_params)
+        @child.update(params.permit(:first_name, :middle_name, :last_name))
+        if @child.update
             render json: {
-                status: :created,
-                user: @user,
-                child: @child
+                status: :updated,
             }
-        else 
+        else
             render json: {
                 status: 500,
                 errors: @user.errors.full_messages
@@ -59,9 +60,9 @@ class Api::V1::ChildrenController < Api::V1::BaseController
     def set_child
         @child = Child.find(params[:id])
     end
-      
+
      def child_params
          params.require(:child).permit(:first_name, :middle_name, :last_name, :user_id)
      end
-     
+
   end

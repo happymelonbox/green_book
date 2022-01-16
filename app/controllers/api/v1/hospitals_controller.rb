@@ -19,13 +19,12 @@ class Api::V1::HospitalsController < Api::V1::BaseController
 
     def create
         @hospital = Hospital.new(hospital_params)
+        @hospital.save
         if @hospital.save
             render json: {
                 status: :created,
-                user: @user,
-                hospital: @hospital
             }
-        else 
+        else
             render json: {
                 status: 500,
                 errors: @user.errors.full_messages
@@ -34,24 +33,17 @@ class Api::V1::HospitalsController < Api::V1::BaseController
     end
 
     def update
-        if @hospital.update(hospital_params)
+        @hospital.update(params.permit(:name, :address_line_1, :address_line_2, :address_suburb, :address_postcode, :address_state, :address_city, :address_country))
+        if @hospital.update
             render json: {
-                status: :created,
-                user: @user,
-                hospital: @hospital
+                status: :updated
             }
-        else 
+        else
             render json: {
                 status: 500,
                 errors: @user.errors.full_messages
             }
         end
-    end
-
-    def show
-    end
-
-    def edit
     end
 
     def destroy
@@ -62,9 +54,10 @@ class Api::V1::HospitalsController < Api::V1::BaseController
 
     def set_hospital
         @hospital = Hospital.find(params[:id])
-      
-     def hospital_params
-         params.require(:hospital).permit(:name, :address_line_1, :address_line_2, :address_suburb, :address_postcode, :address_state, :address_city, :address_country)
-     end
-     
+    end
+
+    def hospital_params
+        params.require(:hospital).permit(:name, :address_line_1, :address_line_2, :address_suburb, :address_postcode, :address_state, :address_city, :address_country)
+    end
+
   end
