@@ -9,7 +9,7 @@ class Api::V1::ChildrenController < Api::V1::BaseController
         if @children
             render json: @children.to_json(include: {
                 birth: {},
-                user: {}
+                user: {},
                 # hepatitis_b_vaccine: {},
                 # visits: {},
                 # vitamin_ks: {}
@@ -32,7 +32,7 @@ class Api::V1::ChildrenController < Api::V1::BaseController
         else
             render json: {
                 status: 500,
-                errors: @user.errors.full_messages
+                errors: @child.errors.full_messages
             }
         end
     end
@@ -46,7 +46,7 @@ class Api::V1::ChildrenController < Api::V1::BaseController
         else
             render json: {
                 status: 500,
-                errors: @user.errors.full_messages
+                errors: @child.errors.full_messages
             }
         end
     end

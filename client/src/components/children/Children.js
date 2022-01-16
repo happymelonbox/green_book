@@ -21,7 +21,6 @@ class Children extends React.Component {
           withCredentials: true,
       })
         .then(response => {
-            console.log(response.data)
           this.handleChildren(response.data)
         })
     }
@@ -39,7 +38,6 @@ class Children extends React.Component {
                     <h1>Children</h1>
                     <Link to="/">Home</Link>
                     {this.state.children.map(child => {
-                        console.log(child)
                         return (<Child key={child.id} child={child}/>)
                     })}
                 </div>

@@ -7,6 +7,16 @@ class BirthsForm extends Component {
     constructor(props){
         super(props)
         this.state = {
+            father_first_name: "",
+            father_last_name: "",
+            father_birth_day: 0,
+            father_birth_month: 0,
+            father_birth_year: 0,
+            mother_first_name: "",
+            mother_last_name: "",
+            mother_birth_day: 0,
+            mother_birth_month: 0,
+            mother_birth_year: 0,
             hospitalSelectOptions : [],
             hospital_name: "",
             errors: [],
@@ -34,7 +44,9 @@ class BirthsForm extends Component {
                 admission_to_intensive_care_nursery_48hours: false,
                 intensive_care_reason: '',
                 admission_to_special_care_nursery_48hours: false,
-                special_care_reason: ''
+                special_care_reason: '',
+                father_id: 0,
+                mother_id: 0
             }
         }
     }
@@ -64,7 +76,7 @@ class BirthsForm extends Component {
             }
         })
     }
-    
+
     booleanChange(event){
         let value = false
         let name = event.target.name
@@ -90,6 +102,50 @@ class BirthsForm extends Component {
                 [name]: value
             }
         })
+    }
+
+    handleParentsChange = (event) => {
+        const name = event.target.name
+        const value = event.target.value
+        this.setState({
+                [name]: value
+            }
+        )
+    }
+
+    findParentId = () => {
+        this.findMotherId()
+        this.findFatherId()
+    }
+
+    findMotherId = () => {
+        axios.get('http://localhost:3001/api/v1/mothers', {withCredentials: true})
+        .then(response =>
+            this.setState({
+                birth: {...this.state.birth,
+                    mother_id: response.data.mothers.find(
+                        ({first_name, last_name, birth_day, birth_month, birth_year}) =>
+                        first_name === this.state.mother_first_name &&
+                        last_name === this.state.mother_last_name &&
+                        birth_day === this.state.mother_birth_day &&
+                        birth_month === this.state.mother_birth_month &&
+                        birth_year === this.state.mother_birth_year ).id
+            }}))
+    }
+
+    findFatherId = () => {
+        axios.get('http://localhost:3001/api/v1/fathers', {withCredentials: true})
+        .then(response =>
+            this.setState({
+                birth: {...this.state.birth,
+                    father_id: response.data.fathers.find(
+                        ({first_name, last_name, birth_day, birth_month, birth_year}) =>
+                        first_name === this.state.father_first_name &&
+                        last_name === this.state.father_last_name &&
+                        birth_day === this.state.father_birth_day &&
+                        birth_month === this.state.father_birth_month &&
+                        birth_year === this.state.father_birth_year ).id
+            }}))
     }
 
     handleSubmit = (event) => {
@@ -118,7 +174,9 @@ class BirthsForm extends Component {
                 admission_to_intensive_care_nursery_48hours,
                 intensive_care_reason,
                 admission_to_special_care_nursery_48hours,
-                special_care_reason
+                special_care_reason,
+                father_id,
+                mother_id
             } = this.state.birth
 
             let birth = {
@@ -145,8 +203,13 @@ class BirthsForm extends Component {
                 admission_to_intensive_care_nursery_48hours: admission_to_intensive_care_nursery_48hours,
                 intensive_care_reason: intensive_care_reason,
                 admission_to_special_care_nursery_48hours: admission_to_special_care_nursery_48hours,
-                special_care_reason: special_care_reason
+                special_care_reason: special_care_reason,
+                father_id: father_id,
+                mother_id: mother_id
             }
+
+            this.findParentId()
+
             axios.post('http://localhost:3001/api/v1/births', {birth}, {withCredentials: true})
             .then(response => {
                 console.log(response)
@@ -164,6 +227,7 @@ class BirthsForm extends Component {
     redirect = () => {
         this.props.history.push("/children")
     }
+
     render(){
         return(
             <div>
@@ -181,6 +245,8 @@ class BirthsForm extends Component {
                 </select>
                 </label>
                 <br/>
+                <label>Father's First Name: <input type="text" name="father_first_name" onChange={this.handleParentsChange.bind(this)}/></label>
+                <br/>
                 <label> Hospital: <select name="hospital" onChange={this.hospitalChange.bind(this)}>
                     <option>--</option>
                     {this.state.hospitalSelectOptions.map(option => {
@@ -196,7 +262,7 @@ class BirthsForm extends Component {
                         <option value="Induced">Induced</option>
                         <option value="Selective Caesarian">Selective Caesarian</option>
                         <option value="Emergency Caesarian">Emergency Caesarian</option>
-                    </select> 
+                    </select>
                 </label>
                 <br/>
                 <label>Delivery Time: <input name="delivery_time" type="time" onChange={this.handleChange.bind(this)}/></label>

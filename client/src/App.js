@@ -16,6 +16,8 @@ import Visits from './components/visits/Visits'
 import BirthRecord from './components/births/BirthRecord';
 import BirthsForm from './components/births/BirthsForm';
 import HospitalForm from './components/hospitals/HospitalForm'
+import MotherForm from './components/parents/mother/MotherForm';
+import FatherForm from './components/parents/father/FatherForm';
 
 
 export const HISTORY = createBrowserHistory()
@@ -169,6 +171,18 @@ class App extends Component {
               exact path ='/add_a_hospital'
               render={props => (
                 <HospitalForm {...props} />
+              )}
+            />
+            <Route
+              exact path ='/add_a_mother'
+              render={props => (
+                <MotherForm {...props} />
+              )}
+            />
+            <Route
+              exact path ='/add_a_father'
+              render={props => (
+                <FatherForm {...props} />
               )}
             />
         </BrowserRouter>

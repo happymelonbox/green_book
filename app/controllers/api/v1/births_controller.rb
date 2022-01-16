@@ -6,9 +6,9 @@ class Api::V1::BirthsController < Api::V1::BaseController
     def index
         @births = Birth.all
         if @births
-            render json: {
-                births: @births
-            }
+            render json: @births.to_json(include: {
+                hospital: {}
+            })
         else
             render json:{
                 status: 500,
