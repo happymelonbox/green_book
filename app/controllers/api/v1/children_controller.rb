@@ -9,10 +9,9 @@ class Api::V1::ChildrenController < Api::V1::BaseController
         if @children
             render json: @children.to_json(include: {
                 birth: {},
-                user: {},
-                # hepatitis_b_vaccine: {},
-                # visits: {},
-                # vitamin_ks: {}
+                hepatitis_b_vaccine: {},
+                visits: {},
+                vitamin_ks: {}
             })
         else
             render json:{

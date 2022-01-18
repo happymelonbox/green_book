@@ -6,9 +6,10 @@ class Api::V1::MothersController < Api::V1::BaseController
     def index
         @mothers = Mother.all
         if @mothers
-            render json: {
-                mothers: @mothers
-            }
+            render json: @mothers.to_json(include: {
+                births: {},
+                children: {}
+            })
         else
             render json:{
                 status: 500,

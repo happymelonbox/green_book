@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Child from './Child'
+import '../../style/children.css'
 
 
 class Children extends React.Component {
@@ -36,12 +37,12 @@ class Children extends React.Component {
             <div>
                 <div>
                     <h1>Children</h1>
-                    <Link to="/">Home</Link>
+                    <Link to="/">Home</Link> <Link to='/add_a_child'>Add a new child</Link>
                     {this.state.children.map(child => {
                         return (<Child key={child.id} child={child}/>)
                     })}
                 </div>
-                <Link to='/add_a_child'>Add a new child</Link>
+
             </div>
         )
     }

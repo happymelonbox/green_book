@@ -52,3 +52,7 @@ end
 gem 'active_model_serializers'
 gem 'thread_safe'
 gem 'thor'
+gem 'dotenv-rails'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'

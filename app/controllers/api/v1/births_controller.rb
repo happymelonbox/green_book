@@ -7,7 +7,8 @@ class Api::V1::BirthsController < Api::V1::BaseController
         @births = Birth.all
         if @births
             render json: @births.to_json(include: {
-                hospital: {}
+                hospital: {},
+                child: {}
             })
         else
             render json:{

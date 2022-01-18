@@ -6,9 +6,9 @@ class Api::V1::FathersController < Api::V1::BaseController
     def index
         @fathers = Father.all
         if @fathers
-            render json: {
-                fathers: @fathers
-            }
+            render json: @fathers.to_json(include: {
+                children: {}
+            })
         else
             render json:{
                 status: 500,

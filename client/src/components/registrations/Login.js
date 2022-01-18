@@ -91,7 +91,13 @@ class Login extends Component {
             Log In
           </button>
           <div>
-            or <Link to='/signup'>sign up</Link>
+            or <Link to='/signup'>Sign up</Link>
+          <br/>
+            or 
+            <form action='/auth/google_oauth2/callback' class="button_to" data-remote="true" method="post">
+              <input type="submit" value="Log in with Google" />
+            </form>
+
           </div>
           </form>
           <div>

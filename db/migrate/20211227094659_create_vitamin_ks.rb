@@ -6,7 +6,6 @@ class CreateVitaminKs < ActiveRecord::Migration[7.0]
       t.string :dose
       t.string :route
       t.string :given_by
-      t.string :comments
 
       t.timestamps
     end

@@ -1,4 +1,4 @@
 class Mother < ApplicationRecord
-    belongs_to :birth
-    has_many :children, through: :birth
+    has_many :births
+    has_many :children, through: :births
 end

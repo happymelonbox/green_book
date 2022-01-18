@@ -5,5 +5,5 @@ class Child < ApplicationRecord
     has_one :mother, through: :birth
     has_one :hepatitis_b_vaccine
     has_many :visits
-    has_many :vitamin_k
+    has_many :vitamin_ks
 end

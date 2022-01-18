@@ -6,9 +6,9 @@ class Api::V1::VisitsController < Api::V1::BaseController
     def index
         @visits = Visit.all
         if @visits
-            render json: {
-                visits: @visits
-            }
+            render json: @visits.to_json(include: {
+                child: {}
+            })
         else
             render json:{
                 status: 500,

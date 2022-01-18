@@ -1,5 +1,15 @@
 class SessionsController < ApplicationController
 
+  def omniauth
+    @user = User.from_omniauth(request.env['omniauth.auth'])
+    if @user.valid?
+      session[:user_id] = @user.id
+      redirect_to '/'
+    else
+      redirect_to '/login'
+    end
+  end
+
   def create
     @user = User.find_by(email: session_params[:email])
     if @user && @user.authenticate(session_params[:password])
@@ -22,6 +32,7 @@ class SessionsController < ApplicationController
         logged_in: true,
         user: current_user
       }
+
     else
       render json: {
         logged_in: false,

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_15_140638) do
+ActiveRecord::Schema.define(version: 2022_01_17_124451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,6 +148,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_140638) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "uid"
+    t.string "provider"
   end
 
   create_table "visits", force: :cascade do |t|
@@ -159,6 +161,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_140638) do
     t.float "length"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "child_id"
+    t.index ["child_id"], name: "index_visits_on_child_id"
   end
 
   create_table "vitamin_ks", force: :cascade do |t|
@@ -167,9 +171,10 @@ ActiveRecord::Schema.define(version: 2022_01_15_140638) do
     t.string "dose"
     t.string "route"
     t.string "given_by"
-    t.string "comments"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "child_id"
+    t.index ["child_id"], name: "index_vitamin_ks_on_child_id"
   end
 
   add_foreign_key "questions", "users"
