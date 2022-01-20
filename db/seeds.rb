@@ -1,7 +1,6 @@
 
-users = User.create([
-    {username: "happymelon", first_name: "Justin", last_name: "Berger Howes", contact_number: "0478658779", address_unit_number: "Unit 1", address_street_number: "39A", address_street_name: "Balaclava Road", address_suburb: "St Kilda East", address_city: "Melbourne", address_state: "VIC", address_country: "Australia", email: "howes.j.j@gmail.com", password_digest: "testingPassword"}
-])
+user = User.create(username: "happymelon", first_name: "Justin", last_name: "Berger Howes", contact_number: "0478658779", address_unit_number: "Unit 1", address_street_number: "39A", address_street_name: "Balaclava Road", address_suburb: "St Kilda East", address_city: "Melbourne", address_state: "VIC", address_country: "Australia", email: "howes.j.j@gmail.com", password_digest: "$2a$12$lWh0fUQEsKTTR6rWFDxKq.2Hb7pF.h4rYdoAmeKs3maBEsd8syto6")
+
 fathers = Father.create([
     {first_name: "Adam", middle_name: "Stanley", last_name: "Jones", birth_day: 12, birth_month: 5, birth_year: 1982, nationality: "Australia"},
     {first_name: "Justin", middle_name: "James", last_name: "Berger Howes", birth_day: 6, birth_month: 6, birth_year: 1983, nationality: "United States of America"},

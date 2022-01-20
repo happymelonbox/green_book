@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link, withRouter} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
 class Signup extends Component {
@@ -69,7 +69,7 @@ axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
       console.log(response)
       if (response.data.status === 'created') {
         this.props.handleLogin(response.data)
-        this.redirect()
+        this.props.redirect()
       } else {
         this.setState({
           errors: [...this.state.errors, response.data.errors]
@@ -78,9 +78,7 @@ axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
     })
     .catch(error => console.log('api errors:', error))
   };
-redirect = () => {
-    this.props.history.push('/')
-  }
+  
 handleErrors = () => {
     return (
       <div>
@@ -226,4 +224,4 @@ return (
     );
   }
 }
-export default withRouter(Signup);
+export default Signup

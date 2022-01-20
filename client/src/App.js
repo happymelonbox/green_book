@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import {BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import Home from './components/Home'
 import Login from './components/registrations/Login'
@@ -37,8 +37,6 @@ class App extends Component {
     this.loginStatus()
   }
 
-  
-
 
   loginStatus = () => {
     axios.get('http://localhost:3001/logged_in', {
@@ -59,6 +57,7 @@ class App extends Component {
       isLoggedIn: true,
       user: data.user
     })
+    this.redirect("/")
   }
 
   handleLogout = () => {
@@ -88,104 +87,106 @@ class App extends Component {
   render() {
     return (
       <div>
-        <BrowserRouter>
+        <Router>
+          <Routes>
             <Route 
               exact path='/' 
-              render={props => (
-              <Home {...props} loggedInStatus = {this.state.isLoggedIn} user={this.state.user} handleLogout={this.handleLogout} handleLogin={this.handleLogin}/>
-              )}
+              element={
+              <Home loggedInStatus = {this.state.isLoggedIn} user={this.state.user} handleLogout={this.handleLogout} handleLogin={this.handleLogin}/>
+              }
             />
             <Route 
               exact path='/login' 
-              render={props => (
-              <Login {...props} />
-              )}
+              element={
+              <Login />
+            }
             />
             <Route 
               exact path='/signup' 
-              render={props => (
-              <Signup {...props} handleLogin={this.handleLogin}/>
-              )}
+              element={
+              <Signup handleLogin={this.handleLogin}/>
+              }
             />
             <Route 
               exact path='/children' 
-              render={props => (
-              <Children {...props} user={this.state.user} children={this.state.children}/>
-              )}
+              element={
+              <Children user={this.state.user} children={this.state.children}/>
+            }
             />
             <Route
             exact path='/add_a_child'
-            render={props => (
-              <ChildrenForm {...props} user={this.state.user} handleCreateChildren={this.handleCreateChildren} />
-            )}
+            element={
+              <ChildrenForm user={this.state.user} handleCreateChildren={this.handleCreateChildren} />
+            }
             />
             <Route
             exact path='/child'
-            render={props => (
-              <Child {...props} user={this.state.user} child={this.props.child}/>
-            )}
+            element={
+              <Child user={this.state.user} child={this.props.child}/>
+            }
             />
-            <Route 
+            {/* <Route 
               exact path='/appointments_to_keep' 
-              render={props => (
-              <Appointments {...props} />
-              )}
+              element={
+              <Appointments />
+              }
             />
             <Route 
               exact path='/growth_and_health' 
-              render={props => (
-              <GrowthAndHealth {...props} />
-              )}
+              element={
+              <GrowthAndHealth />
+              }
             />
             <Route 
               exact path='/immunisations' 
-              render={props => (
-              <Immunisations {...props} />
-              )}
+              element={
+              <Immunisations />
+              }
             />
             <Route 
               exact path='/visits' 
-              render={props => (
-              <Visits {...props} />
-              )}
-            />
-            <Route 
+              element={
+              <Visits />
+              }
+            /> */}
+            {/* <Route 
               exact path='/useful_information' 
-              render={props => (
-              <UsefulInformation {...props} />
-              )}
-            />
+              element={
+              <UsefulInformation />
+              }/> */}
+            
             <Route 
               exact path='/birth_record' 
-              render={props => (
-              <BirthRecord {...props}/>
-              )}
+              element={
+              <BirthRecord/>
+              }
             />
             <Route 
               exact path='/add_a_birth_record' 
-              render={props => (
-              <BirthsForm {...props}/>
-              )}
+              element={
+              <BirthsForm/>
+              }
             />
             <Route
               exact path ='/add_a_hospital'
-              render={props => (
-                <HospitalForm {...props} />
-              )}
+              element={
+                <HospitalForm />
+              }
             />
             <Route
               exact path ='/add_a_mother'
-              render={props => (
-                <MotherForm {...props} />
-              )}
+              element={
+                <MotherForm />
+              }
             />
             <Route
               exact path ='/add_a_father'
-              render={props => (
-                <FatherForm {...props} />
-              )}
+              element={
+                <FatherForm />
+              }
             />
-        </BrowserRouter>
+            </Routes>
+        </Router>
       </div>
     );
   }

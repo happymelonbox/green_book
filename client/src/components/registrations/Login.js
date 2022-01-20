@@ -90,16 +90,18 @@ class Login extends Component {
           <button placeholder="submit" type="submit">
             Log In
           </button>
+          
+        </form>
+      
           <div>
             or <Link to='/signup'>Sign up</Link>
           <br/>
             or 
-            <form action='/auth/google_oauth2/callback' class="button_to" data-remote="true" method="post">
+            <form action='http://localhost:3001/login' className="button_to" data-remote="true" method="get">
               <input type="submit" value="Log in with Google" />
             </form>
-
           </div>
-          </form>
+          
           <div>
           {
             this.state.errors ? this.handleErrors() : null

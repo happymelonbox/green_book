@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 class FatherForm extends Component{
     constructor(props){
@@ -67,7 +67,8 @@ class FatherForm extends Component{
     }
 
     redirect = () => {
-        this.props.history.push("/children")
+        const navigate = useNavigate()
+        navigate('/children')
     }
 
     render(){
@@ -94,4 +95,4 @@ class FatherForm extends Component{
     }
 }
 
-export default withRouter(FatherForm)
+export default FatherForm

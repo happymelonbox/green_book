@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :null_session
+  
+  protect_from_forgery with: :exception
 
-  skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token, raise: false
 
   helper_method :login!, :logged_in?, :current_user, :authorized_user?, :logout!
 

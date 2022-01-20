@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 class BirthsForm extends Component {
@@ -225,7 +225,8 @@ class BirthsForm extends Component {
         };
 
     redirect = () => {
-        this.props.history.push("/children")
+        const navigate = useNavigate()
+        navigate('/children')
     }
 
     render(){
@@ -319,4 +320,4 @@ class BirthsForm extends Component {
     }
 }
 
-export default withRouter(BirthsForm)
+export default BirthsForm
