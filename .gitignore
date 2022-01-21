@@ -31,3 +31,6 @@
 # Ignore .env file
 
 .env
+
+#Ignore node_modules for heroku
+node_modules/
