@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_20_111431) do
+ActiveRecord::Schema.define(version: 2022_01_21_003844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.string "reason"
+    t.datetime "date_and_time", precision: 6
+    t.string "location_name"
+    t.string "location_address_number"
+    t.string "location_street_name"
+    t.string "location_suburb"
+    t.string "location_city"
+    t.string "location_state"
+    t.string "location_country"
+    t.string "visit_age"
+    t.string "name_of_nurse"
+    t.float "weight"
+    t.float "head_circumference"
+    t.float "length"
+    t.bigint "child_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["child_id"], name: "index_appointments_on_child_id"
+  end
 
   create_table "births", force: :cascade do |t|
     t.integer "birth_day"
@@ -114,10 +135,11 @@ ActiveRecord::Schema.define(version: 2022_01_20_111431) do
     t.string "content"
     t.string "notable_type"
     t.bigint "notable_id"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["notable_type", "notable_id"], name: "index_notes_on_notable"
+    t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -152,19 +174,6 @@ ActiveRecord::Schema.define(version: 2022_01_20_111431) do
     t.string "provider"
   end
 
-  create_table "visits", force: :cascade do |t|
-    t.string "visit_age"
-    t.datetime "date_and_time", precision: 6
-    t.string "name_of_nurse"
-    t.float "weight"
-    t.float "head_circumference"
-    t.float "length"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "child_id"
-    t.index ["child_id"], name: "index_visits_on_child_id"
-  end
-
   create_table "vitamin_ks", force: :cascade do |t|
     t.string "place_given"
     t.date "date"
@@ -177,5 +186,7 @@ ActiveRecord::Schema.define(version: 2022_01_20_111431) do
     t.index ["child_id"], name: "index_vitamin_ks_on_child_id"
   end
 
+  add_foreign_key "appointments", "children"
+  add_foreign_key "notes", "users"
   add_foreign_key "questions", "users"
 end

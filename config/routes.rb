@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :vitamin_ks, only: [:index, :create, :destroy, :update]
       resources :hepatitis_b_vaccines, only: [:index, :create, :destroy, :update]
       resources :visits, only: [:index, :create, :destroy, :update]
+      resources :appointments, only: [:index, :create, :destroy, :update]
     end
   end
 

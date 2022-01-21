@@ -30,7 +30,6 @@ class BirthRecord extends Component{
     getMotherName = (id) => {
         axios.get('http://localhost:3001/api/v1/mothers.json', {withCredentials: true})
         .then(response => {
-            console.log(response)
             this.setState({
             motherFirstName: response.data.find(id => id = this.props.child.birth.mother_id).first_name,
             motherLastName: response.data.find(id => id = this.props.child.birth.mother_id).last_name

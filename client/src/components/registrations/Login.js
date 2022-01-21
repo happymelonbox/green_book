@@ -70,6 +70,7 @@ class Login extends Component {
             placeholder="username"
             type="text"
             name="username"
+            autoComplete='username'
             value={username}
             onChange={this.handleChange}
           />
@@ -77,6 +78,7 @@ class Login extends Component {
             placeholder="email"
             type="text"
             name="email"
+            autoComplete='email'
             value={email}
             onChange={this.handleChange}
           />
@@ -84,6 +86,7 @@ class Login extends Component {
             placeholder="password"
             type="password"
             name="password"
+            autoComplete='current-password'
             value={password}
             onChange={this.handleChange}
           />

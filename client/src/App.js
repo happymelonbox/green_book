@@ -9,6 +9,7 @@ import Child from './components/children/Child'
 import Children from './components/children/Children'
 import ChildrenForm  from './components/children/ChildrenForm'
 import Appointments from './components/appointments/Appointments'
+import AppointmentsForm from './components/appointments/AppointmentsForm';
 import GrowthAndHealth from './components/growthAndHealth/GrowthAndHealth'
 import Immunisations from './components/immunisations/Immunisations'
 import UsefulInformation from './components/usefulInformation/UsefulInformation'
@@ -125,36 +126,6 @@ class App extends Component {
               <Child user={this.state.user} child={this.props.child}/>
             }
             />
-            {/* <Route 
-              exact path='/appointments_to_keep' 
-              element={
-              <Appointments />
-              }
-            />
-            <Route 
-              exact path='/growth_and_health' 
-              element={
-              <GrowthAndHealth />
-              }
-            />
-            <Route 
-              exact path='/immunisations' 
-              element={
-              <Immunisations />
-              }
-            />
-            <Route 
-              exact path='/visits' 
-              element={
-              <Visits />
-              }
-            /> */}
-            {/* <Route 
-              exact path='/useful_information' 
-              element={
-              <UsefulInformation />
-              }/> */}
-            
             <Route 
               exact path='/birth_record' 
               element={
@@ -185,6 +156,44 @@ class App extends Component {
                 <FatherForm />
               }
             />
+            <Route 
+              exact path='/appointments_to_keep' 
+              element={
+              <Appointments />
+              }
+            />
+            <Route 
+              exact path='/add_an_appointment' 
+              element={
+              <AppointmentsForm />
+              }
+            />
+            {/* 
+            <Route 
+              exact path='/growth_and_health' 
+              element={
+              <GrowthAndHealth />
+              }
+            />
+            <Route 
+              exact path='/immunisations' 
+              element={
+              <Immunisations />
+              }
+            />
+            <Route 
+              exact path='/visits' 
+              element={
+              <Visits />
+              }
+            /> */}
+            {/* <Route 
+              exact path='/useful_information' 
+              element={
+              <UsefulInformation />
+              }/> */}
+            
+            
             </Routes>
         </Router>
       </div>

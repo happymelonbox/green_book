@@ -41,13 +41,6 @@ hepBVaccines = HepatitisBVaccine.create([
     {place_given: "Ripponlea Medical", date: "2022-03-09T00:00:00.000Z", dose: "First", batch_no: 3236654, given_by: "Mary Scott", child_id: 4}
 ])
 
-visits = Visit.create([
-    {visit_age: "Two Weeks", date_and_time: "2020-09-26T15:00:00.000Z", name_of_nurse: "Janine Morris", weight: 8.2, head_circumference: 31, length: 42, child_id: 1},
-    {visit_age: "Two Weeks", date_and_time: "2021-01-03T15:30:00.000Z", name_of_nurse: "George Smith", weight: 4.5, head_circumference: 34, length: 60, child_id: 2},
-    {visit_age: "Two Weeks", date_and_time: "2022-02-11T16:00:00.000Z", name_of_nurse: "Nicole Barb", weight: 4.6, head_circumference: 34, length: 35, child_id: 3},
-    {visit_age: "Two Weeks", date_and_time: "2022-03-23T10:30:00.000Z", name_of_nurse: "Tiffany Grey", weight: 6.1, head_circumference: 30, length: 41,  child_id: 4}
-])
-
 vitamin_ks = VitaminK.create([
     {place_given: "St Kilda Medical Group", date: "2020-09-12T00:00:00.000Z", dose: "First", route: "Oral", given_by: "John Smith", child_id: 1},
     {place_given: "MyClinic - Elsternwick", date: "2020-12-15T00:00:00.000Z", dose: "First", route: "Injection", given_by: "Victoria Little", child_id: 2},
