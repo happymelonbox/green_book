@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
   def omniauth
     puts "request.env[omniauth.auth]: #{request.env['omniauth.auth']}"
     @user = User.from_omniauth(request.env['omniauth.auth'])
-    if @user.valid?
+    if @user
       session[:user_id] = @user.id
-      redirect_to '/'
+      redirect_to 'http://localhost:4000/'
     else
       redirect_to '/login'
     end

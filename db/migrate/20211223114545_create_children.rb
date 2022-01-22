@@ -4,6 +4,7 @@ class CreateChildren < ActiveRecord::Migration[7.0]
       t.string :first_name
       t.string :middle_name
       t.string :last_name
+      t.references :user, index: true, foreign_key: true
 
       t.timestamps
     end

@@ -24,6 +24,11 @@ class CreateBirths < ActiveRecord::Migration[7.0]
       t.boolean :admission_to_special_care_nursery_48hours
       t.string :special_care_reason
       t.timestamps
+
+      t.references :father, index: true, foreign_key: true
+      t.references :mother, index: true, foreign_key: true
+      t.references :hospital, index: true, foreign_key: true
+      t.references :child, index: true, foreign_key: true
     end
   end
 end

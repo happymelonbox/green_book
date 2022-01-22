@@ -6,6 +6,7 @@ class CreateVitaminKs < ActiveRecord::Migration[7.0]
       t.string :dose
       t.string :route
       t.string :given_by
+      t.references :child, index: true, foreign_key: true
 
       t.timestamps
     end

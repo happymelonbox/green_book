@@ -6,4 +6,5 @@ class Child < ApplicationRecord
     has_one :hepatitis_b_vaccine
     has_many :appointments
     has_many :vitamin_ks
+    has_many :visits
 end

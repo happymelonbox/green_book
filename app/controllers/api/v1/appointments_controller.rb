@@ -27,7 +27,7 @@ class Api::V1::AppointmentsController < Api::V1::BaseController
         else
             render json: {
                 status: 500,
-                errors: @user.errors.full_messages
+                errors: @appointment.errors.full_messages
             }
         end
     end
@@ -41,7 +41,7 @@ class Api::V1::AppointmentsController < Api::V1::BaseController
         else
             render json: {
                 status: 500,
-                errors: @user.errors.full_messages
+                errors: @appointment.errors.full_messages
             }
         end
     end
@@ -57,7 +57,7 @@ class Api::V1::AppointmentsController < Api::V1::BaseController
     end
 
     def appointment_params
-        params.require(:appointment).permit(:reason, :appointment_age, :date_and_time, :location_name, :location_address_number, :location_street_name, :location_suburb, :location_city, :location_state, :location_country, :name_of_nurse, :weight, :head_circumference, :length)
+        params.require(:appointment).permit(:reason, :date_and_time, :location_name, :location_address_number, :location_street_name, :location_suburb, :location_city, :location_state, :location_country, :location_postcode, :location_contact_number, :visit_age, :child_id)
     end
 
   end
