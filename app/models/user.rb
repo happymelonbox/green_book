@@ -9,6 +9,8 @@ class User < ApplicationRecord
     has_many :children
     has_many :appointments, through: :children
     has_many :visits, through: :children
+    has_many :births, through: :children
+    has_many :fathers, through: :births
 
     def self.from_omniauth(response)
         User.find_or_create_by(uid: response[:uid], provider: response[:provider]) do |u|

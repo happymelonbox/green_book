@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import '../../style/appointments.css'
 
 class AppointmentsForm extends Component{
@@ -182,6 +183,7 @@ class AppointmentsForm extends Component{
         return(
             <div>
                 <h4>Add a new appointment</h4>
+                <Link to="/appointments_to_keep">Back to appointments</Link>
                 <form onSubmit = {this.setAppointment}>
                     <label>Select child:  <select name="child_id" onChange={this.handleChange}>
                         {this.state.children.map(child => {

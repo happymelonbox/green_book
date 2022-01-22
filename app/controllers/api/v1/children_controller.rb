@@ -4,8 +4,7 @@ class Api::V1::ChildrenController < Api::V1::BaseController
     before_action :set_child, :only => [:edit, :show, :update, :destroy]
 
     def index
-        @user ||= current_user
-        @children = Child.all.where("user_id = ?", @user.id)
+        @children = current_user.children.all
         if @children
             render json: @children.to_json(include: {
                 birth: {},
@@ -22,7 +21,7 @@ class Api::V1::ChildrenController < Api::V1::BaseController
     end
 
     def create
-        @child = Child.new(child_params)
+        @child = current_user.children.new(child_params)
         @child.save
         if @child.save
             render json: {
@@ -57,7 +56,7 @@ class Api::V1::ChildrenController < Api::V1::BaseController
   private
 
     def set_child
-        @child = Child.find(params[:id])
+        @child = current_user.children.find(params[:id])
     end
 
      def child_params

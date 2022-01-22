@@ -4,7 +4,7 @@ class Api::V1::BirthsController < Api::V1::BaseController
     before_action :set_birth, :only => [:show, :edit, :update, :destroy]
 
     def index
-        @births = Birth.all
+        @births = current_user.births.all
         if @births
             render json: @births.to_json(include: {
                 hospital: {},
@@ -19,7 +19,7 @@ class Api::V1::BirthsController < Api::V1::BaseController
     end
 
     def create
-        @birth = Birth.new(birth_params)
+        @birth = current_user.births.new(birth_params)
         @birth.save
         if @birth.save
             render json: {
@@ -56,7 +56,7 @@ class Api::V1::BirthsController < Api::V1::BaseController
   private
 
     def set_birth
-        @birth = Birth.find(params[:id])
+        @birth = current_user.births.find(params[:id])
     end
 
     def birth_params

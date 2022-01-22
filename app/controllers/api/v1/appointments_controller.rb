@@ -4,7 +4,7 @@ class Api::V1::AppointmentsController < Api::V1::BaseController
     before_action :set_appointment, :only => [:show, :edit, :update, :destroy]
 
     def index
-        @appointments = Appointment.all
+        @appointments = current_user.appointments.all
         if @appointments
             render json: @appointments.to_json(include: {
                 child: {}
@@ -18,7 +18,7 @@ class Api::V1::AppointmentsController < Api::V1::BaseController
     end
 
     def create
-        @appointment = Appointment.new(appointment_params)
+        @appointment = current_user.appointments.new(appointment_params)
         @appointment.save
         if @appointment.save
             render json: {
@@ -53,7 +53,7 @@ class Api::V1::AppointmentsController < Api::V1::BaseController
   private
 
     def set_appointment
-        @appointment = Appointment.find(params[:id])
+        @appointment = current_user.appointments.find(params[:id])
     end
 
     def appointment_params

@@ -11,8 +11,22 @@ class Appointments extends Component{
         }
     }
 
+    componentDidMount(){
+        this.getAppointments()
+        this.getChildren()
+    }
+
     getAppointments = () => {
-        axios.get('/appointments')
+        axios.get('http://localhost:3001/api/v1/appointments', {withCredentials:true})
+        .then(response => {
+            console.log(response.data)
+        })
+    }
+    getChildren = () => {
+        axios.get('http://localhost:3001/api/v1/children', {withCredentials:true})
+        .then(response => {
+            console.log(response.data)
+        })
     }
     render(){
         return(

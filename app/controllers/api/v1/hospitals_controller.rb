@@ -7,7 +7,7 @@ class Api::V1::HospitalsController < Api::V1::BaseController
         @hospitals = Hospital.all
         if @hospitals
             render json: @hospitals.to_json(include: {
-                births: {}
+                # births: {}
             })
         else
             render json:{
