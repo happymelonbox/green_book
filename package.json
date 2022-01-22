@@ -2,7 +2,7 @@
     "name": "greenbk",
     "description": "Build scripts for Heroku",
     "engines": {
-        "node": ">= 14"
+        "node": "16.5"
     },
     "scripts": {
         "build": "npm install --prefix client && npm run build --prefix client",
@@ -17,7 +17,7 @@
         "react-bootstrap": "^2.0.4",
         "react-redux": "^7.2.6",
         "react-router": "5.0.0",
-        "react-router-dom": "^5.0.0",
+        "react-router-dom": "^5.3.0",
         "react-scripts": "^5.0.0",
         "react-select": "^5.2.1",
         "redux": "^4.1.2",
