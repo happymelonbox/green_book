@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import { HISTORY } from '../../App'
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -44,7 +43,7 @@ class Login extends Component {
   };
 
   redirect = () => {
-    HISTORY.push('/')
+    window.location.replace('http://localhost:4000/')
   }
 
   handleErrors = () => {

@@ -1,6 +1,5 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 class MotherForm extends Component{
     constructor(props){
@@ -67,8 +66,7 @@ class MotherForm extends Component{
     }
 
     redirect = () => {
-        const navigate = useNavigate()
-        navigate('/children')
+        window.location.replace('http://localhost:4000/children')
     }
 
     render(){

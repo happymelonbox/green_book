@@ -1,6 +1,5 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 class HospitalForm extends Component{
     constructor(props){
@@ -69,8 +68,7 @@ class HospitalForm extends Component{
         .catch( error => console.log('api errors: ', error))
     }
     redirect = () => {
-        const navigate = useNavigate()
-        navigate('/children')
+        window.location.replace('http://localhost:4000/children')
     }
 
     render(){

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 class BirthsForm extends Component {
@@ -225,8 +225,7 @@ class BirthsForm extends Component {
         };
 
     redirect = () => {
-        const navigate = useNavigate()
-        navigate('/children')
+        window.location.replace("http://localhost:4000/children")
     }
 
     render(){

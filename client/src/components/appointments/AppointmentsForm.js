@@ -1,6 +1,5 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
 import '../../style/appointments.css'
 
 class AppointmentsForm extends Component{
