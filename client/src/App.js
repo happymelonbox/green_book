@@ -89,7 +89,6 @@ class App extends Component {
     return (
       <div>
         <Router>
-          <Routes>
             <Route 
               exact path='/' 
               element={
@@ -194,7 +193,7 @@ class App extends Component {
               }/> */}
             
             
-            </Routes>
+
         </Router>
       </div>
     );
