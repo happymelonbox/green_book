@@ -218,12 +218,13 @@ class AppointmentsForm extends Component{
                     <label id="location_inputs_label">Location:
                         <br/>Business Name: <input className="location_inputs" name="location_name" type="text" onChange={this.handleChange}/>
                         <br/>Street Number: <input className="location_inputs" name="location_address_number" type="text" onChange={this.handleChange}/>
-                        <br/>Street Name: <input className="location_inputs" name="location_stree_name" type="text" onChange={this.handleChange}/>
-                        <br/>Street Suburb: <input className="location_inputs" name="location_suburb" type="text" onChange={this.handleChange}/>
-                        <br/>Street City: <input className="location_inputs" name="location_city" type="text" onChange={this.handleChange}/>
-                        <br/>Street State: <input className="location_inputs" name="location_state" type="text" onChange={this.handleChange}/>
-                        <br/>Street Country: <input className="location_inputs" name="location_country" type="text" onChange={this.handleChange}/>
-                        <br/>Street Contact Number: <input className="location_inputs" name="location_contact_number" type="text" onChange={this.handleChange}/>
+                        <br/>Street Name: <input className="location_inputs" name="location_street_name" type="text" onChange={this.handleChange}/>
+                        <br/>Suburb: <input className="location_inputs" name="location_suburb" type="text" onChange={this.handleChange}/>
+                        <br/>Postcode: <input className="location_inputs" name="location_postcode" type="text" onChange={this.handleChange}/>
+                        <br/>City: <input className="location_inputs" name="location_city" type="text" onChange={this.handleChange}/>
+                        <br/>State: <input className="location_inputs" name="location_state" type="text" onChange={this.handleChange}/>
+                        <br/>Country: <input className="location_inputs" name="location_country" type="text" onChange={this.handleChange}/>
+                        <br/>Contact Number: <input className="location_inputs" name="location_contact_number" type="text" onChange={this.handleChange}/>
                     </label>
                     <br/>
 

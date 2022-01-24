@@ -4,10 +4,11 @@ class Api::V1::ChildrenController < Api::V1::BaseController
     before_action :set_child, :only => [:edit, :show, :update, :destroy]
 
     def index
-        @children = current_user.children.all
+        @children = current_user.children.all.order(:last_name, :first_name)
         if @children
             render json: @children.to_json(include: {
                 birth: {},
+                appointments: {},
                 hepatitis_b_vaccine: {},
                 visits: {},
                 vitamin_ks: {}
@@ -21,7 +22,7 @@ class Api::V1::ChildrenController < Api::V1::BaseController
     end
 
     def create
-        @child = current_user.children.new(child_params)
+        @child = current_user.children.find_or_create_by(child_params)
         @child.save
         if @child.save
             render json: {

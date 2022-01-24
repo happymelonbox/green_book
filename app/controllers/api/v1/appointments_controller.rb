@@ -4,7 +4,7 @@ class Api::V1::AppointmentsController < Api::V1::BaseController
     before_action :set_appointment, :only => [:show, :edit, :update, :destroy]
 
     def index
-        @appointments = current_user.appointments.all
+        @appointments = current_user.appointments.all.order(:date_and_time, :child_id)
         if @appointments
             render json: @appointments.to_json(include: {
                 child: {}
