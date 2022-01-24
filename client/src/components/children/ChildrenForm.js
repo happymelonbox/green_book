@@ -46,7 +46,7 @@ class ChildrenForm extends Component {
                 this.state.errors.push(response.data.errors)
                 }
             })
-        
+
         .catch(error => console.log('api errors: ', error))
     }
 
@@ -109,7 +109,7 @@ class ChildrenForm extends Component {
                 </div>
             </div>
         )
-        
+
     }
 }
 

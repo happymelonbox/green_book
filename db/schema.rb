@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_21_111313) do
+ActiveRecord::Schema.define(version: 2022_01_24_131354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,20 @@ ActiveRecord::Schema.define(version: 2022_01_21_111313) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "immunisations", force: :cascade do |t|
+    t.string "age"
+    t.string "vaccination"
+    t.string "batch_number"
+    t.date "date_given"
+    t.string "nurse_name"
+    t.string "clinic"
+    t.date "date_of_next_dose"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "child_id"
+    t.index ["child_id"], name: "index_immunisations_on_child_id"
+  end
+
   create_table "mothers", force: :cascade do |t|
     t.string "first_name"
     t.string "middle_name"
@@ -203,6 +217,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_111313) do
   add_foreign_key "births", "mothers"
   add_foreign_key "children", "users"
   add_foreign_key "hepatitis_b_vaccines", "children"
+  add_foreign_key "immunisations", "children"
   add_foreign_key "notes", "users"
   add_foreign_key "questions", "users"
   add_foreign_key "visits", "children"

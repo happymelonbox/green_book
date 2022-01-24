@@ -7,4 +7,5 @@ class Child < ApplicationRecord
     has_many :appointments
     has_many :vitamin_ks
     has_many :visits
+    has_many :Immunisations
 end

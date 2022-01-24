@@ -11,7 +11,8 @@ class Api::V1::ChildrenController < Api::V1::BaseController
                 appointments: {},
                 hepatitis_b_vaccine: {},
                 visits: {},
-                vitamin_ks: {}
+                vitamin_ks: {},
+                immunisations: {}
             })
         else
             render json:{

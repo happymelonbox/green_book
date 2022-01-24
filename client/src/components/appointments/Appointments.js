@@ -51,7 +51,8 @@ class Appointments extends Component{
         return(
             <div>
                 <h3>Important Appointments</h3>
-                <Link to='/add_an_appointment'>Add a new appointment</Link><br/>
+                <Link to='/'>Back to Dashboard</Link> 
+                <Link to='/add_an_appointment'>Add a new appointment</Link> 
                 <form>
                 <label>Sort By: <select name="sortBy" onChange={this.handleSort}>
                     <option value="Appointment">Appointment Date and Time</option>

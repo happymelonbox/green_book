@@ -13,7 +13,7 @@ class Dashboard extends React.Component {
                 </div>
                 <div>
                     <h3>Welcome {this.props.user.first_name} </h3>
-                    <DashboardNav user={this.props.user}/>
+                    <DashboardNav />
                     <Footer />
                 </div>
             </div>

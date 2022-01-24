@@ -1,0 +1,63 @@
+class Api::V1::ImmunisationsController < Api::V1::BaseController
+    before_action :authentication_redirect, :only => [:index, :show]
+    before_action :current_user
+    before_action :set_immunisation, :only => [:show, :edit, :update, :destroy]
+
+    def index
+        @immunisations = Immunisation.all
+        if @immunisations
+            render json: @immunisations.to_json(include: {
+                child: {}
+            })
+        else
+            render json:{
+                status: 500,
+                errors: ['no immunisations found']
+            }
+        end
+    end
+
+    def create
+        @immunisation = Immunisation.new(immunisation_params)
+        @immunisation.save
+        if @immunisation.save
+            render json: {
+                status: :created,
+            }
+        else
+            render json: {
+                status: 500,
+                errors: @user.errors.full_messages
+            }
+        end
+    end
+
+    def update
+        @immunisation.update(params.permit(:name, :address_line_1, :address_line_2, :address_suburb, :address_postcode, :address_state, :address_city, :address_country))
+        if @immunisation.update
+            render json: {
+                status: :updated
+            }
+        else
+            render json: {
+                status: 500,
+                errors: @user.errors.full_messages
+            }
+        end
+    end
+
+    def destroy
+        @immunisation.destroy
+    end
+
+  private
+
+    def set_immunisation
+        @immunisation = Immunisation.find(params[:id])
+    end
+
+    def immunisation_params
+        params.require(:immunisation).permit(:age, :vaccination, :batch_number, :date_given, :nurse_name, :clinic, :date_of_next_dose)
+    end
+
+  end
