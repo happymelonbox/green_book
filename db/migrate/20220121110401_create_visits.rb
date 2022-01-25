@@ -2,6 +2,7 @@ class CreateVisits < ActiveRecord::Migration[7.0]
   def change
     create_table :visits do |t|
       t.string :visit_age
+      t.date :date
       t.string :name_of_nurse
       t.float :weight
       t.float :head_circumference

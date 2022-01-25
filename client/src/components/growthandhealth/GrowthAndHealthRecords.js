@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Immunisations from './immunisations/Immunisations'
-import MCHSVisits from './visits/Visits'
+import MCHSVisits from './visits/MCHSVisits'
 import VitaminK from './vitamink/VitaminK'
 import HepatitisBVaccines from './hepatitisbvaccines/HepatitisBVaccines'
 
@@ -49,17 +49,17 @@ class GrowthAndHealthRecords extends React.Component{
             <div>
                 <Link to='/'>Back to Dashboard</Link><br/>
                 {this.state.children.map(child =>{
+                    
                     return(
                         <div key={child.id}>
                             <h4 >{child.first_name} {child.last_name}</h4>
 
-                            <h4 className={`${child.id}Immunisation pointer`} onClick={this.handleClick}>Immunisations</h4>
-                                <div id={`${child.id}Immunisation`} className="hidden">
-                                    < Immunisations immunisations={child.immunisations}/>
+                                <div >
+                                    < Immunisations child = {child} handleClick = {this.handleClick}/>
                                 </div>
-                            <h4 className={`${child.id}Visits pointer`} onClick={this.handleClick}>MCHS Visits</h4>
-                                <div id={`${child.id}Visits`} className="hidden">
-                                    < MCHSVisits child={child}/>
+                            
+                                <div >
+                                    < MCHSVisits child={child} handleClick = {this.handleClick}/>
                                 </div>
                             <h4 className={`${child.id}VitaminK pointer`} onClick={this.handleClick}>Vitamin K</h4>
                                 <div id={`${child.id}VitaminK`} className="hidden">
@@ -71,7 +71,7 @@ class GrowthAndHealthRecords extends React.Component{
                                 </div>
                         </div>
                     )
-                })}
+    })}
 
             </div>
 

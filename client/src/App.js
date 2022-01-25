@@ -18,10 +18,7 @@ import Children from './components/children/Children'
 import Appointments from './components/appointments/Appointments'
   import AppointmentsForm from './components/appointments/AppointmentsForm'
 
-import GrowthAndHealthRecords from './components/growthandhealth/GrowthAndHealthRecords'
-  import Immunisations from './components/growthandhealth/immunisations/Immunisations'
-  import HepatitisBVaccines from './components/growthandhealth/hepatitisbvaccines/HepatitisBVaccines'
-  import Visits from './components/growthandhealth/visits/Visits'
+import GrowthAndHealthRecords from './components/growthandhealth/GrowthAndHealthRecords' 
 
 import UsefulInformation from './components/usefulInformation/UsefulInformation'
 
@@ -182,24 +179,7 @@ class App extends Component {
               <GrowthAndHealthRecords />
               }
             />
-                <Route 
-                  exact path='/immunisations' 
-                  element={
-                  <Immunisations />
-                  }
-                />
-                <Route 
-                  exact path='/hepatitis_b_vaccines' 
-                  element={
-                  <HepatitisBVaccines />
-                  }
-                />
-                <Route 
-                  exact path='/visits' 
-                  element={
-                  <Visits />
-                  }
-                />
+                
             <Route 
               exact path='/useful_information/*' 
               element={

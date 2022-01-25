@@ -11,9 +11,10 @@ class Immunisations extends React.Component{
     render(){
         return(
             <div>
-                {this.props.immunisations.map(imm => {
+                <h4 className={`${this.props.child.id}Immunisation pointer`} onClick={this.props.handleClick}>Immunisations({this.props.child.immunisations.length})</h4>
+                {this.props.child.immunisations.map(imm => {
                     return(
-                        <div key={imm.id}>
+                        <div id={`${this.props.child.id}Immunisation`} className="hidden" key={imm.id}>
                             <h5>Vaccination: {imm.vaccination}({imm.protects_against})</h5>
                             <h5>Age: {imm.age}</h5>
                         </div>
