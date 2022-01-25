@@ -53,3 +53,22 @@ appointments = Appointment.create([
     {reason: "GP", date_and_time: "2022-01-29T14:30:00.000Z", location_name: "St Kilda Medical Group", location_address_number: "6", location_street_name: "Grey Street", location_suburb: "St Kilda", location_postcode: 3183, location_city: "Melbourne", location_state: "VIC", location_country: "Australia", location_contact_number: "95542353", visit_age: "", child_id: 2},
     {reason: "MCHS Visit", date_and_time: "2022-02-02T10:00:00.000Z", location_name: "MCHS Clinic Elsternwick", location_address_number: "274", location_street_name: "Glen Eira Road", location_suburb: "Elsternwick", location_postcode: 3185, location_city: "Melbourne", location_state: "VIC", location_country: "Australia", location_contact_number: "95281895", visit_age: "Two Week", child_id: 3}
 ])
+
+immunisations = Immunisation.create!([
+    {age: "2 Months", vaccination: "Pevenar13", batch_number: "CM5593", date_given: "2020-08-12", nurse_name: "Hugh", clinic: "MyClinic Elsternwick", date_of_next_dose: "2020-10-12", child_id: 1},
+    {age: "2 Months", vaccination: "Infanrixhexa", batch_number: "AROL648AA", date_given: "2020-08-12", nurse_name: "Hugh", clinic: "MyClinic Elsternwick", date_of_next_dose: "2020-10-12", child_id: 1},
+    {age: "2 Months", vaccination: "Rotarix", batch_number: "A21CD696B", date_given: "2020-08-12", nurse_name: "Hugh", clinic: "MyClinic Elsternwick", date_of_next_dose: "2020-10-12", child_id: 1},
+    {age: "4 Months", vaccination: "Pevenar13", batch_number: "PAA141109", date_given: "2020-10-15", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "2020-12-15", child_id: 1},
+    {age: "4 Months", vaccination: "Infanrixhexa", batch_number: "A21CD857A", date_given: "2020-10-15", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "2020-12-15", child_id: 1},
+    {age: "4 Months", vaccination: "Rotarix", batch_number: "AROLC698AC", date_given: "2020-10-15", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "2020-12-15", child_id: 1},
+    {age: "6 Months", vaccination: "Infanrixhexa", batch_number: "A21CD857A", date_given: "2020-12-15", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "", child_id: 1},
+    {age: "10 Months", vaccination: "Bexsero", batch_number: "ABXB50AA", date_given: "2021-04-20", nurse_name: "Mark", clinic: "St Kilda Medical Group", date_of_next_dose: "", child_id: 1},
+    {age: "2 Months", vaccination: "Pevenar13", batch_number: "CM5597", date_given: "2020-10-16", nurse_name: "Sarah", clinic: "Ripponlea Medical", date_of_next_dose: "2020-12-12", child_id: 2},
+    {age: "2 Months", vaccination: "Infanrixhexa", batch_number: "AROL648GS", date_given: "2020-10-16", nurse_name: "Sarah", clinic: "Ripponlea Medical", date_of_next_dose: "2020-12-12", child_id: 2},
+    {age: "2 Months", vaccination: "Rotarix", batch_number: "A21CD696H", date_given: "2020-10-16", nurse_name: "Sarah", clinic: "Ripponlea Medical", date_of_next_dose: "2020-12-12", child_id: 2},
+    {age: "4 Months", vaccination: "Pevenar13", batch_number: "PAA141165", date_given: "2020-12-12", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "2020-02-15", child_id: 2},
+    {age: "4 Months", vaccination: "Infanrixhexa", batch_number: "A21CD896A", date_given: "2020-12-12", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "2020-02-15", child_id: 2},
+    {age: "4 Months", vaccination: "Rotarix", batch_number: "AROLC6948C", date_given: "2020-12-12", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "2020-02-15", child_id: 2},
+    {age: "6 Months", vaccination: "Infanrixhexa", batch_number: "A54CD822A", date_given: "2020-02-15", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "", child_id: 2},
+    {age: "10 Months", vaccination: "Bexsero", batch_number: "ABXB90HG", date_given: "2021-08-20", nurse_name: "Mark", clinic: "St Kilda Medical Group", date_of_next_dose: "", child_id: 2}
+])

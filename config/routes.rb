@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       resources :hepatitis_b_vaccines, only: [:index, :create, :destroy, :update]
       resources :visits, only: [:index, :create, :destroy, :update]
       resources :appointments, only: [:index, :create, :destroy, :update]
+      resources :immunisations, only: [:index, :create, :destroy, :update]
     end
   end
 
