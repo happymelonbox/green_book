@@ -34,8 +34,9 @@ class GrowthAndHealthRecords extends React.Component{
     }
 
     handleClick = (event) => {
-        const target = event.target.className
+        const target = event.target.className.split(" ")[0]
         const element = document.getElementById(`${target}`)
+        console.log(target, element)
 
         element.hasAttribute("class", "hidden")
         ?
@@ -54,7 +55,7 @@ class GrowthAndHealthRecords extends React.Component{
 
                             <h4 className={`${child.id}Immunisation pointer`} onClick={this.handleClick}>Immunisations</h4>
                                 <div id={`${child.id}Immunisation`} className="hidden">
-                                    < Immunisations child={child}/>
+                                    < Immunisations immunisations={child.immunisations}/>
                                 </div>
                             <h4 className={`${child.id}Visits pointer`} onClick={this.handleClick}>MCHS Visits</h4>
                                 <div id={`${child.id}Visits`} className="hidden">

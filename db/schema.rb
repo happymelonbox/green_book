@@ -118,7 +118,8 @@ ActiveRecord::Schema.define(version: 2022_01_24_131354) do
 
   create_table "immunisations", force: :cascade do |t|
     t.string "age"
-    t.string "vaccination"
+    t.string "vaccination_name"
+    t.string "protects_against"
     t.string "batch_number"
     t.date "date_given"
     t.string "nurse_name"

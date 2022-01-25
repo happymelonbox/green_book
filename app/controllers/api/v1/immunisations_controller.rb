@@ -57,7 +57,7 @@ class Api::V1::ImmunisationsController < Api::V1::BaseController
     end
 
     def immunisation_params
-        params.require(:immunisation).permit(:age, :vaccination, :batch_number, :date_given, :nurse_name, :clinic, :date_of_next_dose, :child_id)
+        params.require(:immunisation).permit(:age, :vaccination_name, :protects_against, :batch_number, :date_given, :nurse_name, :clinic, :date_of_next_dose, :child_id)
     end
 
   end

@@ -11,7 +11,14 @@ class Immunisations extends React.Component{
     render(){
         return(
             <div>
-
+                {this.props.immunisations.map(imm => {
+                    return(
+                        <div key={imm.id}>
+                            <h5>Vaccination: {imm.vaccination}({imm.protects_against})</h5>
+                            <h5>Age: {imm.age}</h5>
+                        </div>
+                    )
+                })}
             </div>
         )
     }
