@@ -9,17 +9,17 @@ class Immunisations extends React.Component{
         }
     }
     render(){
+        const imm = this.props.immunisation
         return(
-            <div>
-                <h4 className={`${this.props.child.id}Immunisation pointer`} onClick={this.props.handleClick}>Immunisations({this.props.child.immunisations.length})</h4>
-                {this.props.child.immunisations.map(imm => {
-                    return(
-                        <div id={`${this.props.child.id}Immunisation`} className="hidden" key={imm.id}>
-                            <h5>Vaccination: {imm.vaccination}({imm.protects_against})</h5>
-                            <h5>Age: {imm.age}</h5>
-                        </div>
-                    )
-                })}
+            <div className={`${this.props.child.id}immunisation_details hidden`}  key={imm.id}>
+                <h5>{imm.protects_against} Vaccination ({imm.vaccination_name})</h5>
+                <p>
+                    Age: {imm.age}<br/>
+                    Date given: {imm.date_given}<br/>
+                    Given by: {imm.nurse_name} at {imm.clinic}<br/>
+                    Batch number: {imm.batch_number}<br/>
+                    Next dose due: {imm.date_of_next_dose}
+                </p>
             </div>
         )
     }

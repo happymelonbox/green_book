@@ -39,7 +39,6 @@ class Appointments extends Component{
     }
 
     handleSort = (event) => {
-        console.log(event.target)
         const name = event.target.name
         const value = event.target.value
         this.setState({

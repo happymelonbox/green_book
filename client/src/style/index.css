@@ -12,3 +12,10 @@ code {
     monospace;
 }
 
+.pointer{
+  cursor: pointer
+}
+
+.hidden{
+  display: none
+}

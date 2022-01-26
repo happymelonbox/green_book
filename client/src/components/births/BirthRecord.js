@@ -64,7 +64,7 @@ class BirthRecord extends Component{
                 <h5>Father: {this.state.fatherFirstName} {this.state.fatherLastName}</h5>
             </div>
             <div className="delivery_details_container">
-                <h5 className="delivery_details" id={`delivery_details_${this.props.child.id}`} onClick={this.showDeliveryDetails}>Delivery Details</h5>
+                <h5 className="delivery_details pointer" id={`delivery_details_${this.props.child.id}`} onClick={this.showDeliveryDetails}>Delivery Details</h5>
                 <br/>
                 <div className="delivery_details_content hidden" id={`delivery_details_${this.props.child.id}_content`}>
                     <h5>Home Birth: {birth.home_birth ? "Yes" : `No - Hospital: ${this.state.hospitalName}`}</h5>

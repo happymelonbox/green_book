@@ -34,16 +34,16 @@ class GrowthAndHealthRecords extends React.Component{
     }
 
     handleClick = (event) => {
-        const target = event.target.className.split(" ")[0]
-        const element = document.getElementById(`${target}`)
-        console.log(target, element)
-
-        element.hasAttribute("class", "hidden")
+        const target = event.target.id
+        const element = document.getElementsByClassName(`${target}`)
+        console.log(element)
+        element.hasAttribute("class", "hidden") 
         ?
         element.removeAttribute("class", "hidden")
         :
         element.setAttribute("class", "hidden")
-    }
+        }
+    
     render(){
         return(
             <div>
@@ -55,7 +55,10 @@ class GrowthAndHealthRecords extends React.Component{
                             <h4 >{child.first_name} {child.last_name}</h4>
 
                                 <div >
-                                    < Immunisations child = {child} handleClick = {this.handleClick}/>
+                                    <h4 id={`${child.id}immunisation_details`} className="pointer" onClick={this.handleClick}>Immunisations({child.immunisations.length})</h4>
+                                    {child.immunisations.map(imm => {
+                                        return (< Immunisations key={imm.id} child={child} immunisation={imm}/>)
+                                    })}
                                 </div>
                             
                                 <div >
