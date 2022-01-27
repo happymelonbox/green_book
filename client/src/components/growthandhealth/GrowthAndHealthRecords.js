@@ -5,12 +5,22 @@ import Immunisations from './immunisations/Immunisations'
 import MCHSVisits from './visits/MCHSVisits'
 import VitaminK from './vitamink/VitaminK'
 import HepatitisBVaccines from './hepatitisbvaccines/HepatitisBVaccines'
+import {VitaminKForm} from './vitamink/VitaminKForm'
 
 class GrowthAndHealthRecords extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            children: []
+            children: [],
+            errors: [],
+            vitK : {
+                place_given: "",
+                date: "",
+                dose: "",
+                route: "",
+                given_by: "",
+                child_id: 0
+            }
         }
     }
 
@@ -34,53 +44,119 @@ class GrowthAndHealthRecords extends React.Component{
     }
 
     handleClick = (event) => {
-        const target = event.target.id
-        const element = document.getElementsByClassName(`${target}`)
-        console.log(element)
-        element.hasAttribute("class", "hidden") 
+        const target = event.target.className.split(" ")[0]
+        const element = document.getElementById(target)
+        element.hasAttribute("class", "hidden")
         ?
         element.removeAttribute("class", "hidden")
         :
         element.setAttribute("class", "hidden")
+    }
+
+    handleVitaminKSubmit = (event) => {
+        event.preventDefault()
+        const {
+            place_given,
+                date,
+                dose,
+                route,
+                given_by
+        } = this.state.vitK
+
+        let vitamin_k = {
+            place_given: place_given,
+            date: date,
+            dose: dose,
+            route: route,
+            given_by: given_by,
+            child_id: event.target.child_id.value
         }
-    
+        axios.post('http://localhost:3001/api/v1/vitamin_ks', {vitamin_k}, {withCredentials: true})
+        .then(response => {
+            console.log(response)
+            this.redirect()
+        })
+    }
+    redirect = () => {
+        window.location.replace('http://localhost:4000/records')
+    }
+
+    handleVitaminKChange = (event) => {
+        const name = event.target.name
+        const value = event.target.value
+        this.setState({
+            vitK:{
+                ...this.state.vitK,
+            [name]: value,
+        }})
+    }
+
     render(){
         return(
             <div>
                 <Link to='/'>Back to Dashboard</Link><br/>
                 {this.state.children.map(child =>{
-                    
+                    const immunisations = child.immunisations
+                    const visits = child.visits
+                    const vitaminK = child.vitamin_ks
+                    const hepB = child.hepatitis_b_vaccine
+                    let last_visit_age, last_visit_date
+                    last_visit_age = visits.length > 0 ? `${visits[visits.length - 1].visit_age} visit -` : "No visits yet"
+                    last_visit_date = visits.length > 0 ? visits[visits.length - 1].date : ""
+                    const year =  visits.length > 0 ? last_visit_date.split("-")[0] : ""
+                    const month = visits.length > 0 ? last_visit_date.split("-")[1] : ""
+                    const day = visits.length > 0 ? last_visit_date.split("-")[2] : ""
+                    last_visit_date = visits.length > 0 ? `${day}-${month}-${year}` : ""
+                    const imms = immunisations.length > 0 ? immunisations.length : "No immunisations yet"
                     return(
                         <div key={child.id}>
                             <h4 >{child.first_name} {child.last_name}</h4>
-
-                                <div >
-                                    <h4 id={`${child.id}immunisation_details`} className="pointer" onClick={this.handleClick}>Immunisations({child.immunisations.length})</h4>
-                                    {child.immunisations.map(imm => {
-                                        return (< Immunisations key={imm.id} child={child} immunisation={imm}/>)
+                            <div >
+                                <h4 className={`${child.id}immunisation_details pointer`} onClick={this.handleClick}>Immunisations({imms})</h4>
+                                <div id={`${child.id}immunisation_details`} className="hidden">
+                                    {immunisations.map(imm => {
+                                        return (
+                                            <div key={imm.key}>< Immunisations child={child} immunisation={imm} handleClick={this.handleClick}/></div>
+                                        )
                                     })}
                                 </div>
-                            
-                                <div >
-                                    < MCHSVisits child={child} handleClick = {this.handleClick}/>
+                            </div>
+                            <div>
+                                <h4 className={`${child.id}Visits pointer`} onClick={this.handleClick}>MCHS Visits(Last visit: {last_visit_age} {last_visit_date})</h4>
+                                <div id={`${child.id}Visits`} className="hidden">
+                                    {visits.map(visit=>{
+                                        return(
+                                            <div key={visit.id}> < MCHSVisits child={child} visit={visit} handleClick={this.handleClick}/></div>
+                                        )
+                                    })}
                                 </div>
-                            <h4 className={`${child.id}VitaminK pointer`} onClick={this.handleClick}>Vitamin K</h4>
+                            </div>
+                            <div>
+                                <h4 className={`${child.id}VitaminK pointer`} onClick={this.handleClick}>VitaminK Immunisations({vitaminK.length})</h4>
                                 <div id={`${child.id}VitaminK`} className="hidden">
-                                    < VitaminK child={child}/>
+                                    {vitaminK.map(vitK=>{
+                                        return(
+                                            <div key={vitK.id}> < VitaminK child={child} vitK={vitK} handleClick={this.handleClick}/></div>
+                                        )
+                                    })}
+                                    <button className={`${child.id}vitaminKAddNew pointer`} onClick={this.handleClick}>Add a new Vitamin K Immunisation</button><br/>
+                                    <div id={`${child.id}vitaminKAddNew`} className = "hidden">
+                                        < VitaminKForm child_id={child.id} handleVitaminKSubmit = {this.handleVitaminKSubmit} handleVitaminKChange={this.handleVitaminKChange}/>
+                                    </div>
                                 </div>
-                            <h4 className={`${child.id}HepBVaccine pointer`} onClick={this.handleClick}>Hepatitis B Vaccines</h4>
-                                <div id={`${child.id}HepBVaccine`} className="hidden">
-                                    < HepatitisBVaccines child={child} />
+                            </div>
+                            <div>
+                                <h4 className={`${child.id}HepB pointer`} onClick={this.handleClick}>Hepatitis B Immunisation</h4>
+                                <div id={`${child.id}HepB`} className="hidden">
+                                    < HepatitisBVaccines child={child} hepB={hepB}/>
                                 </div>
+                            </div>
                         </div>
                     )
-    })}
-
+                })}
             </div>
-
         )
     }
-
 }
 
 export default GrowthAndHealthRecords

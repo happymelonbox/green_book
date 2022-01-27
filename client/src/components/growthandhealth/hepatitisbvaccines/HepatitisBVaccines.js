@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from 'react-router-dom'
 
 class HepatitisBVaccines extends React.Component{
     constructor(props){
@@ -9,9 +8,21 @@ class HepatitisBVaccines extends React.Component{
         }
     }
     render(){
+        const hepB = this.props.hepB
+        let fullDate = hepB.date.split("-")
+        let year = fullDate[0]
+        let month = fullDate[1]
+        let day = fullDate[2]
+        let date = `${day}-${month}-${year}`
         return(
             <div>
-
+                <p>
+                    Clinic: {hepB.place_given}<br/>
+                    Date given: {date}<br/>
+                    Dose: {hepB.dose}<br/>
+                    Batch number: {hepB.batch_no}<br/>
+                    Given by: {hepB.given_by}
+                </p>
             </div>
         )
     }

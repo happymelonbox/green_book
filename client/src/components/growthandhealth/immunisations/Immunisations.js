@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from 'react-router-dom'
 
 class Immunisations extends React.Component{
     constructor(props){
@@ -11,7 +10,7 @@ class Immunisations extends React.Component{
     render(){
         const imm = this.props.immunisation
         return(
-            <div className={`${this.props.child.id}immunisation_details hidden`}  key={imm.id}>
+            <div >
                 <h5>{imm.protects_against} Vaccination ({imm.vaccination_name})</h5>
                 <p>
                     Age: {imm.age}<br/>

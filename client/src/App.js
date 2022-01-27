@@ -18,11 +18,11 @@ import Children from './components/children/Children'
 import Appointments from './components/appointments/Appointments'
   import AppointmentsForm from './components/appointments/AppointmentsForm'
 
-import GrowthAndHealthRecords from './components/growthandhealth/GrowthAndHealthRecords' 
+import GrowthAndHealthRecords from './components/growthandhealth/GrowthAndHealthRecords'
 
 import UsefulInformation from './components/usefulInformation/UsefulInformation'
 
-  
+
 
 
 
@@ -32,7 +32,7 @@ export const HISTORY = createBrowserHistory()
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       isLoggedIn: false,
       user: {},
       children: []
@@ -95,26 +95,26 @@ class App extends Component {
       <div>
         <Router>
           <Routes>
-            <Route 
-              exact path='/' 
+            <Route
+              exact path='/'
               element={
               <Home loggedInStatus = {this.state.isLoggedIn} user={this.state.user} handleLogout={this.handleLogout} handleLogin={this.handleLogin}/>
               }
             />
-                <Route 
-                  exact path='/login' 
+                <Route
+                  exact path='/login'
                   element={
                   <Login />
                 }
                 />
-                <Route 
-                  exact path='/signup' 
+                <Route
+                  exact path='/signup'
                   element={
                   <Signup handleLogin={this.handleLogin}/>
                   }
                 />
-            <Route 
-              exact path='/children' 
+            <Route
+              exact path='/children'
               element={
               <Children user={this.state.user} children={this.state.children}/>
             }
@@ -131,14 +131,14 @@ class App extends Component {
                   <Child user={this.state.user} child={this.props.child}/>
                 }
                 />
-                <Route 
-                  exact path='/birth_record' 
+                <Route
+                  exact path='/birth_record'
                   element={
                   <BirthRecord/>
                   }
                 />
-                <Route 
-                  exact path='/add_a_birth_record' 
+                <Route
+                  exact path='/add_a_birth_record'
                   element={
                   <BirthsForm/>
                   }
@@ -161,27 +161,26 @@ class App extends Component {
                     <FatherForm />
                   }
                 />
-            <Route 
-              exact path='/appointments_to_keep' 
+            <Route
+              exact path='/appointments_to_keep'
               element={
               <Appointments />
               }
             />
-                <Route 
-                  exact path='/add_an_appointment' 
+                <Route
+                  exact path='/add_an_appointment'
                   element={
                   <AppointmentsForm />
                   }
                 />
-            <Route 
-              exact path='/records' 
+            <Route
+              exact path='/records'
               element={
               <GrowthAndHealthRecords />
               }
             />
-                
-            <Route 
-              exact path='/useful_information/*' 
+            <Route
+              exact path='/useful_information/*'
               element={
               <UsefulInformation />
               }/>

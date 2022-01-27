@@ -27,13 +27,13 @@ class Api::V1::VitaminKsController < Api::V1::BaseController
         else
             render json: {
                 status: 500,
-                errors: @user.errors.full_messages
+                errors: current_user.errors.full_messages
             }
         end
     end
 
     def update
-        @vitamin_k.update(params.permit(:name, :address_line_1, :address_line_2, :address_suburb, :address_postcode, :address_state, :address_city, :address_country))
+        @vitamin_k.update(params.permit(:place_given, :date, :dose, :route, :given_by))
         if @vitamin_k.update
             render json: {
                 status: :updated
@@ -41,7 +41,7 @@ class Api::V1::VitaminKsController < Api::V1::BaseController
         else
             render json: {
                 status: 500,
-                errors: @user.errors.full_messages
+                errors: current_user.errors.full_messages
             }
         end
     end
@@ -57,7 +57,7 @@ class Api::V1::VitaminKsController < Api::V1::BaseController
     end
 
     def vitamin_k_params
-        params.require(:vitamin_k).permit(:name, :address_line_1, :address_line_2, :address_suburb, :address_postcode, :address_state, :address_city, :address_country)
+        params.require(:vitamin_k).permit(:place_given, :date, :dose, :route, :given_by, :child_id)
     end
 
   end
