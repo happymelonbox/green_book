@@ -6,6 +6,9 @@ import MCHSVisits from './visits/MCHSVisits'
 import VitaminK from './vitamink/VitaminK'
 import HepatitisBVaccines from './hepatitisbvaccines/HepatitisBVaccines'
 import {VitaminKForm} from './vitamink/VitaminKForm'
+import {HepatitisBForm} from './hepatitisbvaccines/HepatitisBForm'
+import {ImmunisationForm} from './immunisations/ImmunisationForm'
+import {VisitForm} from './visits/VisitForm'
 
 class GrowthAndHealthRecords extends React.Component{
     constructor(props){
@@ -13,13 +16,38 @@ class GrowthAndHealthRecords extends React.Component{
         this.state={
             children: [],
             errors: [],
-            vitK : {
+            vitamink : {
                 place_given: "",
                 date: "",
                 dose: "",
                 route: "",
                 given_by: "",
                 child_id: 0
+            },
+            imm:{
+                age: "",
+                vaccination_name: "",
+                protects_against: "",
+                batch_number: "",
+                date_given: "",
+                nurse_name: "",
+                clinic: "",
+                date_of_next_dose: ""
+            },
+            hepB:{
+                place_given: "",
+                date: "",
+                dose: "",
+                batch_no: "",
+                given_by: ""
+            },
+            visit: {
+                visit_age: "",
+                date: "",
+                name_of_nurse: "",
+                weight: "",
+                head_circumference: "",
+                length: ""
             }
         }
     }
@@ -57,11 +85,11 @@ class GrowthAndHealthRecords extends React.Component{
         event.preventDefault()
         const {
             place_given,
-                date,
-                dose,
-                route,
-                given_by
-        } = this.state.vitK
+            date,
+            dose,
+            route,
+            given_by
+        } = this.state.vitamink
 
         let vitamin_k = {
             place_given: place_given,
@@ -77,18 +105,109 @@ class GrowthAndHealthRecords extends React.Component{
             this.redirect()
         })
     }
+    handleImmunisationSubmit = (event) => {
+        event.preventDefault()
+        const {
+            age,
+            vaccination_name,
+            protects_against,
+            batch_number,
+            date_given,
+            nurse_name,
+            clinic,
+            date_of_next_dose
+        } = this.state.imm
+
+        let immunisation = {
+            age: age,
+            vaccination_name: vaccination_name,
+            protects_against: protects_against,
+            batch_number: batch_number,
+            date_given: date_given,
+            nurse_name: nurse_name,
+            clinic: clinic,
+            date_of_next_dose: date_of_next_dose,
+            child_id: event.target.child_id.value
+        }
+        axios.post('http://localhost:3001/api/v1/immunisations', {immunisation}, {withCredentials: true})
+        .then(response => {
+            console.log(response)
+            this.redirect()
+        })
+    }
+    handleVisitSubmit = (event) => {
+        event.preventDefault()
+        const {
+            visit_age,
+            date,
+            name_of_nurse,
+            weight,
+            head_circumference,
+            length,
+        } = this.state.visit
+
+        let visit = {
+            visit_age: visit_age,
+            date: date,
+            name_of_nurse: name_of_nurse,
+            weight: weight,
+            head_circumference: head_circumference,
+            length: length,
+            child_id: event.target.child_id.value
+        }
+        axios.post('http://localhost:3001/api/v1/visits', {visit}, {withCredentials: true})
+        .then(response => {
+            console.log(response)
+            this.redirect()
+        })
+    }
+    handleHepBSubmit = (event) => {
+        event.preventDefault()
+        const {
+            place_given,
+                date,
+                dose,
+                route,
+                given_by
+        } = this.state.hepB
+
+        let hepatitis_b_vaccine = {
+            place_given: place_given,
+            date: date,
+            dose: dose,
+            route: route,
+            given_by: given_by,
+            child_id: event.target.child_id.value
+        }
+        axios.post('http://localhost:3001/api/v1/hepatitis_b_vaccines', {hepatitis_b_vaccine}, {withCredentials: true})
+        .then(response => {
+            console.log(response)
+            this.redirect()
+        })
+    }
     redirect = () => {
         window.location.replace('http://localhost:4000/records')
     }
 
-    handleVitaminKChange = (event) => {
-        const name = event.target.name
+    handleChange = (event) => {
+        const name = event.target.name.split("-")
+        const key = name[1]
         const value = event.target.value
+        const form = name[0]
+        console.log(form)
         this.setState({
-            vitK:{
-                ...this.state.vitK,
-            [name]: value,
+            [form]:{
+                ...this.state[form],
+            [key]: value,
         }})
+    }
+
+    handleSelectChange = (event) => {
+        const name = event.target.name.split("-")
+        const value = event.target.value
+        const form = name[1]
+        const input = document.getElementById(`${form}input`)
+        value === "Other" ? input.removeAttribute("class", "hidden") : this.handleChange(event)
     }
 
     render(){
@@ -119,6 +238,10 @@ class GrowthAndHealthRecords extends React.Component{
                                             <div key={imm.key}>< Immunisations child={child} immunisation={imm} handleClick={this.handleClick}/></div>
                                         )
                                     })}
+                                    <button className={`${child.id}ImmunisationAddNew pointer`} onClick={this.handleClick}>Add a new Immunisation</button><br/>
+                                    <div id={`${child.id}ImmunisationAddNew`} className = "hidden">
+                                        < ImmunisationForm child_id={child.id} handleVisitSubmit = {this.handleImmunisationSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange}/>
+                                    </div>
                                 </div>
                             </div>
                             <div>
@@ -129,6 +252,10 @@ class GrowthAndHealthRecords extends React.Component{
                                             <div key={visit.id}> < MCHSVisits child={child} visit={visit} handleClick={this.handleClick}/></div>
                                         )
                                     })}
+                                    <button className={`${child.id}VisitAddNew pointer`} onClick={this.handleClick}>Add a new Visit</button><br/>
+                                    <div id={`${child.id}VisitAddNew`} className = "hidden">
+                                        < VisitForm child_id={child.id} handleVisitSubmit = {this.handleVisitSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange}/>
+                                    </div>
                                 </div>
                             </div>
                             <div>
@@ -141,7 +268,7 @@ class GrowthAndHealthRecords extends React.Component{
                                     })}
                                     <button className={`${child.id}vitaminKAddNew pointer`} onClick={this.handleClick}>Add a new Vitamin K Immunisation</button><br/>
                                     <div id={`${child.id}vitaminKAddNew`} className = "hidden">
-                                        < VitaminKForm child_id={child.id} handleVitaminKSubmit = {this.handleVitaminKSubmit} handleVitaminKChange={this.handleVitaminKChange}/>
+                                        < VitaminKForm child_id={child.id} handleVitaminKSubmit = {this.handleVitaminKSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange}/>
                                     </div>
                                 </div>
                             </div>
@@ -149,6 +276,10 @@ class GrowthAndHealthRecords extends React.Component{
                                 <h4 className={`${child.id}HepB pointer`} onClick={this.handleClick}>Hepatitis B Immunisation</h4>
                                 <div id={`${child.id}HepB`} className="hidden">
                                     < HepatitisBVaccines child={child} hepB={hepB}/>
+                                    <button className={`${child.id}HepBAddNew pointer`} onClick={this.handleClick}>Add a new Hepatitis B Immunisation</button><br/>
+                                    <div id={`${child.id}HepBAddNew`} className = "hidden">
+                                        < HepatitisBForm child_id={child.id} handleHepBSubmit = {this.handleHepBSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange}/>
+                                    </div>
                                 </div>
                             </div>
                         </div>

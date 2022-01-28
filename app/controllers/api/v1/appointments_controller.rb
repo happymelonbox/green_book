@@ -33,8 +33,7 @@ class Api::V1::AppointmentsController < Api::V1::BaseController
     end
 
     def update
-        @appointment.update(appointment_params)
-        if @appointment.update
+        if @appointment.update!(appointment_params)
             render json: {
                 status: :updated
             }

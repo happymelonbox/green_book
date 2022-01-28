@@ -35,8 +35,7 @@ class Api::V1::BirthsController < Api::V1::BaseController
     end
 
     def update
-        @birth.update(params.permit(:birth_day, :birth_month, :birth_year, :home_birth, :hospital_id, :examiner_name, :delivery_method, :delivery_time, :severe_jaundice, :weight, :length, :head_circumference, :estimated_gestation, :exchange_transfusion_for_jaundice, :newborn_bloodspot_screening_test_completed, :bloodspot_sample_date, :apgar_one_minute, :apgar_five_minute, :problems_requiring_treatment, :admission_to_intensive_care_nursery_48hours, :intensive_care_reason, :admission_to_special_care_nursery_48hours, :special_care_reason))
-        if @birth.update    
+        if @birth.update(params.require(:birth).permit(:birth_day, :birth_month, :birth_year, :home_birth, :hospital_id, :examiner_name, :delivery_method, :delivery_time, :severe_jaundice, :weight, :length, :head_circumference, :estimated_gestation, :exchange_transfusion_for_jaundice, :newborn_bloodspot_screening_test_completed, :bloodspot_sample_date, :apgar_one_minute, :apgar_five_minute, :problems_requiring_treatment, :admission_to_intensive_care_nursery_48hours, :intensive_care_reason, :admission_to_special_care_nursery_48hours, :special_care_reason, :id))   
             render json: {
                 status: :updated,
                 birth: @birth

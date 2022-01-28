@@ -74,7 +74,7 @@ immunisations = Immunisation.create!([
 ])
 
 visits = Visit.create!([
-    {visit_age: "First Home", date: "2020-06-15", name_of_nurse: "", weight: "3.775", head_circumference: "36.5", length: "52", child_id: 1},
+    {visit_age: "First Home", date: "2020-06-15", name_of_nurse: "Susan", weight: "3.775", head_circumference: "36.5", length: "52", child_id: 1},
     {visit_age: "Two Week", date: "2020-06-26", name_of_nurse: "Robyn", weight: "3.825", head_circumference: "37.5", length: "53", child_id: 1},
     {visit_age: "Four Week", date: "2020-07-11", name_of_nurse: "Robyn", weight: "4.340", head_circumference: "38.5", length: "55.5", child_id: 1},
     {visit_age: "Eight Week", date: "2020-08-13", name_of_nurse: "Robyn", weight: "5.310", head_circumference: "41", length: "58.5", child_id: 1},

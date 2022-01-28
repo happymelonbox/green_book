@@ -260,7 +260,7 @@ class BirthsForm extends Component {
                 <label>Delivery Method: <select name="delivery_method" onChange={this.handleChange.bind(this)}>
                         <option value="Natural">Natural</option>
                         <option value="Induced">Induced</option>
-                        <option value="Selective Caesarian">Selective Caesarian</option>
+                        <option value="Elective Caesarian">Elective Caesarian</option>
                         <option value="Emergency Caesarian">Emergency Caesarian</option>
                     </select>
                 </label>

@@ -37,7 +37,7 @@ class AppointmentsForm extends Component{
                 "Eighteen Month",
                 "Two Year",
                 "Three and a Half Year"
-                ]
+            ]
         }
 
     }
