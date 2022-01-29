@@ -58,12 +58,9 @@ class HepatitisBVaccines extends React.Component{
         }}, ()=>{console.log(this.state)})
     }
 
-    handleSelectChange = (event) => {
-        const name = event.target.name.split("-")
-        const value = event.target.value
-        const form = name[1]
-        const input = document.getElementById(`${form}input`)
-        value === "Other" ? input.removeAttribute("class", "hidden") : this.handleChange(event)
+    handleClick = (event) => {
+        event.target.innerHTML = event.target.innerHTML === "Edit Hepatitis B Immunisation" ? "Close" : "Edit Hepatitis B Immunisation"
+        this.props.handleClick(event)
     }
 
     render(){
@@ -82,9 +79,9 @@ class HepatitisBVaccines extends React.Component{
                     Batch number: {hepB.batch_no}<br/>
                     Given by: {hepB.given_by}
                 </p>
-                <button className={`${child.id}HepBEdit pointer`} onClick={this.props.handleClick}>Edit Hepatitis B Immunisation</button><br/>
+                <button className={`${child.id}HepBEdit pointer`} onClick={this.handleClick}>Edit Hepatitis B Immunisation</button><br/>
                 <div id={`${child.id}HepBEdit`} className = "hidden">
-                    < HepatitisBForm hepB={hepB} child_id={child.id} handleHepBEditSubmit = {this.handleHepBEditSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} button="Edit"/>
+                    < HepatitisBForm hepB={hepB} child_id={child.id} handleHepBEditSubmit = {this.handleHepBEditSubmit} handleChange={this.handleChange} button="Edit"/>
                 </div>
             </div>
         )

@@ -69,6 +69,10 @@ class VitaminK extends React.Component{
         })
     }
 
+    handleClick = (event) => {
+        event.target.innerHTML = event.target.innerHTML === "Edit Vitamin K Immunisation" ? "Close" : "Edit Vitamin K Immunisation"
+        this.props.handleClick(event)
+    }
 
     render(){
         const vitK = this.props.vitK
@@ -87,7 +91,7 @@ class VitaminK extends React.Component{
                     Given by: {vitK.route}<br/>
                     Nurse/Doctors name: {vitK.given_by}
                 </p>
-                <button className={`${child.id}vitaminKEdit pointer`} onClick={this.props.handleClick}>Edit Vitamin K Immunisation</button><br/>
+                <button className={`${child.id}vitaminKEdit pointer`} onClick={this.handleClick}>Edit Vitamin K Immunisation</button><br/>
                 <div id={`${child.id}vitaminKEdit`} className = "hidden">
                     < VitaminKForm child_id={child.id} handleVitKEditSubmit = {this.handleVitKEditSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} button="Edit"/>
                 </div>

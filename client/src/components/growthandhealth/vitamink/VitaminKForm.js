@@ -1,5 +1,5 @@
 export const VitaminKForm = ({handleVitaminKSubmit, handleVitKEditSubmit, handleChange, child_id, button}) => {
-    const options = ["Select a dose", "First", "Second", "Third", "Fourth", "Fifth"]
+    const options = ["Select a dose", "First", "Second", "Third"]
     function handleSubmit(event){
         event.preventDefault()
         button === "Add" ? handleVitaminKSubmit(event) : handleVitKEditSubmit(event)

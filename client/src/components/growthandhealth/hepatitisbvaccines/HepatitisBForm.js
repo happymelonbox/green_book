@@ -1,5 +1,4 @@
-export const HepatitisBForm = ({handleHepBSubmit, handleHepBEditSubmit, handleChange, child_id, button, hepB}) => {
-    const options = ["Select a dose", "First", "Second", "Third", "Fourth", "Fifth"]
+export const HepatitisBForm = ({handleHepBSubmit, handleHepBEditSubmit, handleChange, child_id, button}) => {
     function handleSubmit(event){
         event.preventDefault()
         button === "Add" ? handleHepBSubmit(event) : handleHepBEditSubmit(event)
@@ -15,6 +14,7 @@ export const HepatitisBForm = ({handleHepBSubmit, handleHepBEditSubmit, handleCh
                 </select>
             </label><br/>
             <label>Name of Doctor or Nurse: <input type="text" name="hepatitis_b_vaccine-given_by" onChange={handleChange}/></label><br/>
+            <input type="hidden" value={child_id} name="child_id"/>
 
             <button type="submit">{button}</button>
         </form>

@@ -33,8 +33,8 @@ class Api::V1::ImmunisationsController < Api::V1::BaseController
     end
 
     def update
-        @immunisation.update(params.permit(:age, :vaccination, :batch_number, :date_given, :nurse_name, :clinic, :date_of_next_dose, :child_id))
-        if @immunisation.update
+        
+        if @immunisation.update!(immunisation_params)
             render json: {
                 status: :updated
             }

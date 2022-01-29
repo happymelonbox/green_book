@@ -1,13 +1,14 @@
 export const VisitForm = ({handleVisitSubmit, handleChange, handleSelectChange, child_id}) => {
-    const options = [ "Select a visit", "First Home", "Two Week", "Four Week", "Eight Week", "Four Month", "Six Month", "Twelve Month", "Eighteen Month", "Two Year", "Three and a Half Year", "Other"]
+    const options = [ "Select a visit", "First Home", "Two Week", "Four Week", "Eight Week", "Four Month", "Six Month", "Twelve Month", "Eighteen Month", "Two Year", "Three and a Half Year"]
     return(
         <form onSubmit = {handleVisitSubmit}>
             <label>Visit age:<select type="text" name="visit-visit_age" onChange={handleSelectChange}>
                 {options.map(option => {
                     return <option value={option} key={option}>{option}</option>
                 })}
-            </select></label><br/>
+            </select>
             <label className="hidden" id="visit_ageinput">Enter an age: <input type="text" name="visit-age" onChange={handleChange}/></label><br/>
+            </label><br/>
             <label>Date:<input onChange={handleChange} type="date" name="visit-date"/></label><br/>
             <label>Name of Doctor or Nurse: <input type="text" name="visit-name_of_nurse" onChange={handleChange}/></label><br/>
             <label>Weight: <input type="text" name="visit-weight" onChange={handleChange}/>kg</label><br/>

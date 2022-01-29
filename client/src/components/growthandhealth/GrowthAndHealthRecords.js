@@ -207,7 +207,12 @@ class GrowthAndHealthRecords extends React.Component{
         const value = event.target.value
         const form = name[1]
         const input = document.getElementById(`${form}input`)
-        value === "Other" ? input.removeAttribute("class", "hidden") : this.handleChange(event)
+        value === "Other" ? input.classList.remove("hidden") : this.handleChange(event)
+    }
+
+    handlePreClick = (event) => {
+        event.target.innerHTML = event.target.innerHTML === "Add new" ? "Close" : "Add new"
+        this.handleClick(event)
     }
 
     render(){
@@ -230,29 +235,15 @@ class GrowthAndHealthRecords extends React.Component{
                     return(
                         <div key={child.id}>
                             <h4 >{child.first_name} {child.last_name}</h4>
-                            <div >
-                                <h4 className={`${child.id}immunisation_details pointer`} onClick={this.handleClick}>Immunisations({imms})</h4>
-                                <div id={`${child.id}immunisation_details`} className="hidden">
-                                    {immunisations.map(imm => {
-                                        return (
-                                            <div key={imm.key}>< Immunisations child={child} immunisation={imm} handleClick={this.handleClick}/></div>
-                                        )
-                                    })}
-                                    <button className={`${child.id}ImmunisationAddNew pointer`} onClick={this.handleClick}>Add a new Immunisation</button><br/>
-                                    <div id={`${child.id}ImmunisationAddNew`} className = "hidden">
-                                        < ImmunisationForm child_id={child.id} handleVisitSubmit = {this.handleImmunisationSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} button="Add"/>
-                                    </div>
-                                </div>
-                            </div>
                             <div>
                                 <h4 className={`${child.id}Visits pointer`} onClick={this.handleClick}>MCHS Visits(Last visit: {last_visit_age} {last_visit_date})</h4>
                                 <div id={`${child.id}Visits`} className="hidden">
                                     {visits.map(visit=>{
                                         return(
-                                            <div key={visit.id}> < MCHSVisits child={child} visit={visit} handleClick={this.handleClick}/></div>
+                                            <div key={visit.id}> < MCHSVisits child={child} visit={visit} handleClick={this.handleClick} handleSelectChange={this.handleSelectChange}/></div>
                                         )
                                     })}
-                                    <button className={`${child.id}VisitAddNew pointer`} onClick={this.handleClick}>Add a new Visit</button><br/>
+                                    <button className={`${child.id}VisitAddNew pointer`} onClick={this.handlePreClick}>Add new</button><br/>
                                     <div id={`${child.id}VisitAddNew`} className = "hidden">
                                         < VisitForm child_id={child.id} handleVisitSubmit = {this.handleVisitSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} button="Add"/>
                                     </div>
@@ -266,7 +257,7 @@ class GrowthAndHealthRecords extends React.Component{
                                             <div key={vitK.id}> < VitaminK child={child} vitK={vitK} handleClick={this.handleClick}/></div>
                                         )
                                     })}
-                                    <button className={`${child.id}vitaminKAddNew pointer`} onClick={this.handleClick}>Add a new Vitamin K Immunisation</button><br/>
+                                    <button className={`${child.id}vitaminKAddNew pointer`} onClick={this.handlePreClick}>Add new</button><br/>
                                     <div id={`${child.id}vitaminKAddNew`} className = "hidden">
                                         < VitaminKForm child_id={child.id} handleVitaminKSubmit = {this.handleVitaminKSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} button="Add"/>
                                     </div>
@@ -276,9 +267,23 @@ class GrowthAndHealthRecords extends React.Component{
                                 <h4 className={`${child.id}HepB pointer`} onClick={this.handleClick}>Hepatitis B Immunisation(1)</h4>
                                 <div id={`${child.id}HepB`} className="hidden">
                                     < HepatitisBVaccines child={child} hepB={hepB} handleClick={this.handleClick}/>
-                                    <button className={`${child.id}HepBAddNew pointer`} onClick={this.handleClick}>Add a new Hepatitis B Immunisation</button><br/>
+                                    <button className={`${child.id}HepBAddNew pointer`} onClick={this.handlePreClick}>Add new</button><br/>
                                     <div id={`${child.id}HepBAddNew`} className = "hidden">
                                         < HepatitisBForm child_id={child.id} handleHepBSubmit = {this.handleHepBSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} button="Add"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div >
+                                <h4 className={`${child.id}immunisation_details pointer`} onClick={this.handleClick}>Other Immunisations({imms})</h4>
+                                <div id={`${child.id}immunisation_details`} className="hidden">
+                                    {immunisations.map(imm => {
+                                        return (
+                                            <div key={imm.key}>< Immunisations child={child} immunisation={imm} handleClick={this.handleClick}/></div>
+                                        )
+                                    })}
+                                    <button className={`${child.id}ImmunisationAddNew pointer`} onClick={this.handlePreClick}>Add new</button><br/>
+                                    <div id={`${child.id}ImmunisationAddNew`} className = "hidden">
+                                        < ImmunisationForm child_id={child.id} handleVisitSubmit = {this.handleImmunisationSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} button="Add"/>
                                     </div>
                                 </div>
                             </div>

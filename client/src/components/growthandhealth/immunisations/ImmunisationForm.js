@@ -1,7 +1,11 @@
-export const ImmunisationForm = ({handleImmunisationSubmit, handleChange, handleSelectChange, child_id}) => {
-    const options = ["Select an Age", "Six Weeks", "Four Months", "Six Months", "Ten Months", "Twelve Months", "Eighteen Months", "Four Years", "Other"]
+export const ImmunisationForm = ({handleImmunisationSubmit, handleImmEditSubmit, handleChange, handleSelectChange, child_id, button}) => {
+    const options = ["Select an Age", "Six Weeks", "Four Months", "Six Months", "Ten Months", "Twelve Months", "Eighteen Months", "Four Years"]
+    function handleSubmit(event){
+        event.preventDefault()
+        button === "Add" ? handleImmunisationSubmit(event) : handleImmEditSubmit(event)
+    }
     return(
-        <form onSubmit = {handleImmunisationSubmit}>
+        <form onSubmit = {handleSubmit}>
            <label><select name="immunisation-age" onChange={handleSelectChange}>
                {options.map(option=>{
                    return <option value={option} key={option}>{option}</option>
@@ -17,7 +21,7 @@ export const ImmunisationForm = ({handleImmunisationSubmit, handleChange, handle
             <label>Date of Next Dose: (if last dose, enter todays date) <input type="date" name="immunisation-date_of_next_dose" onChange={handleChange}/><br/></label>
             <input type="hidden" value={child_id} name="child_id"/>
 
-            <button type="submit">Add</button>
+            <button type="submit">{button}</button>
         </form>
     )
 }
