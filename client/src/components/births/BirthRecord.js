@@ -174,6 +174,11 @@ class BirthRecord extends Component{
     .catch( error => console.log('api errors:', error))
     }
 
+    handleDeliveryDetailsClick = (event) => {
+        event.target.innerHTML = event.target.innerHTML === "Delivery Details" ? "Close" : "Delivery Details"
+        this.showDeliveryDetails(event)
+    }
+
     render(){
         const birth = this.props.child.birth
     return(
@@ -183,7 +188,7 @@ class BirthRecord extends Component{
                 <h5>Mother: {this.state.motherFirstName} {this.state.motherLastName}</h5>
                 <h5>Father: {this.state.fatherFirstName} {this.state.fatherLastName}</h5>
                 <div className="delivery_details_container">
-                    <button className="delivery_details pointer" id={`delivery_details_${this.props.child.id}`} onClick={this.showDeliveryDetails}>Delivery Details</button>
+                    <button className="delivery_details pointer" id={`delivery_details_${this.props.child.id}`} onClick={this.handleDeliveryDetailsClick}>Delivery Details</button>
                     <br/>
                     <div className="delivery_details_content hidden" id={`delivery_details_${this.props.child.id}_content`}>
                         <BirthDetails birth={birth} hospitalName={this.state.hospitalName} handleClick={this.handleClick} handleChange ={this.handleChange} handleBirthEditSubmit={this.handleBirthEditSubmit}/>

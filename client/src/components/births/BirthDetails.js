@@ -1,10 +1,14 @@
 export const BirthDetails = ({birth, hospitalName, handleClick, handleChange, handleBirthEditSubmit}) => {
+    function handlePreClick(event){
+        event.target.innerHTML = event.target.innerHTML === "Edit Birth Details" ? "Close" : "Edit Birth Details"
+        handleClick(event)
+    }
     return(
         <div>
             <form onSubmit={handleBirthEditSubmit}>
-            <label>Birth day: <input type="number" name="birth-birth_day" className={`${birth.id}editBirthInputs hidden`} onChange = {handleChange}/><br/></label>
-            <label>Birth month: <input type="number" name="birth-birth_month" className={`${birth.id}editBirthInputs hidden`} onChange = {handleChange}/><br/></label>
-            <label>Birth Year: <input type="number" name="birth-birth_year" className={`${birth.id}editBirthInputs hidden`} onChange = {handleChange}/><br/></label>
+            <label className={`${birth.id}editBirthInputs hidden`}>Birth day: <input type="number" name="birth-birth_day" onChange = {handleChange}/><br/></label>
+            <label className={`${birth.id}editBirthInputs hidden`}>Birth month: <input type="number" name="birth-birth_month" onChange = {handleChange}/><br/></label>
+            <label className={`${birth.id}editBirthInputs hidden`}>Birth Year: <input type="number" name="birth-birth_year"  onChange = {handleChange}/><br/></label>
                 <label>Home Birth: {birth.home_birth ? "Yes" : `No - Hospital: ${hospitalName}`}<select name="birth-home_birth" className={`${birth.id}editBirthInputs hidden`} onChange = {handleChange}>
                     <option value="Select">Select</option>
                     <option value="true">Yes</option>
