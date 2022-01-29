@@ -240,7 +240,7 @@ class GrowthAndHealthRecords extends React.Component{
                                     })}
                                     <button className={`${child.id}ImmunisationAddNew pointer`} onClick={this.handleClick}>Add a new Immunisation</button><br/>
                                     <div id={`${child.id}ImmunisationAddNew`} className = "hidden">
-                                        < ImmunisationForm child_id={child.id} handleVisitSubmit = {this.handleImmunisationSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange}/>
+                                        < ImmunisationForm child_id={child.id} handleVisitSubmit = {this.handleImmunisationSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} button="Add"/>
                                     </div>
                                 </div>
                             </div>
@@ -254,7 +254,7 @@ class GrowthAndHealthRecords extends React.Component{
                                     })}
                                     <button className={`${child.id}VisitAddNew pointer`} onClick={this.handleClick}>Add a new Visit</button><br/>
                                     <div id={`${child.id}VisitAddNew`} className = "hidden">
-                                        < VisitForm child_id={child.id} handleVisitSubmit = {this.handleVisitSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange}/>
+                                        < VisitForm child_id={child.id} handleVisitSubmit = {this.handleVisitSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} button="Add"/>
                                     </div>
                                 </div>
                             </div>
@@ -268,17 +268,17 @@ class GrowthAndHealthRecords extends React.Component{
                                     })}
                                     <button className={`${child.id}vitaminKAddNew pointer`} onClick={this.handleClick}>Add a new Vitamin K Immunisation</button><br/>
                                     <div id={`${child.id}vitaminKAddNew`} className = "hidden">
-                                        < VitaminKForm child_id={child.id} handleVitaminKSubmit = {this.handleVitaminKSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange}/>
+                                        < VitaminKForm child_id={child.id} handleVitaminKSubmit = {this.handleVitaminKSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} button="Add"/>
                                     </div>
                                 </div>
                             </div>
                             <div>
-                                <h4 className={`${child.id}HepB pointer`} onClick={this.handleClick}>Hepatitis B Immunisation</h4>
+                                <h4 className={`${child.id}HepB pointer`} onClick={this.handleClick}>Hepatitis B Immunisation(1)</h4>
                                 <div id={`${child.id}HepB`} className="hidden">
-                                    < HepatitisBVaccines child={child} hepB={hepB}/>
+                                    < HepatitisBVaccines child={child} hepB={hepB} handleClick={this.handleClick}/>
                                     <button className={`${child.id}HepBAddNew pointer`} onClick={this.handleClick}>Add a new Hepatitis B Immunisation</button><br/>
                                     <div id={`${child.id}HepBAddNew`} className = "hidden">
-                                        < HepatitisBForm child_id={child.id} handleHepBSubmit = {this.handleHepBSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange}/>
+                                        < HepatitisBForm child_id={child.id} handleHepBSubmit = {this.handleHepBSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} button="Add"/>
                                     </div>
                                 </div>
                             </div>

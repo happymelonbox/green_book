@@ -1,7 +1,7 @@
 class Api::V1::HepatitisBVaccinesController < Api::V1::BaseController
     before_action :authentication_redirect, :only => [:index, :show]
     before_action :current_user
-    before_action :set_vaccine, :only => [:show, :edit, :update, :destroy]
+    before_action :set_hepatitis_b_vaccine, :only => [:show, :edit, :update, :destroy]
 
     def index
         @hepatitis_b_vaccines = HepatitisBVaccine.all
@@ -33,8 +33,8 @@ class Api::V1::HepatitisBVaccinesController < Api::V1::BaseController
     end
 
     def update
-        @hepatitis_b_vaccine.update(params.permit(:name, :address_line_1, :address_line_2, :address_suburb, :address_postcode, :address_state, :address_city, :address_country))
-        if @hepatitis_b_vaccine.update
+        
+        if @hepatitis_b_vaccine.update!(hepatitis_b_vaccine_params)
             render json: {
                 status: :updated
             }
@@ -57,7 +57,7 @@ class Api::V1::HepatitisBVaccinesController < Api::V1::BaseController
     end
 
     def hepatitis_b_vaccine_params
-        params.require(:hepatitis_b_vaccine).permit(:name, :address_line_1, :address_line_2, :address_suburb, :address_postcode, :address_state, :address_city, :address_country)
+        params.require(:hepatitis_b_vaccine).permit(:place_given, :date, :batch_no, :given_by, :child_id, :id)
     end
 
   end

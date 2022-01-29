@@ -1,23 +1,22 @@
-export const HepatitisBForm = ({handleHepBSubmit, handleChange, child_id}) => {
+export const HepatitisBForm = ({handleHepBSubmit, handleHepBEditSubmit, handleChange, child_id, button, hepB}) => {
     const options = ["Select a dose", "First", "Second", "Third", "Fourth", "Fifth"]
+    function handleSubmit(event){
+        event.preventDefault()
+        button === "Add" ? handleHepBSubmit(event) : handleHepBEditSubmit(event)
+    }
     return(
-        <form onSubmit = {handleHepBSubmit}>
-            <label>Clinic Name:<input onChange={handleChange} type="text" name="vitamink_place_given"/></label><br/>
-            <label>Date:<input onChange={handleChange} type="date" name="vitamink_date"/></label><br/>
-            <label>Dose:<select onChange={handleChange} type="text" name="vitamink_dose">
-                {options.map(option => {
-                    return(<option key={option} value={option}>{option}</option>)
-                })}
+        <form onSubmit = {handleSubmit}>
+            <label>Clinic Name:<input onChange={handleChange} type="text" name="hepatitis_b_vaccine-place_given"/></label><br/>
+            <label>Date:<input onChange={handleChange} type="date" name="hepatitis_b_vaccine-date"/></label><br/>
+            <label>Given by:
+                <select onChange={handleChange} name="hepatitis_b_vaccine-route">
+                    <option value="oral">Mouth</option>
+                    <option value="injection">Injection</option>
                 </select>
             </label><br/>
-            <label>Given by:
-                <input onChange = {handleChange} type="radio" name="vitamink_route" value="Oral"/><label>Mouth</label>
-                <input onChange = {handleChange} type="radio" name="vitamink_route" value="Injection"/><label>Injection</label>
-            </label><br/>
-            <label>Name of Doctor or Nurse: <input type="text" name="vitamink_given_by" onChange={handleChange}/></label><br/>
-            <input type="hidden" value={child_id} name="child_id"/>
+            <label>Name of Doctor or Nurse: <input type="text" name="hepatitis_b_vaccine-given_by" onChange={handleChange}/></label><br/>
 
-            <button type="submit">Add</button>
+            <button type="submit">{button}</button>
         </form>
     )
 }

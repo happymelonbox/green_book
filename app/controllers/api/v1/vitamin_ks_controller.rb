@@ -33,8 +33,7 @@ class Api::V1::VitaminKsController < Api::V1::BaseController
     end
 
     def update
-        @vitamin_k.update(params.permit(:place_given, :date, :dose, :route, :given_by))
-        if @vitamin_k.update
+        if @vitamin_k.update(vitamin_k_params)
             render json: {
                 status: :updated
             }
@@ -57,7 +56,7 @@ class Api::V1::VitaminKsController < Api::V1::BaseController
     end
 
     def vitamin_k_params
-        params.require(:vitamin_k).permit(:place_given, :date, :dose, :route, :given_by, :child_id)
+        params.require(:vitamin_k).permit(:place_given, :date, :dose, :route, :given_by, :child_id, :id)
     end
 
   end
