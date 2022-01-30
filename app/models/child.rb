@@ -8,4 +8,9 @@ class Child < ApplicationRecord
     has_many :vitamin_ks
     has_many :visits
     has_many :immunisations
+
+    validates :first_name, presence: true
+    validates :middle_name, presence: true
+    validates :last_name, presence: true
+    validates :user_id, presence: true
 end

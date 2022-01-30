@@ -246,22 +246,22 @@ class BirthsForm extends Component {
         return(
             <div>
                 <h4>Add Birth Details</h4>
-                <form onSubmit={this.handleSubmit.bind(this)}>
-                <label> Birth Day: <input type="number" name="birth_day" onChange={this.handleChange.bind(this)}/></label>
+                <form onSubmit={this.handleSubmit}>
+                <label> Birth Day: <input type="number" name="birth_day" onChange={this.handleChange}/></label>
                 <br/>
-                <label> Birth Month: <input type="number" name="birth_month" onChange={this.handleChange.bind(this)}/></label>
+                <label> Birth Month: <input type="number" name="birth_month" onChange={this.handleChange}/></label>
                 <br/>
-                <label> Birth Year: <input type="number" name="birth_year" onChange={this.handleChange.bind(this)}/></label>
+                <label> Birth Year: <input type="number" name="birth_year" onChange={this.handleChange}/></label>
                 <br/>
-                <label> Home Birth? <select name="home_birth" onChange={this.booleanChange.bind(this)}>
+                <label> Home Birth? <select name="home_birth" onChange={this.booleanChange}>
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
                 </select>
                 </label>
                 <br/>
-                <label>Father's First Name: <input type="text" name="father_first_name" onChange={this.handleParentsChange.bind(this)}/></label>
+                <label>Father's First Name: <input type="text" name="father_first_name" onChange={this.handleParentsChange}/></label>
                 <br/>
-                <label> Hospital: <select name="hospital" onChange={this.hospitalChange.bind(this)}>
+                <label> Hospital: <select name="hospital" onChange={this.hospitalChange}>
                     <option>--</option>
                     {this.state.hospitalSelectOptions.map(option => {
                         return <option key={option.value} value={option.value} id={option.value}>{option.label}</option>
@@ -269,9 +269,9 @@ class BirthsForm extends Component {
                 </select> If your hospital isn't available please click <Link to={'/add_a_hospital'}>here</Link> to add it
                 </label>
                 <br/>
-                <label>Examiner Name: <input type='text' name="examiner_name" onChange={this.handleChange.bind(this)}/></label>
+                <label>Examiner Name: <input type='text' name="examiner_name" onChange={this.handleChange}/></label>
                 <br/>
-                <label>Delivery Method: <select name="delivery_method" onChange={this.handleChange.bind(this)}>
+                <label>Delivery Method: <select name="delivery_method" onChange={this.handleChange}>
                         <option value="Natural">Natural</option>
                         <option value="Induced">Induced</option>
                         <option value="Elective Caesarian">Elective Caesarian</option>
@@ -279,52 +279,52 @@ class BirthsForm extends Component {
                     </select>
                 </label>
                 <br/>
-                <label>Delivery Time: <input name="delivery_time" type="time" onChange={this.handleChange.bind(this)}/></label>
+                <label>Delivery Time: <input name="delivery_time" type="time" onChange={this.handleChange}/></label>
                 <br/>
-                <label>Severe Jaundice? <select name="severe_jaundice" onChange={this.booleanChange.bind(this)}>
+                <label>Severe Jaundice? <select name="severe_jaundice" onChange={this.booleanChange}>
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
                 </select> </label>
                 <br/>
-                <label>Weight: <input type="number" name="weight" onChange={this.handleChange.bind(this)}/></label>
+                <label>Weight: <input type="number" name="weight" onChange={this.handleChange}/></label>
                 <br/>
-                <label>Height: <input type="number" name="height" onChange={this.handleChange.bind(this)}/></label>
+                <label>Height: <input type="number" name="height" onChange={this.handleChange}/></label>
                 <br/>
-                <label>Head Circumference: <input type="number" name="head_circumference" onChange={this.handleChange.bind(this)}/></label>
+                <label>Head Circumference: <input type="number" name="head_circumference" onChange={this.handleChange}/></label>
                 <br/>
-                <label>Estimated Gestation: <input type="number" name="estimated_gestation" onChange={this.handleChange.bind(this)}/></label>
+                <label>Estimated Gestation: <input type="number" name="estimated_gestation" onChange={this.handleChange}/></label>
                 <br/>
-                <label>Exchange Transfusion for Jaundice: <select name="exchange_transfusion_for_jaundice" onChange={this.booleanChange.bind(this)}>
+                <label>Exchange Transfusion for Jaundice: <select name="exchange_transfusion_for_jaundice" onChange={this.booleanChange}>
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
                 </select> </label>
                 <br/>
-                <label>Newborn Bloodspot Screening Test Completed: <select name="newborn_bloodspot_screening_test_completed" onChange={this.booleanChange.bind(this)}>
+                <label>Newborn Bloodspot Screening Test Completed: <select name="newborn_bloodspot_screening_test_completed" onChange={this.booleanChange}>
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
                 </select> </label>
                 <br/>
-                <label>Bloodspot Sample Data: <input type="date" name="bloodspot_sample_date" onChange={this.handleChange.bind(this)}/></label>
+                <label>Bloodspot Sample Data: <input type="date" name="bloodspot_sample_date" onChange={this.handleChange}/></label>
                 <br/>
-                <label>Apgar One Minute: <input type="number" name="apgar_one_minute" onChange={this.handleChange.bind(this)}/></label>
+                <label>Apgar One Minute: <input type="number" name="apgar_one_minute" onChange={this.handleChange}/></label>
                 <br/>
-                <label>Apgar Five Minute: <input type="number" name="apgar_5_minute" onChange={this.handleChange.bind(this)}/></label>
+                <label>Apgar Five Minute: <input type="number" name="apgar_5_minute" onChange={this.handleChange}/></label>
                 <br/>
-                <label>Problems Requiring Treatment: <input type="text" name="problems_requiring_treatmeant" onChange={this.handleChange.bind(this)}/></label>
+                <label>Problems Requiring Treatment: <input type="text" name="problems_requiring_treatmeant" onChange={this.handleChange}/></label>
                 <br/>
-                <label>Admission to Intensive Care Nursery 48hours: <select name="admission_to_intensive_care_nursery_48hours" onChange={this.booleanChange.bind(this)}>
+                <label>Admission to Intensive Care Nursery 48hours: <select name="admission_to_intensive_care_nursery_48hours" onChange={this.booleanChange}>
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
                 </select> </label>
                 <br/>
-                <label>Intensive Care Reason: <input type="text" name="intensive_care_reason" onChange={this.handleChange.bind(this)}/></label>
+                <label>Intensive Care Reason: <input type="text" name="intensive_care_reason" onChange={this.handleChange}/></label>
                 <br/>
-                <label>Admission to Special Care Nursery 48hours: <select name="admission_to_special_care_nursery_48hours" onChange={this.booleanChange.bind(this)}>
+                <label>Admission to Special Care Nursery 48hours: <select name="admission_to_special_care_nursery_48hours" onChange={this.booleanChange}>
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
                 </select> </label>
                 <br/>
-                <label>Special Care Reason: <input type="text" name="special_care_reason" onChange={this.handleChange.bind(this)}/></label>
+                <label>Special Care Reason: <input type="text" name="special_care_reason" onChange={this.handleChange}/></label>
                 <br/>
                 <button type="submit">Submit</button>
                 </form>
