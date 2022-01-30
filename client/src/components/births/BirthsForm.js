@@ -231,6 +231,17 @@ class BirthsForm extends Component {
         window.location.replace("http://localhost:4000/children")
     }
 
+    handleErrors = () =>{
+        return (
+            <div>
+                <ul>{this.state.errors.map((error) => {
+                    console.log({error})
+                    return <li key="{error}">{error}</li>
+                })}</ul>
+            </div>
+        )
+    }
+
     render(){
         return(
             <div>

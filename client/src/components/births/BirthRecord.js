@@ -178,6 +178,17 @@ class BirthRecord extends Component{
         this.showDeliveryDetails(event)
     }
 
+    handleErrors = () =>{
+        return (
+            <div>
+                <ul>{this.state.errors.map((error) => {
+                    console.log({error})
+                    return <li key="{error}">{error}</li>
+                })}</ul>
+            </div>
+        )
+    }
+
     render(){
         const birth = this.props.child.birth
     return(
@@ -191,6 +202,11 @@ class BirthRecord extends Component{
                     <br/>
                     <div className="delivery_details_content hidden" id={`delivery_details_${this.props.child.id}_content`}>
                         <BirthDetails birth={birth} hospitalName={this.state.hospitalName} handleClick={this.handleClick} handleChange ={this.handleChange} handleBirthEditSubmit={this.handleBirthEditSubmit}/>
+                    </div>
+                    <div>
+                        {
+                            this.state.errors ? this.handleErrors() : null
+                        }
                     </div>
                 </div>
             </div>

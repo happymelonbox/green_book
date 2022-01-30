@@ -19,11 +19,7 @@ export const VisitForm = ({handleVisitSubmit, handleChange, handleSelectChange, 
 
                 <button type="submit">Add</button>
             </form>
-            <div>
-                {
-                    this.state.errors ? this.handleErrors() : null
-                }
-            </div>
+            
         </div>
     )
 }

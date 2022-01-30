@@ -70,6 +70,17 @@ class HepatitisBVaccines extends React.Component{
         this.props.handleClick(event)
     }
 
+    handleErrors = () =>{
+        return (
+            <div>
+                <ul>{this.state.errors.map((error) => {
+                    console.log({error})
+                    return <li key="{error}">{error}</li>
+                })}</ul>
+            </div>
+        )
+    }
+
     render(){
         const hepB = this.props.hepB
         let fullDate = hepB.date.split("-")

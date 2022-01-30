@@ -82,6 +82,18 @@ class MCHSVisits extends React.Component{
         event.target.innerHTML = event.target.innerHTML === "Edit Visit" ? "Close" : "Edit Visit"
         this.props.handleClick(event)
     }
+
+    handleErrors = () =>{
+        return (
+            <div>
+                <ul>{this.state.errors.map((error) => {
+                    console.log({error})
+                    return <li key="{error}">{error}</li>
+                })}</ul>
+            </div>
+        )
+    }
+
     render(){
         const visit = this.props.visit
         const date = visit.date.split("-")
@@ -103,6 +115,11 @@ class MCHSVisits extends React.Component{
                 <button className={`${child.id}VisitEdit pointer`} onClick={this.handleClick}>Edit Visit</button><br/>
                 <div id={`${child.id}VisitEdit`} className = "hidden">
                     < VisitForm child_id={child.id} handleVisitSubmit = {this.handleVisitEditSubmit} handleChange={this.handleChange} handleSelectChange={this.props.handleSelectChange} button="Edit"/>
+                </div>
+                <div>
+                    {
+                        this.state.errors ? this.handleErrors() : null
+                    }
                 </div>
             </div>
         )

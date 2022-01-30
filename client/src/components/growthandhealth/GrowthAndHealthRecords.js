@@ -241,10 +241,26 @@ class GrowthAndHealthRecords extends React.Component{
         this.handleClick(event)
     }
 
+    handleErrors = () =>{
+        return (
+            <div>
+                <ul>{this.state.errors.map((error) => {
+                    console.log({error})
+                    return <li key="{error}">{error}</li>
+                })}</ul>
+            </div>
+        )
+    }
+
     render(){
         return(
             <div>
                 <Link to='/'>Back to Dashboard</Link><br/>
+                <div>
+                    {
+                        this.state.errors ? this.handleErrors() : null
+                    }
+                </div>
                 {this.state.children.map(child =>{
                     const immunisations = child.immunisations
                     const visits = child.visits

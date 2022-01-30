@@ -80,6 +80,18 @@ class Immunisations extends React.Component{
         })
         .catch( error => console.log('api errors: ', error))
     }
+
+    handleErrors = () =>{
+        return (
+            <div>
+                <ul>{this.state.errors.map((error) => {
+                    console.log({error})
+                    return <li key="{error}">{error}</li>
+                })}</ul>
+            </div>
+        )
+    }
+    
     render(){
         const imm = this.props.immunisation
         const child = this.props.child

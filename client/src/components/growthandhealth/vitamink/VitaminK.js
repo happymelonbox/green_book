@@ -81,6 +81,17 @@ class VitaminK extends React.Component{
         this.props.handleClick(event)
     }
 
+    handleErrors = () =>{
+        return (
+            <div>
+                <ul>{this.state.errors.map((error) => {
+                    console.log({error})
+                    return <li key="{error}">{error}</li>
+                })}</ul>
+            </div>
+        )
+    }
+
     render(){
         const vitK = this.props.vitK
         const child = this.props.child

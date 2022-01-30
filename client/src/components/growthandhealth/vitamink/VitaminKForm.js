@@ -1,4 +1,4 @@
-export const VitaminKForm = ({handleVitaminKSubmit, handleVitKEditSubmit, handleChange, child_id, button, errors, handleErrors}) => {
+export const VitaminKForm = ({handleVitaminKSubmit, handleVitKEditSubmit, handleChange, child_id, button}) => {
     const options = ["Select a dose", "First", "Second", "Third"]
     function handleSubmit(event){
         event.preventDefault()
@@ -24,11 +24,7 @@ export const VitaminKForm = ({handleVitaminKSubmit, handleVitKEditSubmit, handle
 
                 <button type="submit">{button}</button>
             </form>
-            <div>
-                {
-                    errors ? handleErrors() : null
-                }
-            </div>
+        
         </div>
     )
 }

@@ -70,6 +70,17 @@ class FatherForm extends Component{
         window.location.replace('/children')
     }
 
+    handleErrors = () =>{
+        return (
+            <div>
+                <ul>{this.state.errors.map((error) => {
+                    console.log({error})
+                    return <li key="{error}">{error}</li>
+                })}</ul>
+            </div>
+        )
+    }
+
     render(){
         return(
         <div>
