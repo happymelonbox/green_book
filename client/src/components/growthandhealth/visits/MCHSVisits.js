@@ -67,8 +67,15 @@ class MCHSVisits extends React.Component{
         axios.put(`http://localhost:3001/api/v1/visits/${id}`, {visit}, {withCredentials: true})
         .then(response => {
             console.log(response)
-            window.location.reload()
+            if (response.data.status === 'updated'){
+                window.location.replace("http://localhost:4000/records")
+            } else {
+                this.setState({
+                    errors: [...this.state.errors, response.data.errors]
+                })
+            }
         })
+        .catch( error => console.log('api errors: ', error))
     }
 
     handleClick = (event) => {

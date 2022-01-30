@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import '../../style/appointments.css'
 import AppointmentsByAppointment from './AppointmentsByAppointment'
 import AppointmentsByChild from './AppointmentsByChild'
 
@@ -103,10 +102,17 @@ class Appointments extends Component{
                 child_id: child_id,
             }
             axios.put(`http://localhost:3001/api/v1/appointments/${id}`, {appointment}, {withCredentials:true})
-            .then(response=>{
+            .then(response => {
                 console.log(response)
-                window.location.replace('http://localhost:4000/appointments_to_keep')
+                if (response.data.status === 'updated'){
+                    window.location.replace("http://localhost:4000/records")
+                } else {
+                    this.setState({
+                        errors: [...this.state.errors, response.data.errors]
+                    })
+                }
             })
+            .catch( error => console.log('api errors: ', error))
         }
 
 
@@ -118,6 +124,17 @@ class Appointments extends Component{
             inputs[i].classList.remove("hidden")
         }
         button.classList.add("hidden")
+    }
+    
+    handleErrors = () =>{
+        return (
+            <div>
+                <ul>{this.state.errors.map((error) => {
+                    console.log({error})
+                    return <li key="{error}">{error}</li>
+                })}</ul>
+            </div>
+        )
     }
 
 
@@ -138,6 +155,11 @@ class Appointments extends Component{
                     :
                     <AppointmentsByAppointment children={this.state.children} appointments={this.state.appointments} handleAppointmentSubmit={this.handleAppointmentSubmit} handleAppointmentEdit={this.handleAppointmentEdit}/>
                 }
+                <div>
+                    {
+                        this.state.errors ? this.handleErrors() : null
+                    }
+                </div>
             </div>
         )
     }

@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Child from './Child'
-import '../../style/children.css'
 
 
 class Children extends React.Component {

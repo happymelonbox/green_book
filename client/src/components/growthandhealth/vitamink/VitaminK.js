@@ -65,8 +65,15 @@ class VitaminK extends React.Component{
         axios.put(`http://localhost:3001/api/v1/vitamin_ks/${id}`, {vitamin_k}, {withCredentials: true})
         .then(response => {
             console.log(response)
-            window.location.reload()
+            if (response.data.status === 'updated'){
+                window.location.replace("http://localhost:4000/records")
+            } else {
+                this.setState({
+                    errors: [...this.state.errors, response.data.errors]
+                })
+            }
         })
+        .catch( error => console.log('api errors: ', error))
     }
 
     handleClick = (event) => {
@@ -94,6 +101,11 @@ class VitaminK extends React.Component{
                 <button className={`${child.id}vitaminKEdit pointer`} onClick={this.handleClick}>Edit Vitamin K Immunisation</button><br/>
                 <div id={`${child.id}vitaminKEdit`} className = "hidden">
                     < VitaminKForm child_id={child.id} handleVitKEditSubmit = {this.handleVitKEditSubmit} handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} button="Edit"/>
+                </div>
+                <div>
+                    {
+                        this.state.errors ? this.handleErrors() : null
+                    }
                 </div>
             </div>
         )

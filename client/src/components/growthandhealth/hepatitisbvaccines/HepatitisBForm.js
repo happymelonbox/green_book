@@ -4,6 +4,7 @@ export const HepatitisBForm = ({handleHepBSubmit, handleHepBEditSubmit, handleCh
         button === "Add" ? handleHepBSubmit(event) : handleHepBEditSubmit(event)
     }
     return(
+        <div>
         <form onSubmit = {handleSubmit}>
             <label>Clinic Name:<input onChange={handleChange} type="text" name="hepatitis_b_vaccine-place_given"/></label><br/>
             <label>Date:<input onChange={handleChange} type="date" name="hepatitis_b_vaccine-date"/></label><br/>
@@ -18,5 +19,6 @@ export const HepatitisBForm = ({handleHepBSubmit, handleHepBEditSubmit, handleCh
 
             <button type="submit">{button}</button>
         </form>
+    </div>
     )
 }

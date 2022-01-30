@@ -57,9 +57,7 @@ class GrowthAndHealthRecords extends React.Component{
     }
 
     getChildren = () => {
-        axios.get('http://localhost:3001/api/v1/children', {
-          withCredentials: true,
-      })
+        axios.get('http://localhost:3001/api/v1/children', {withCredentials: true})
         .then(response => {
           this.handleChildren(response.data)
         })
@@ -102,8 +100,15 @@ class GrowthAndHealthRecords extends React.Component{
         axios.post('http://localhost:3001/api/v1/vitamin_ks', {vitamin_k}, {withCredentials: true})
         .then(response => {
             console.log(response)
-            this.redirect()
+            if (response.data.status === 'created'){
+                this.redirect()
+            } else {
+                this.setState({
+                    errors: [...this.state.errors, response.data.errors]
+                })
+            }
         })
+        .catch( error => console.log('api errors: ', error))
     }
     handleImmunisationSubmit = (event) => {
         event.preventDefault()
@@ -132,8 +137,15 @@ class GrowthAndHealthRecords extends React.Component{
         axios.post('http://localhost:3001/api/v1/immunisations', {immunisation}, {withCredentials: true})
         .then(response => {
             console.log(response)
-            this.redirect()
+            if (response.data.status === 'created'){
+                this.redirect()
+            } else {
+                this.setState({
+                    errors: [...this.state.errors, response.data.errors]
+                })
+            }
         })
+        .catch( error => console.log('api errors: ', error))
     }
     handleVisitSubmit = (event) => {
         event.preventDefault()
@@ -158,8 +170,15 @@ class GrowthAndHealthRecords extends React.Component{
         axios.post('http://localhost:3001/api/v1/visits', {visit}, {withCredentials: true})
         .then(response => {
             console.log(response)
-            this.redirect()
+            if (response.data.status === 'created'){
+                this.redirect()
+            } else {
+                this.setState({
+                    errors: [...this.state.errors, response.data.errors]
+                })
+            }
         })
+        .catch( error => console.log('api errors: ', error))
     }
     handleHepBSubmit = (event) => {
         event.preventDefault()
@@ -182,8 +201,15 @@ class GrowthAndHealthRecords extends React.Component{
         axios.post('http://localhost:3001/api/v1/hepatitis_b_vaccines', {hepatitis_b_vaccine}, {withCredentials: true})
         .then(response => {
             console.log(response)
-            this.redirect()
+            if (response.data.status === 'created'){
+                this.redirect()
+            } else {
+                this.setState({
+                    errors: [...this.state.errors, response.data.errors]
+                })
+            }
         })
+        .catch( error => console.log('api errors: ', error))
     }
     redirect = () => {
         window.location.replace('http://localhost:4000/records')

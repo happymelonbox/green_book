@@ -70,8 +70,15 @@ class Immunisations extends React.Component{
         axios.put(`http://localhost:3001/api/v1/immunisations/${id}`, {immunisation}, {withCredentials: true})
         .then(response => {
             console.log(response)
-            window.location.reload()
+            if (response.data.status === 'updated'){
+                window.location.replace("http://localhost:4000/records")
+            } else {
+                this.setState({
+                    errors: [...this.state.errors, response.data.errors]
+                })
+            }
         })
+        .catch( error => console.log('api errors: ', error))
     }
     render(){
         const imm = this.props.immunisation
@@ -89,6 +96,11 @@ class Immunisations extends React.Component{
                 <button className={`${child.id}ImmunisationEdit pointer`} onClick={this.handleClick}>Edit Immunisation</button><br/>
                 <div id={`${child.id}ImmunisationEdit`} className = "hidden">
                     < ImmunisationForm child_id={child.id} handleImmEditSubmit = {this.handleImmEditSubmit} handleChange={this.handleChange} button="Edit"/>
+                </div>
+                <div>
+                    {
+                        this.state.errors ? this.handleErrors() : null
+                    }
                 </div>
             </div>
         )

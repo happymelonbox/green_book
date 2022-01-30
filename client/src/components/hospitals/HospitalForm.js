@@ -94,6 +94,11 @@ class HospitalForm extends Component{
                     <br/>
                     <button type="submit">Submit</button>
                 </form>
+                <div>
+                    {
+                        this.state.errors ? this.handleErrors() : null
+                    }
+                </div>
             </div>
         )
     }

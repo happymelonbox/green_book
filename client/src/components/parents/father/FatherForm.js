@@ -71,7 +71,8 @@ class FatherForm extends Component{
     }
 
     render(){
-        return(<div>
+        return(
+        <div>
             <h2>Add a Father</h2>
             <form onSubmit={this.handleSubmit.bind(this)}>
             <label>First Name: <input type="text" name="first_name" onChange={this.handleChange.bind(this)}/></label>
@@ -90,6 +91,11 @@ class FatherForm extends Component{
             <br/>
             <button type="submit">Submit</button>
             </form>
+            <div>
+                {
+                    this.state.errors ? this.handleErrors() : null
+                }
+            </div>
         </div>)
     }
 }

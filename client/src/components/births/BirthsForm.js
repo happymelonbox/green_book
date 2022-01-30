@@ -144,8 +144,11 @@ class BirthsForm extends Component {
                         last_name === this.state.father_last_name &&
                         birth_day === this.state.father_birth_day &&
                         birth_month === this.state.father_birth_month &&
-                        birth_year === this.state.father_birth_year ).id
-            }}))
+                        birth_year === this.state.father_birth_year 
+                    ).id
+                }
+            })
+        )
     }
 
     handleSubmit = (event) => {
@@ -314,6 +317,11 @@ class BirthsForm extends Component {
                 <br/>
                 <button type="submit">Submit</button>
                 </form>
+                <div>
+                    {
+                        this.state.errors ? this.handleErrors() : null
+                    }
+                </div>
             </div>
         )
     }

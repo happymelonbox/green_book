@@ -41,8 +41,15 @@ class HepatitisBVaccines extends React.Component{
         axios.put(`http://localhost:3001/api/v1/hepatitis_b_vaccines/${id}`, {hepatitis_b_vaccine}, {withCredentials: true})
         .then(response => {
             console.log(response)
-            window.location.reload()
+            if (response.data.status === 'updated'){
+                window.location.replace("http://localhost:4000/records")
+            } else {
+                this.setState({
+                    errors: [...this.state.errors, response.data.errors]
+                })
+            }
         })
+        .catch( error => console.log('api errors: ', error))
     }
 
     handleChange = (event) => {
@@ -73,15 +80,22 @@ class HepatitisBVaccines extends React.Component{
         let child = this.props.child
         return(
             <div>
-                <p>
-                    Clinic: {hepB.place_given}<br/>
-                    Date given: {date}<br/>
-                    Batch number: {hepB.batch_no}<br/>
-                    Given by: {hepB.given_by}
-                </p>
-                <button className={`${child.id}HepBEdit pointer`} onClick={this.handleClick}>Edit Hepatitis B Immunisation</button><br/>
-                <div id={`${child.id}HepBEdit`} className = "hidden">
-                    < HepatitisBForm hepB={hepB} child_id={child.id} handleHepBEditSubmit = {this.handleHepBEditSubmit} handleChange={this.handleChange} button="Edit"/>
+                <div>
+                    <p>
+                        Clinic: {hepB.place_given}<br/>
+                        Date given: {date}<br/>
+                        Batch number: {hepB.batch_no}<br/>
+                        Given by: {hepB.given_by}
+                    </p>
+                    <button className={`${child.id}HepBEdit pointer`} onClick={this.handleClick}>Edit Hepatitis B Immunisation</button><br/>
+                    <div id={`${child.id}HepBEdit`} className = "hidden">
+                        < HepatitisBForm hepB={hepB} child_id={child.id} handleHepBEditSubmit = {this.handleHepBEditSubmit} handleChange={this.handleChange} button="Edit"/>
+                    </div>
+                </div>
+                <div>
+                    {
+                        this.state.errors ? this.handleErrors() : null
+                    }
                 </div>
             </div>
         )

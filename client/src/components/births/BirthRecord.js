@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import { BirthDetails } from './BirthDetails'
-import '../../style/births.css'
 
 class BirthRecord extends Component{
     constructor(props){

@@ -1,8 +1,5 @@
 export const BirthDetails = ({birth, hospitalName, handleClick, handleChange, handleBirthEditSubmit}) => {
-    function handlePreClick(event){
-        event.target.innerHTML = event.target.innerHTML === "Edit Birth Details" ? "Close" : "Edit Birth Details"
-        handleClick(event)
-    }
+    
     return(
         <div>
             <form onSubmit={handleBirthEditSubmit}>
@@ -60,6 +57,11 @@ export const BirthDetails = ({birth, hospitalName, handleClick, handleChange, ha
                 <button className={`${birth.id}editBirthInputs hidden`} type="submit">Submit changes</button>
             </form>
             <button id = {`${birth.id}editBirthInputs`} onClick={handleClick}>Edit Birth Details</button>
+            <div>
+                {
+                    this.state.errors ? this.handleErrors() : null
+                }
+            </div>
         </div>
     )
 }
