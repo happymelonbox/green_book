@@ -21,10 +21,10 @@ children = user.children.create!([
 ])
 
 hospitals = Hospital.create!([
-    {name: "Cabrini" , address_line_1: "181 Wattletree Road", address_line_2: "", address_suburb: "Malvern", address_state: "Victoria", address_postcode: 3144, address_country: "Australia", address_city: "Melbourne"},
-    {name: "The Alfred", address_line_1: "55 Commercial Road", address_line_2: "", address_suburb: "Melbourne", address_state: "Victoria", address_postcode: 3004, address_country: "Australia", address_city: "Melbourne"},
-    {name: "Sandringham General", address_line_1: "193 Bluff Road", address_line_2: "", address_suburb: "Sandringham", address_state: "Victoria", address_postcode: 3191, address_country: "Australia", address_city: "Melbourne"},
-    {name: "Caulfield Private", address_line_1: "260-294 Kooyong Road", address_line_2: "", address_suburb: "Caulfield", address_state: "Victoria", address_postcode: 3162, address_country: "Australia", address_city: "Melbourne"}
+    {name: "Cabrini" , address_line_1: "181 Wattletree Road", address_line_2: "", address_suburb: "Malvern", address_state: "Victoria", address_postcode: 3144, address_country: "Australia", address_city: "Melbourne", contact_number: '(03) 9508 1222'},
+    {name: "The Alfred", address_line_1: "55 Commercial Road", address_line_2: "", address_suburb: "Melbourne", address_state: "Victoria", address_postcode: 3004, address_country: "Australia", address_city: "Melbourne", contact_number: '(03) 9076 2000'},
+    {name: "Sandringham General", address_line_1: "193 Bluff Road", address_line_2: "", address_suburb: "Sandringham", address_state: "Victoria", address_postcode: 3191, address_country: "Australia", address_city: "Melbourne", contact_number: '(03) 9076 1000'},
+    {name: "Caulfield Private", address_line_1: "260-294 Kooyong Road", address_line_2: "", address_suburb: "Caulfield", address_state: "Victoria", address_postcode: 3162, address_country: "Australia", address_city: "Melbourne", contact_number: '(03) 9076 6000'}
     ])
 
 births = Birth.create!([
@@ -35,10 +35,10 @@ births = Birth.create!([
 ])
 
 hepBVaccines = HepatitisBVaccine.create!([
-    {place_given: "St Kilda Medical Group", date: "2020-09-12T00:00:00.000Z", dose: "First", batch_no: 122215, given_by: "John Smith", child_id: 1},
-    {place_given: "MyClinic - Elsternwick", date: "2020-12-15T00:00:00.000Z", dose: "First", batch_no: 215548, given_by: "Victoria Little", child_id: 2},
-    {place_given: "MyClinic - Elsternwick", date: "2022-01-10T00:00:00.000Z", dose: "First", batch_no: 031256, given_by: "Victoria Little", child_id: 3},
-    {place_given: "Ripponlea Medical", date: "2022-03-09T00:00:00.000Z", dose: "First", batch_no: 3236654, given_by: "Mary Scott", child_id: 4}
+    {place_given: "St Kilda Medical Group", date: "2020-09-12T00:00:00.000Z", batch_no: 122215, given_by: "John Smith", child_id: 1},
+    {place_given: "MyClinic - Elsternwick", date: "2020-12-15T00:00:00.000Z", batch_no: 215548, given_by: "Victoria Little", child_id: 2},
+    {place_given: "MyClinic - Elsternwick", date: "2022-01-10T00:00:00.000Z", batch_no: 031256, given_by: "Victoria Little", child_id: 3},
+    {place_given: "Ripponlea Medical", date: "2022-03-09T00:00:00.000Z", batch_no: 3236654, given_by: "Mary Scott", child_id: 4}
 ])
 
 vitamin_ks = VitaminK.create!([
@@ -61,16 +61,16 @@ immunisations = Immunisation.create!([
     {age: "4 Months", vaccination_name: "Pevenar13", protects_against: "Pneumococcal", batch_number: "PAA141109", date_given: "2020-10-15", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "2020-12-15", child_id: 1},
     {age: "4 Months", vaccination_name: "Infanrixhexa", protects_against: "Diptheria, Tetanus, Pertussis", batch_number: "A21CD857A", date_given: "2020-10-15", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "2020-12-15", child_id: 1},
     {age: "4 Months", vaccination_name: "Rotarix", protects_against: "Rotovirus", batch_number: "AROLC698AC", date_given: "2020-10-15", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "2020-12-15", child_id: 1},
-    {age: "6 Months", vaccination_name: "Infanrixhexa", protects_against: "Diptheria, Tetanus, Pertussis", batch_number: "A21CD857A", date_given: "2020-12-15", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "", child_id: 1},
-    {age: "10 Months", vaccination_name: "Bexsero", protects_against: "Meningitis B", batch_number: "ABXB50AA", date_given: "2021-04-20", nurse_name: "Mark", clinic: "St Kilda Medical Group", date_of_next_dose: "", child_id: 1},
+    {age: "6 Months", vaccination_name: "Infanrixhexa", protects_against: "Diptheria, Tetanus, Pertussis", batch_number: "A21CD857A", date_given: "2020-12-15", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "LAST DOSE", child_id: 1},
+    {age: "10 Months", vaccination_name: "Bexsero", protects_against: "Meningitis B", batch_number: "ABXB50AA", date_given: "2021-04-20", nurse_name: "Mark", clinic: "St Kilda Medical Group", date_of_next_dose: "LAST DOSE", child_id: 1},
     {age: "2 Months", vaccination_name: "Pevenar13", protects_against: "Pneumococcal", batch_number: "CM5597", date_given: "2020-10-16", nurse_name: "Sarah", clinic: "Ripponlea Medical", date_of_next_dose: "2020-12-12", child_id: 2},
     {age: "2 Months", vaccination_name: "Infanrixhexa", protects_against: "Diptheria, Tetanus, Pertussis", batch_number: "AROL648GS", date_given: "2020-10-16", nurse_name: "Sarah", clinic: "Ripponlea Medical", date_of_next_dose: "2020-12-12", child_id: 2},
     {age: "2 Months", vaccination_name: "Rotarix", protects_against: "Rotovirus", batch_number: "A21CD696H", date_given: "2020-10-16", nurse_name: "Sarah", clinic: "Ripponlea Medical", date_of_next_dose: "2020-12-12", child_id: 2},
     {age: "4 Months", vaccination_name: "Pevenar13", protects_against: "Pneumococcal", batch_number: "PAA141165", date_given: "2020-12-12", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "2020-02-15", child_id: 2},
     {age: "4 Months", vaccination_name: "Infanrixhexa", protects_against: "Diptheria, Tetanus, Pertussis", batch_number: "A21CD896A", date_given: "2020-12-12", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "2020-02-15", child_id: 2},
     {age: "4 Months", vaccination_name: "Rotarix", protects_against: "Rotovirus", batch_number: "AROLC6948C", date_given: "2020-12-12", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "2020-02-15", child_id: 2},
-    {age: "6 Months", vaccination_name: "Infanrixhexa", protects_against: "Diptheria, Tetanus, Pertussis", batch_number: "A54CD822A", date_given: "2020-02-15", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "", child_id: 2},
-    {age: "10 Months", vaccination_name: "Bexsero", protects_against: "Meningitis B", batch_number: "ABXB90HG", date_given: "2021-08-20", nurse_name: "Mark", clinic: "St Kilda Medical Group", date_of_next_dose: "", child_id: 2}
+    {age: "6 Months", vaccination_name: "Infanrixhexa", protects_against: "Diptheria, Tetanus, Pertussis", batch_number: "A54CD822A", date_given: "2020-02-15", nurse_name: "Megan", clinic: "MyClinic Elsternwick", date_of_next_dose: "LAST DOSE", child_id: 2},
+    {age: "10 Months", vaccination_name: "Bexsero", protects_against: "Meningitis B", batch_number: "ABXB90HG", date_given: "2021-08-20", nurse_name: "Mark", clinic: "St Kilda Medical Group", date_of_next_dose: "LAST DOSE", child_id: 2}
 ])
 
 visits = Visit.create!([

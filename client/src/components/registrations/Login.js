@@ -8,7 +8,7 @@ class Login extends Component {
       username: '',
       email: '',
       password: '',
-      errors: ''
+      errors: []
      };
   }
 

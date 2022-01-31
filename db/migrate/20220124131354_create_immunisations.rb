@@ -8,7 +8,7 @@ class CreateImmunisations < ActiveRecord::Migration[7.0]
       t.date :date_given
       t.string :nurse_name
       t.string :clinic
-      t.date :date_of_next_dose
+      t.string :date_of_next_dose
 
       t.timestamps
 

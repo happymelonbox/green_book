@@ -3,6 +3,6 @@ class Appointment < ApplicationRecord
 
     validates :reason, presence: true
     validates :date_and_time, presence: true
-    validates :contact_number, phone: { possible: true, allow_blank: true, types: [:voip, :mobile] }
+    validates :location_contact_number, format: { with: /\A(\+?\(61\)|\(\+?61\)|\+?61|\(0[1-9]\)|0[1-9])?( ?-?[0-9]){7,9}\z/, on: :create}
     validates :child_id, presence: true
 end

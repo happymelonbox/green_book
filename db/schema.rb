@@ -94,7 +94,6 @@ ActiveRecord::Schema.define(version: 2022_01_24_131354) do
   create_table "hepatitis_b_vaccines", force: :cascade do |t|
     t.string "place_given"
     t.date "date"
-    t.string "dose"
     t.integer "batch_no"
     t.string "given_by"
     t.bigint "child_id"
@@ -112,6 +111,7 @@ ActiveRecord::Schema.define(version: 2022_01_24_131354) do
     t.integer "address_postcode"
     t.string "address_country"
     t.string "address_city"
+    t.string "contact_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 2022_01_24_131354) do
     t.date "date_given"
     t.string "nurse_name"
     t.string "clinic"
-    t.date "date_of_next_dose"
+    t.string "date_of_next_dose"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "child_id"

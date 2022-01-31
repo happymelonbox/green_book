@@ -13,8 +13,6 @@ class User < ApplicationRecord
     validates :username, uniqueness: true
     validates :first_name, presence: true
     validates :last_name, presence: true
-    validates :contact_number, presence: true
-    validates :contact_number, uniqueness: true
     validates :address_unit_number, presence: true
     validates :address_street_number, presence: true
     validates :address_street_name, presence: true
@@ -24,7 +22,7 @@ class User < ApplicationRecord
     validates :address_country, presence: true
 
     validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
-    validates :contact_number, phone: { possible: true, allow_blank: true, types: [:voip, :mobile] }
+    validates :contact_number, format: { with: /\A(\+?\(61\)|\(\+?61\)|\+?61|\(0[1-9]\)|0[1-9])?( ?-?[0-9]){7,9}\z/, on: :create}
 
 
     def self.from_omniauth(response)
@@ -33,5 +31,6 @@ class User < ApplicationRecord
             u.password = SecureRandom.hex(15)
         end
     end
+
 
 end
