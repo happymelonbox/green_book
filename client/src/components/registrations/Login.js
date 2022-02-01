@@ -62,49 +62,53 @@ class Login extends Component {
   render() {
     const {username, email, password} = this.state
   return (
-      <div>
+      <div className="login_container">
         <h1>Log In</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input
+        <form onSubmit={this.handleSubmit} className="login_form_container">
+          <input 
+            className="login_inputs"
             placeholder="username"
             type="text"
             name="username"
-            autoComplete='username'
             value={username}
             onChange={this.handleChange}
-          />
-          <input
+            required
+          /><br/>
+          <input 
+            className="login_inputs"
             placeholder="email"
             type="text"
             name="email"
-            autoComplete='email'
             value={email}
             onChange={this.handleChange}
-          />
-          <input
+            required
+          /><br/>
+          <input 
+            className="login_inputs"
             placeholder="password"
             type="password"
             name="password"
             autoComplete='current-password'
             value={password}
             onChange={this.handleChange}
-          />
-          <button placeholder="submit" type="submit">
+            required
+          /><br/>
+          <button placeholder="submit" type="submit" className="login_button">
             Log In
           </button>
-          
-        </form>
-      
-          <div>
-            or <Link to='/signup'>Sign up</Link>
-          <br/>
-            or 
+          </form>
+          <p>
+            <strong>or </strong>
+          </p>
             <form action='http://localhost:3001/login' className="button_to" data-remote="true" method="get">
               <input type="submit" value="Log in with Google" />
             </form>
-          </div>
-          
+          <p>
+            <strong>or</strong><br/>
+            <strong><Link to='/signup'>Sign up</Link></strong>
+          </p>
           <div>
+          
           {
             this.state.errors ? this.handleErrors() : null
           }

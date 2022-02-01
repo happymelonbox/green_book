@@ -1,5 +1,57 @@
+html{
+  margin: 0;
+  top: 0;
+  left: 0;
+  background-color: rgb(98, 197, 98);
+  font-size: 20px;
+}
+
+.app_container{
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+
+.home_container{
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+@media screen and (min-width: 401px) {
+  .app_main{
+    display: none
+  }
+
+  .large_screen_main{
+    display: contents;
+    text-align: center;
+  }
+
+  .large_screen_h1{
+    margin-top: 20%;
+  }
+}
+@media screen and (max-width: 400px) and (max-height: 812px){
+
+  .app_main{
+    display: contents;
+    
+  }
+
+  .large_screen_main{
+    display: none;
+  }
+
+
 body {
   margin: 0;
+  top: 0;
+  left: 0;
+  width: 375px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -19,3 +71,181 @@ code {
 .hidden{
   display: none
 }
+
+/*            */
+/* Login Page */
+/*            */
+
+
+.login_container{
+  text-align: center;
+  margin: 50% 12.5%;
+  box-sizing: border-box;
+  border-radius: 5%;
+  border: solid 5px rgb(228, 174, 109);
+  display: block;
+  width: 75%;
+  background-color: rgba(255, 228, 196, 0.897);
+  padding: 20px;
+  color: rgb(255, 228, 196);
+  text-shadow: rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px
+}
+
+a{
+  color: rgb(255, 228, 196);
+  text-decoration: none;
+  
+}
+
+::placeholder{
+  color: rgb(255, 228, 196);
+  font-weight: bold;
+}
+input[type="text"]:focus, input[type="password"]:focus, input[type="password"]:focus{
+  background-color: rgb(228, 174, 109);
+  color: rgb(255, 228, 196);
+  font-weight: bold;
+  height: 30px;
+  font-size: 20px;
+  border: solid 1px rgb(255, 228, 196);
+  box-shadow: rgb(228, 174, 109) 0px 0px 1px ;
+  outline-style: groove;
+  outline-color: rgb(255, 228, 196);
+  outline-width: medium;
+}
+
+input[type="text"]{
+  background-color: rgb(228, 174, 109);
+  color: rgb(255, 228, 196);
+  font-weight: bold;
+  height: 30px;
+  font-size: 20px;
+  border: solid 1px rgb(255, 228, 196);
+}
+
+[type="submit"]{
+  background-color: rgb(228, 174, 109);
+  color: rgb(255, 228, 196);
+  font-weight: bold;
+  height: 30px;
+  font-size: 20px;
+  border: solid 1px rgb(255, 228, 196);
+}
+
+input[type="password"]{
+  background-color: rgb(228, 174, 109);
+  color: rgb(255, 228, 196);
+  font-weight: bold;
+  height: 30px;
+  font-size: 20px;
+  border: solid 1px rgb(255, 228, 196);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid rgb(255, 228, 196);
+  -webkit-text-fill-color: rgb(255, 228, 196);;
+  -webkit-box-shadow: 0 0 0px 1000px rgb(228, 174, 109) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/*            */
+/* Signup Page*/
+/*            */
+
+.signup_container{
+  text-align: center;
+  margin: 15% 12.5%;
+  box-sizing: border-box;
+  border-radius: 5%;
+  border: solid 5px rgb(228, 174, 109);
+  display: block;
+  width: 75%;
+  background-color: rgba(255, 228, 196, 0.897);
+  padding: 20px;
+  color: rgb(255, 228, 196);
+  text-shadow: rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px
+}
+
+#home{
+  text-align: left;
+  margin: 0;
+  display: block;
+}
+
+.logout_link{
+    background-color: rgb(228, 174, 109);
+    color: rgb(255, 228, 196);
+    font-weight: bold;
+    height: 30px;
+    font-size: 20px;
+    border: solid 1px rgb(255, 228, 196);
+  }
+
+/*            */
+/*   Navbar   */
+/*            */
+
+
+
+
+/*            */
+/* Dashboard  */
+/*            */
+
+.welcome_banner{
+  margin-top: 25%;
+}
+
+.dashboard_container{
+  text-align: center;
+  margin: 5%;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 5%;
+  border: solid 5px rgb(228, 174, 109);
+  width: 90%;
+  height: 768px;
+  overflow: scroll;
+  background-color: rgba(255, 228, 196, 0.897);
+  padding: 5%;
+  color: rgb(255, 228, 196);
+  text-shadow: rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px
+}
+
+/*            */
+/*DashboardNav*/
+/*            */
+
+.dashboard_nav{
+  padding-top: 25%;
+}
+
+.dashboard_links{
+  font-size: 25px;
+  color: rgb(228, 174, 109)
+}
+
+/*            */
+/*   Footer   */
+/*            */
+
+.logout_link{
+  margin-top: 30%;
+}
+
+#copyright_symbol{
+  font-size: 30px;
+}
+
+.footer_info{
+  margin-top: 30%;
+}
+} 

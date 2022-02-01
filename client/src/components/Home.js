@@ -7,7 +7,7 @@ import Dashboard from './dashboard/Dashboard'
 class Home extends React.Component{
   render(){
     return (
-      <div>
+      <div className='home_container'>
         {this.props.loggedInStatus ? 
         <Dashboard user={this.props.user} handleLogout={this.props.handleLogout}/>
         :

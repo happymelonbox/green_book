@@ -92,100 +92,105 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Router>
-          <Routes>
-            <Route
-              exact path='/'
-              element={
-              <Home loggedInStatus = {this.state.isLoggedIn} user={this.state.user} handleLogout={this.handleLogout} handleLogin={this.handleLogin}/>
-              }
-            />
-                <Route
-                  exact path='/login'
-                  element={
-                  <Login />
-                }
-                />
-                <Route
-                  exact path='/signup'
-                  element={
-                  <Signup handleLogin={this.handleLogin}/>
-                  }
-                />
-            <Route
-              exact path='/children'
-              element={
-              <Children user={this.state.user} children={this.state.children}/>
-            }
-            />
-                <Route
-                exact path='/add_a_child'
+      <div className="app_container">
+        <div className="large_screen_main">
+          <h1 className="large_screen_h1">This application has been optimised for devices with smaller screens such as smartphones.</h1>
+        </div>
+        <div className="app_main">
+          <Router>
+            <Routes>
+              <Route
+                exact path='/'
                 element={
-                  <ChildrenForm user={this.state.user} handleCreateChildren={this.handleCreateChildren} />
+                <Home loggedInStatus = {this.state.isLoggedIn} user={this.state.user} handleLogout={this.handleLogout} handleLogin={this.handleLogin}/>
                 }
-                />
-                <Route
-                exact path='/child'
+              />
+                  <Route
+                    exact path='/login'
+                    element={
+                    <Login />
+                  }
+                  />
+                  <Route
+                    exact path='/signup'
+                    element={
+                    <Signup handleLogin={this.handleLogin}/>
+                    }
+                  />
+              <Route
+                exact path='/children'
                 element={
-                  <Child user={this.state.user} child={this.props.child}/>
+                <Children user={this.state.user} children={this.state.children}/>
+              }
+              />
+                  <Route
+                  exact path='/add_a_child'
+                  element={
+                    <ChildrenForm user={this.state.user} handleCreateChildren={this.handleCreateChildren} />
+                  }
+                  />
+                  <Route
+                  exact path='/child'
+                  element={
+                    <Child user={this.state.user} child={this.props.child}/>
+                  }
+                  />
+                  <Route
+                    exact path='/birth_record'
+                    element={
+                    <BirthRecord/>
+                    }
+                  />
+                  <Route
+                    exact path='/add_a_birth_record'
+                    element={
+                    <BirthsForm/>
+                    }
+                  />
+                  <Route
+                    exact path ='/add_a_hospital'
+                    element={
+                      <HospitalForm />
+                    }
+                  />
+                  <Route
+                    exact path ='/add_a_mother'
+                    element={
+                      <MotherForm />
+                    }
+                  />
+                  <Route
+                    exact path ='/add_a_father'
+                    element={
+                      <FatherForm />
+                    }
+                  />
+              <Route
+                exact path='/appointments_to_keep'
+                element={
+                <Appointments />
                 }
-                />
-                <Route
-                  exact path='/birth_record'
-                  element={
-                  <BirthRecord/>
-                  }
-                />
-                <Route
-                  exact path='/add_a_birth_record'
-                  element={
-                  <BirthsForm/>
-                  }
-                />
-                <Route
-                  exact path ='/add_a_hospital'
-                  element={
-                    <HospitalForm />
-                  }
-                />
-                <Route
-                  exact path ='/add_a_mother'
-                  element={
-                    <MotherForm />
-                  }
-                />
-                <Route
-                  exact path ='/add_a_father'
-                  element={
-                    <FatherForm />
-                  }
-                />
-            <Route
-              exact path='/appointments_to_keep'
-              element={
-              <Appointments />
-              }
-            />
-                <Route
-                  exact path='/add_an_appointment'
-                  element={
-                  <AppointmentsForm />
-                  }
-                />
-            <Route
-              exact path='/records'
-              element={
-              <GrowthAndHealthRecords />
-              }
-            />
-            <Route
-              exact path='/useful_information/*'
-              element={
-              <UsefulInformation />
-              }/>
-          </Routes>
-        </Router>
+              />
+                  <Route
+                    exact path='/add_an_appointment'
+                    element={
+                    <AppointmentsForm />
+                    }
+                  />
+              <Route
+                exact path='/records'
+                element={
+                <GrowthAndHealthRecords />
+                }
+              />
+              <Route
+                exact path='/useful_information/*'
+                element={
+                <UsefulInformation />
+                }/>
+            </Routes>
+          </Router>
+        </div>
       </div>
     );
   }

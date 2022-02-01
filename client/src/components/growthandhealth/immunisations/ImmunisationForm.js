@@ -24,11 +24,6 @@ export const ImmunisationForm = ({handleImmunisationSubmit, handleImmEditSubmit,
 
                 <button type="submit">{button}</button>
             </form>
-            <div>
-                {
-                    this.state.errors ? this.handleErrors() : null
-                }
-            </div>
         </div>
     )
 }

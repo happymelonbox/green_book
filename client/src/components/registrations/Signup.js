@@ -107,9 +107,10 @@ render() {
   } = this.state
 
 return (
-      <div>
+      <div className='signup_container'>
+         <Link id="home" to="/">Home</Link>
         <h1>Sign Up</h1>
-        <Link to="/">Home</Link>
+      
         <form onSubmit={this.handleSubmit}>
           <input
             placeholder="username"
@@ -208,7 +209,7 @@ return (
             name="password_confirmation"
             value={password_confirmation}
             onChange={this.handleChange}
-          />
+          /><br/>
 
           <button placeholder="submit" type="submit">
             Sign Up

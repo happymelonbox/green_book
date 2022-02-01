@@ -7,14 +7,14 @@ import Footer from '../../containers/Footer'
 class Dashboard extends React.Component {
     render(){
         return(
-            <div>
+            <div className="dashboard_container">
                 <div>
-                    <Navbar handleLogout={this.props.handleLogout}/>
+                    <Navbar />
                 </div>
                 <div>
-                    <h3>Welcome {this.props.user.first_name} </h3>
+                    <h3 className="welcome_banner">Welcome back {this.props.user.first_name} </h3>
                     <DashboardNav />
-                    <Footer />
+                    <Footer handleLogout={this.props.handleLogout}/>
                 </div>
             </div>
         )

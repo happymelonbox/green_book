@@ -6,9 +6,9 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="navbar">
         <h2 className='Logo'>Green_Book</h2>
-        <button onClick={this.props.handleLogout} className="logout_link">Log Out</button>
+        
       </div>
     );
   }
