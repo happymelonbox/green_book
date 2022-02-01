@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import Navbar from '../../containers/Navbar';
+import Footer from '../../containers/Footer';
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -63,9 +65,10 @@ class Login extends Component {
     const {username, email, password} = this.state
   return (
       <div className="login_container">
-        <h1>Log In</h1>
+        <Navbar/>
+        <h3 className="login_banner">Log In</h3>
         <form onSubmit={this.handleSubmit} className="login_form_container">
-          <input 
+          <label>Username <input 
             className="login_inputs"
             placeholder="username"
             type="text"
@@ -73,17 +76,18 @@ class Login extends Component {
             value={username}
             onChange={this.handleChange}
             required
-          /><br/>
-          <input 
+          /></label>
+          <label>Email<input 
             className="login_inputs"
             placeholder="email"
             type="text"
             name="email"
             value={email}
             onChange={this.handleChange}
+            autoComplete='email'
             required
-          /><br/>
-          <input 
+          /></label>
+          <label>Password<input 
             className="login_inputs"
             placeholder="password"
             type="password"
@@ -92,20 +96,18 @@ class Login extends Component {
             value={password}
             onChange={this.handleChange}
             required
-          /><br/>
-          <button placeholder="submit" type="submit" className="login_button">
-            Log In
-          </button>
+          /><br/></label>
+          <label></label><input type="submit" value="Log In" className="login_button"/>
           </form>
           <p>
-            <strong>or </strong>
+            or
           </p>
             <form action='http://localhost:3001/login' className="button_to" data-remote="true" method="get">
               <input type="submit" value="Log in with Google" />
             </form>
           <p>
-            <strong>or</strong><br/>
-            <strong><Link to='/signup'>Sign up</Link></strong>
+            or<br/>
+            <Link className="signup_link" to='/signup'>Sign up</Link>
           </p>
           <div>
           
@@ -113,6 +115,7 @@ class Login extends Component {
             this.state.errors ? this.handleErrors() : null
           }
         </div>
+        <Footer/>
       </div>
     );
   }

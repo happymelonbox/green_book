@@ -2,7 +2,7 @@ html{
   margin: 0;
   top: 0;
   left: 0;
-  background-color: rgb(98, 197, 98);
+  background-color: rgb(86, 124, 86);
   font-size: 20px;
 }
 
@@ -77,68 +77,82 @@ code {
 /*            */
 
 
+
 .login_container{
   text-align: center;
-  margin: 50% 12.5%;
+  margin: 5%;
+  position: relative;
   box-sizing: border-box;
-  border-radius: 5%;
-  border: solid 5px rgb(228, 174, 109);
-  display: block;
-  width: 75%;
+  width: 90%;
+  height: 768px;
+  overflow: scroll;
   background-color: rgba(255, 228, 196, 0.897);
-  padding: 20px;
-  color: rgb(255, 228, 196);
-  text-shadow: rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px
+  padding: 5%;
+  color: rgb(3, 3, 3);
 }
 
+.login_banner{
+  margin-top: 25%;
+}
+
+
 a{
-  color: rgb(255, 228, 196);
+  color: rgb(3, 3, 3);
   text-decoration: none;
   
 }
 
-::placeholder{
-  color: rgb(255, 228, 196);
-  font-weight: bold;
-}
-input[type="text"]:focus, input[type="password"]:focus, input[type="password"]:focus{
-  background-color: rgb(228, 174, 109);
-  color: rgb(255, 228, 196);
-  font-weight: bold;
-  height: 30px;
-  font-size: 20px;
-  border: solid 1px rgb(255, 228, 196);
-  box-shadow: rgb(228, 174, 109) 0px 0px 1px ;
-  outline-style: groove;
-  outline-color: rgb(255, 228, 196);
-  outline-width: medium;
+.login_form_container{
+  margin-top: 10%;
 }
 
-input[type="text"]{
+::placeholder{
+  color: rgb(3, 3, 3);
+}
+input[type="text"]:focus, input[type="password"]:focus{
   background-color: rgb(228, 174, 109);
-  color: rgb(255, 228, 196);
-  font-weight: bold;
+  color: rgb(3, 3, 3);
   height: 30px;
   font-size: 20px;
-  border: solid 1px rgb(255, 228, 196);
+  width: 270px;
+  padding-top: 6px;
+  padding-bottom: 2px;
+  display: block;
+  margin: auto;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border: none;
+  /* border-radius: 8px; */
+}
+
+input[type="text"], input[type="password"]{
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 30px;
+  font-size: 20px;
+  width: 270px;
+  padding-top: 6px;
+  padding-bottom: 2px;
+  display: block;
+  margin: auto;
+  border: none;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  /* border-radius: 8px; */
 }
 
 [type="submit"]{
   background-color: rgb(228, 174, 109);
-  color: rgb(255, 228, 196);
-  font-weight: bold;
-  height: 30px;
+  color: rgb(3, 3, 3);
   font-size: 20px;
-  border: solid 1px rgb(255, 228, 196);
-}
-
-input[type="password"]{
-  background-color: rgb(228, 174, 109);
-  color: rgb(255, 228, 196);
-  font-weight: bold;
-  height: 30px;
-  font-size: 20px;
-  border: solid 1px rgb(255, 228, 196);
+  width: 280px;
+  height: 40px;
+  padding-top: 2px;
+  padding-bottom: 0px;
+  display: block;
+  margin: auto;
+  /* margin-top: 2%; */
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
+  border: none;
 }
 
 input:-webkit-autofill,
@@ -150,10 +164,24 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  border: 1px solid rgb(255, 228, 196);
-  -webkit-text-fill-color: rgb(255, 228, 196);;
-  -webkit-box-shadow: 0 0 0px 1000px rgb(228, 174, 109) inset;
+  -webkit-text-fill-color: rgb(3, 3, 3);
+  border: none;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+.signup_link{
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 32px;
+  font-size: 20px;
+  width: 280px;
+  padding-top: 6px;
+  padding-bottom: 2px;
+  display: block;
+  margin: auto;
+  margin-top: 8%;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
 }
 
 /*            */
@@ -162,38 +190,37 @@ select:-webkit-autofill:focus {
 
 .signup_container{
   text-align: center;
-  margin: 15% 12.5%;
+  margin: 5%;
+  position: relative;
   box-sizing: border-box;
-  border-radius: 5%;
-  border: solid 5px rgb(228, 174, 109);
-  display: block;
-  width: 75%;
+  width: 90%;
+  height: 768px;
+  overflow: scroll;
   background-color: rgba(255, 228, 196, 0.897);
-  padding: 20px;
-  color: rgb(255, 228, 196);
-  text-shadow: rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px
+  padding: 5%;
+  color: rgb(3, 3, 3);
+}
+
+.signup_banner{
+  margin-top: 25px;
 }
 
 #home{
   text-align: left;
-  margin: 0;
   display: block;
+  top: 0;
+  left: 0;
 }
-
-.logout_link{
-    background-color: rgb(228, 174, 109);
-    color: rgb(255, 228, 196);
-    font-weight: bold;
-    height: 30px;
-    font-size: 20px;
-    border: solid 1px rgb(255, 228, 196);
-  }
 
 /*            */
 /*   Navbar   */
 /*            */
 
-
+.logo{
+  color: rgb(86, 124, 86);
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 15%;
+}
 
 
 /*            */
@@ -209,15 +236,12 @@ select:-webkit-autofill:focus {
   margin: 5%;
   position: relative;
   box-sizing: border-box;
-  border-radius: 5%;
-  border: solid 5px rgb(228, 174, 109);
   width: 90%;
   height: 768px;
   overflow: scroll;
   background-color: rgba(255, 228, 196, 0.897);
   padding: 5%;
-  color: rgb(255, 228, 196);
-  text-shadow: rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px, rgb(228, 174, 109) 0px 0px 1px
+  color: rgb(3, 3, 3);
 }
 
 /*            */
@@ -225,20 +249,44 @@ select:-webkit-autofill:focus {
 /*            */
 
 .dashboard_nav{
-  padding-top: 25%;
+  padding-top: 10%;
 }
 
 .dashboard_links{
-  font-size: 25px;
-  color: rgb(228, 174, 109)
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 30px;
+  font-size: 20px;
+  width: 270px;
+  padding-top: 6px;
+  padding-bottom: 2px;
+  display: block;
+  margin: auto;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
 }
 
 /*            */
 /*   Footer   */
 /*            */
 
+.footer_container{
+  margin-top: 10%;
+}
+
 .logout_link{
-  margin-top: 30%;
+  margin-top: 50%;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 30px;
+  font-size: 20px;
+  width: 270px;
+  padding-top: 6px;
+  padding-bottom: 2px;
+  display: block;
+  margin: auto;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
 }
 
 #copyright_symbol{
@@ -246,7 +294,7 @@ select:-webkit-autofill:focus {
 }
 
 .footer_info{
-  margin-top: 30%;
+  margin-top: 5%;
 }
 
 #ackowledgement_brief{

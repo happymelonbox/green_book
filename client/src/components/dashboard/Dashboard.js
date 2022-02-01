@@ -12,9 +12,9 @@ class Dashboard extends React.Component {
                     <Navbar />
                 </div>
                 <div>
-                    <h3 className="welcome_banner">Welcome back {this.props.user.first_name} </h3>
+                    <h3 className="welcome_banner">Welcome back, {this.props.user.first_name} </h3>
                     <DashboardNav />
-                    <Footer handleLogout={this.props.handleLogout}/>
+                    <Footer loggedInStatus={this.props.loggedInStatus} handleLogout={this.props.handleLogout}/>
                 </div>
             </div>
         )

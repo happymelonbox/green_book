@@ -13,7 +13,6 @@ class User < ApplicationRecord
     validates :username, uniqueness: true
     validates :first_name, presence: true
     validates :last_name, presence: true
-    validates :address_unit_number, presence: true
     validates :address_street_number, presence: true
     validates :address_street_name, presence: true
     validates :address_suburb, presence: true

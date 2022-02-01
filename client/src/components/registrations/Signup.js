@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link } from 'react-router-dom'
+import Navbar from '../../containers/Navbar';
 import axios from 'axios'
 
 class Signup extends Component {
@@ -108,112 +109,97 @@ render() {
 
 return (
       <div className='signup_container'>
-         <Link id="home" to="/">Home</Link>
-        <h1>Sign Up</h1>
+         
+        <Navbar />
+        <Link id="home" to="/">Back</Link>
+        <h3 className="signup_banner">Sign Up</h3>
       
         <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="username"
+          <label>Username<input
             type="text"
             name="username"
-            value={username}
+            required
             onChange={this.handleChange}
-          />
-          <input
-            placeholder="first_name"
+          /></label>
+          <label>First Name<input
             type="text"
             name="first_name"
-            value={first_name}
+            required
             onChange={this.handleChange}
-          />
-          <input
-            placeholder="last_name"
+          /></label>
+          <label>Last Name<input
             type="text"
             name="last_name"
-            value={last_name}
+            required
             onChange={this.handleChange}
-          />
-          <input
-            placeholder="contact_number"
+          /></label>
+          <label>Contact Number<input
             type="text"
             name="contact_number"
-            value={contact_number}
+            required
             onChange={this.handleChange}
-          />
-          <input
-            placeholder="address_unit_number"
+          /></label>
+          <label>Unit Number<input
             type="text"
             name="address_unit_number"
-            value={address_unit_number}
             onChange={this.handleChange}
-          />
-          <input
-            placeholder="address_street_number"
+          /></label>
+          <label>Street Number<input
             type="text"
             name="address_street_number"
-            value={address_street_number}
+            required
             onChange={this.handleChange}
-          />
-          <input
-            placeholder="address_street_name"
+          /></label>
+          <label>Street Name<input
             type="text"
             name="address_street_name"
-            value={address_street_name}
+            required
             onChange={this.handleChange}
-          />
-          <input
-            placeholder="address_suburb"
+          /></label>
+          <label>Suburb<input
             type="text"
             name="address_suburb"
-            value={address_suburb}
+            required
             onChange={this.handleChange}
-          />
-          <input
-            placeholder="address_city"
+          /></label>
+          <label>City<input
             type="text"
             name="address_city"
-            value={address_city}
+            required
             onChange={this.handleChange}
-          />
-          <input
-          placeholder = "State"
+          /></label>
+          <label>State<input
           type= "text"
           name= "address_state"
-          value={address_state}
+          requiredrequired
           onChange={this.handleChange}
-          />
-          <input
-            placeholder="address_country"
+          /></label>
+          <label>Country<input
             type="text"
             name="address_country"
-            value={address_country}
+            required
             onChange={this.handleChange}
-          />
-          <input
-            placeholder="email"
+          /></label>
+          <label>Email<input
             type="text"
             name="email"
-            value={email}
+            required
             onChange={this.handleChange}
-          />
-          <input
-            placeholder="password"
+          /></label>
+          <label>Password<input
             type="password"
             name="password"
-            value={password}
+            required
             onChange={this.handleChange}
-          />
-          <input
-            placeholder="password confirmation"
+          /></label>
+          <label>Confirm Password<input
             type="password"
             name="password_confirmation"
-            value={password_confirmation}
+            required
             onChange={this.handleChange}
-          /><br/>
+          /><br/></label>
 
-          <button placeholder="submit" type="submit">
-            Sign Up
-          </button>
+          <input value="Sign Up" placeholder="submit" type="submit"/>
 
         </form>
         <div>

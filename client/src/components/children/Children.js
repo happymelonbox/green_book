@@ -34,9 +34,9 @@ class Children extends React.Component {
     render(){
         return(
             <div>
-                <div>
-                    <h1>Children</h1>
-                    <Link to="/">Back to Dashboard</Link> <Link to='/add_a_child'>Add a new child</Link>
+                <div className='children_container'>
+                    <h1 className="children_title">Children</h1>
+                    <Link to="/" className="dashboard_">Back to Dashboard</Link> <Link to='/add_a_child'>Add a new child</Link>
                     {this.state.children.map(child => {
                         return (<Child key={child.id} child={child}/>)
                     })}

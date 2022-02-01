@@ -7,7 +7,7 @@ class Navbar extends React.Component {
   render() {
     return (
       <div className="navbar">
-        <h2 className='Logo'>Green_Book</h2>
+        <h2 className='logo'>GreenBook</h2>
       </div>
     );
   }
