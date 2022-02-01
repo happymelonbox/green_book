@@ -248,4 +248,8 @@ select:-webkit-autofill:focus {
 .footer_info{
   margin-top: 30%;
 }
+
+#ackowledgement_brief{
+  display: content
+}
 } 

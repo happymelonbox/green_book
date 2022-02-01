@@ -8,7 +8,6 @@ class Navbar extends React.Component {
     return (
       <div className="navbar">
         <h2 className='Logo'>Green_Book</h2>
-        
       </div>
     );
   }
