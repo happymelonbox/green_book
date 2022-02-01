@@ -301,3 +301,27 @@ select:-webkit-autofill:focus {
   display: content
 }
 } 
+
+/*            */
+/*  Children  */
+/*            */
+
+.children_container{
+  text-align: center;
+  margin: 5%;
+  position: relative;
+  box-sizing: border-box;
+  width: 90%;
+  height: 768px;
+  overflow: scroll;
+  background-color: rgba(255, 228, 196, 0.897);
+  padding: 5%;
+  color: rgb(3, 3, 3);
+}
+
+.children_links{
+  text-align: left;
+  display: block;
+  top: 0;
+  left: 0;
+}
