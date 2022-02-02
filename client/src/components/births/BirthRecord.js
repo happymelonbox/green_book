@@ -85,13 +85,23 @@ class BirthRecord extends Component{
     }
 
     handleClick = (event) => {
-        const value = event.target.id
+        const value = event.target.id.split("-")[0]
         const inputs = document.getElementsByClassName(value)
-        const editButton = document.getElementById(value)
-        for(let i = inputs.length-1; i >= 0; i--){
-            inputs[i].classList.remove("hidden")
+        const editButton = document.getElementById(event.target.id)
+        const container = document.getElementById("birth_details_container")
+        if(editButton.innerHTML !== "Hide Editing"){
+            for(let i = inputs.length-1; i >= 0; i--){
+                inputs[i].classList.remove("hidden")
+                editButton.innerHTML = "Hide Editing"
+            }
+        } else {
+            for(let i = inputs.length-1; i >= 0; i--){
+                inputs[i].classList.add("hidden")
+                editButton.innerHTML = "Edit Birth Details"
+            }
         }
-        editButton.classList.add("hidden")
+        
+        container.style.textAlign = "center"
     }
 
     handleChange = (event)=>{

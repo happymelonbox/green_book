@@ -335,10 +335,56 @@ select:-webkit-autofill:focus {
 .add_child_submit{
   margin-top: 5%;
 }
+
 /*             */
 /*Birth details*/
 /*             */
 
-.birth_details_container{
+#birth_details_container{
   text-align: left;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  position: relative;
 } 
+
+.birth_inputs{
+  margin-top: 50%;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 30px;
+  font-size: 20px;
+  width: 270px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin: auto;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
+}
+
+select.birth_inputs{
+  margin-top: 50%;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 38px;
+  font-size: 20px;
+  width: 277px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin: auto;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
+}
+
+#birth_inputs_submit{
+  margin-top: 10%;
+  width: 277px;
+  height: 40px;
+}
+
+.button_edit_birth_details{
+  margin-top: 10%;
+  width: 277px;
+  height: 40px;
+}
