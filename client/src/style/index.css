@@ -304,7 +304,7 @@ select:-webkit-autofill:focus {
 /*  Children  */
 /*            */
 
-.children_container{
+.children_container, .add_child_container{
   text-align: center;
   margin: 5%;
   position: relative;
@@ -317,6 +317,10 @@ select:-webkit-autofill:focus {
   color: rgb(3, 3, 3);
 }
 
+.add_child_banner{
+  margin-top: 25%;
+}
+
 .children_links{
   text-align: left;
   display: block;
@@ -324,6 +328,13 @@ select:-webkit-autofill:focus {
   left: 0;
 }
 
+.add_child_form{
+  margin-top: 20%;
+}
+
+.add_child_submit{
+  margin-top: 5%;
+}
 /*             */
 /*Birth details*/
 /*             */

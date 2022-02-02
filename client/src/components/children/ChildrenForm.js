@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import Navbar from '../../containers/Navbar';
+import Footer from '../../containers/Footer';
 
 class ChildrenForm extends Component {
     constructor(props){
@@ -73,40 +75,40 @@ class ChildrenForm extends Component {
         } = this.state
 
         return(
-            <div>
-                <h1>Add a child</h1>
-                <Link to="/">Home</Link>
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                        placeholder="First Name"
+            <div className="add_child_container">
+                < Navbar />
+                <Link className="children_links" to="/children">Back</Link>
+                <h3 className="add_child_banner">Add a child</h3>
+                <form className="add_child_form" onSubmit={this.handleSubmit}>
+                    <label>First Name<input
                         type="text"
                         name="first_name"
                         value={first_name||""}
+                        required
                         onChange={this.handleChange}
-                    />
-                    <input
-                        placeholder="Middle Name"
+                    /></label>
+                    <label>Middle Name<input
                         type="text"
                         name="middle_name"
                         value={middle_name||""}
+                        required
                         onChange={this.handleChange}
-                    />
-                    <input
-                        placeholder="Last Name"
+                    /></label>
+                    <label>Last Name<input
                         type="text"
                         name="last_name"
                         value={last_name||""}
+                        required
                         onChange={this.handleChange}
-                    />
-                    <button placeholder="submit" type="submit">
-                    Add Child
-                    </button>
+                    /><br/></label>
+                    <input className="add_child_submit" placeholder="submit" value="Submit" type="submit"/>
                 </form>
                 <div>
                     {
                         this.state.errors ? this.handleErrors() : null
                     }
                 </div>
+                < Footer />
             </div>
         )
 
