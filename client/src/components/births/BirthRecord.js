@@ -7,6 +7,7 @@ class BirthRecord extends Component{
         super(props)
         this.state = {
             errors: [],
+            hospitals: [],
             hospitalName: "",
             motherFirstName: "",
             motherLastName: "",
@@ -50,7 +51,8 @@ class BirthRecord extends Component{
         axios.get('http://localhost:3001/api/v1/hospitals.json', {withCredentials: true})
         .then(response =>
             this.setState({
-            hospitalName: response.data.find(id => id = this.props.child.birth.hospital_id).name}
+                hospitals: response.data,
+                hospitalName: response.data.find(id => id = this.props.child.birth.hospital_id).name}
         ))
     }
 
@@ -88,9 +90,8 @@ class BirthRecord extends Component{
         const editButton = document.getElementById(value)
         for(let i = inputs.length-1; i >= 0; i--){
             inputs[i].classList.remove("hidden")
-            editButton.setAttribute("class","hidden")
         }
-        
+        editButton.classList.add("hidden")
     }
 
     handleChange = (event)=>{
@@ -194,14 +195,16 @@ class BirthRecord extends Component{
     return(
         <div>
             <div className="baby_details">
-                <h5>Birthday: {birth.birth_day}/{birth.birth_month}/{birth.birth_year}</h5>
-                <h5>Mother: {this.state.motherFirstName} {this.state.motherLastName}</h5>
-                <h5>Father: {this.state.fatherFirstName} {this.state.fatherLastName}</h5>
+                <p>
+                Birthday: {birth.birth_day}/{birth.birth_month}/{birth.birth_year}<br/>
+                Mother: {this.state.motherFirstName} {this.state.motherLastName}<br/>
+                Father: {this.state.fatherFirstName} {this.state.fatherLastName}<br/>
+                </p>
                 <div className="delivery_details_container">
                     <button className="delivery_details pointer" id={`delivery_details_${this.props.child.id}`} onClick={this.handleDeliveryDetailsClick}>Delivery Details</button>
                     <br/>
                     <div className="delivery_details_content hidden" id={`delivery_details_${this.props.child.id}_content`}>
-                        <BirthDetails birth={birth} hospitalName={this.state.hospitalName} handleClick={this.handleClick} handleChange ={this.handleChange} handleBirthEditSubmit={this.handleBirthEditSubmit}/>
+                        <BirthDetails child={this.props.child} birth={birth} hospitalName={this.state.hospitalName} hospitals={this.state.hospitals} handleClick={this.handleClick} handleChange ={this.handleChange} handleBirthEditSubmit={this.handleBirthEditSubmit}/>
                     </div>
                     <div>
                         {

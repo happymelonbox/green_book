@@ -1,16 +1,26 @@
-export const BirthDetails = ({birth, hospitalName, handleClick, handleChange, handleBirthEditSubmit}) => {
-    
+export const BirthDetails = ({child, birth, hospitals, hospitalName, handleClick, handleChange, handleBirthEditSubmit}) => {
+
     return(
         <div>
-            <form onSubmit={handleBirthEditSubmit}>
+            <form className="birth_details_container" onSubmit={handleBirthEditSubmit}>
+            <label>Full name: {child.first_name} {child.middle_name} {child.last_name}<br/></label>
             <label className={`${birth.id}editBirthInputs hidden`}>Birth day: <input type="number" name="birth-birth_day" onChange = {handleChange}/><br/></label>
             <label className={`${birth.id}editBirthInputs hidden`}>Birth month: <input type="number" name="birth-birth_month" onChange = {handleChange}/><br/></label>
             <label className={`${birth.id}editBirthInputs hidden`}>Birth Year: <input type="number" name="birth-birth_year"  onChange = {handleChange}/><br/></label>
-                <label>Home Birth: {birth.home_birth ? "Yes" : `No - Hospital: ${hospitalName}`}<select name="birth-home_birth" className={`${birth.id}editBirthInputs hidden`} onChange = {handleChange}>
+                <label>Home Birth: {birth.home_birth ? "Yes" : "No" }<select name="birth-home_birth" className={`${birth.id}editBirthInputs hidden`} onChange = {handleChange}>
                     <option value="Select">Select</option>
                     <option value="true">Yes</option>
                     <option value="false">No</option>
                     </select><br/></label>
+                {birth.home_birth
+                ?
+                null
+                :
+                <label>Hospital: {hospitalName}
+                    <select name="birth-hospital_id" className={`${birth.id}editBirthInputs hidden`} onChange = {handleChange}>>
+                        {hospitals.map(hospital=>{return(<option key={hospital.id} value={hospital.id}>{hospital.name}</option>)})}
+                    </select><br/>
+                </label>}
                 <label>Examined By: {birth.examiner_name} <input name="birth-examiner_name" className={`${birth.id}editBirthInputs hidden`} onChange = {handleChange}/><br/></label>
                 <label>Delivery Method: {birth.delivery_method ? birth.delivery_method : "Not Supplied"} <select name="birth-delivery_method" className={`${birth.id}editBirthInputs hidden`} onChange = {handleChange}>
                     <option value="Elective Caesarian">Elective Caesarian</option>
@@ -46,13 +56,13 @@ export const BirthDetails = ({birth, hospitalName, handleClick, handleChange, ha
                     <option value="true">Yes</option>
                     <option value="false">No</option>
                     </select><br/></label>
-                <label>Intensive Care Reason:{birth.admission_to_intensive_care_nursery_48hours ? `${birth.intensive_care_reason}` : "N/A"}<input name="birth-intensive_care_reason" className={`${birth.id}editBirthInputs hidden`} onChange = {handleChange}/><br/></label>
+                <label>Intensive Care Reason:{birth.admission_to_intensive_care_nursery_48hours ? `${birth.intensive_care_reason}` : " N/A"}<input name="birth-intensive_care_reason" className={`${birth.id}editBirthInputs hidden`} onChange = {handleChange}/><br/></label>
                 <label>Admission To Special Care Nursery in First 48 Hours? {birth.admission_to_special_care_nursery_48hours ? "Yes" : "No" }<select name="admission_to_special_care_nursery_48hours" className={`${birth.id}editBirthInputs hidden`} onChange = {handleChange}>
                     <option value="Select">Select</option>
                     <option value="true">Yes</option>
                     <option value="false">No</option>
                     </select><br/></label>
-                <label>Intensive Care Reason: {birth.admission_to_special_care_nursery_48hours ? `${birth.special_care_reason}` : "N/A"}<input type="text" name="birth-special_care_reason" className={`${birth.id}editBirthInputs hidden`} onChange = {handleChange}/><br/></label>
+                <label>Intensive Care Reason: {birth.admission_to_special_care_nursery_48hours ? `${birth.special_care_reason}` : " N/A"}<input name="birth-special_care_reason" className={`${birth.id}editBirthInputs hidden`} onChange = {handleChange}/><br/></label>
                 <input value={birth.id} type="hidden" name="birth_id"/>
                 <button className={`${birth.id}editBirthInputs hidden`} type="submit">Submit changes</button>
             </form>

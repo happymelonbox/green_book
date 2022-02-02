@@ -139,7 +139,7 @@ input[type="text"], input[type="password"]{
   /* border-radius: 8px; */
 }
 
-[type="submit"]{
+button, [type="submit"]{
   background-color: rgb(228, 174, 109);
   color: rgb(3, 3, 3);
   font-size: 20px;
@@ -147,9 +147,7 @@ input[type="text"], input[type="password"]{
   height: 40px;
   padding-top: 2px;
   padding-bottom: 0px;
-  display: block;
   margin: auto;
-  /* margin-top: 2%; */
   box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
   border-radius: 8px;
   border: none;
@@ -325,3 +323,11 @@ select:-webkit-autofill:focus {
   top: 0;
   left: 0;
 }
+
+/*             */
+/*Birth details*/
+/*             */
+
+.birth_details_container{
+  text-align: left;
+} 
