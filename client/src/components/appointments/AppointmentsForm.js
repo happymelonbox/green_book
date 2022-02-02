@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Navbar from '../../containers/Navbar'
+import Footer from '../../containers/Footer'
 
 class AppointmentsForm extends Component{
     constructor(props){
@@ -191,24 +193,26 @@ class AppointmentsForm extends Component{
 
     render(){
         return(
-            <div>
-                <h4>Add a new appointment</h4>
-                <Link to="/appointments_to_keep">Back to appointments</Link>
-                <form onSubmit = {this.setAppointment}>
-                    <label>Select child:  <select name="child_id" onChange={this.handleChange}>
+            <div className="appointments_container">
+                <Navbar/>
+                <Link className="appointment_links" to="/appointments_to_keep">Back to appointments</Link>
+                <h3 className="appointment_banner">Add a new appointment</h3>
+                
+                <form className="appointment_form" onSubmit = {this.setAppointment}>
+                    <label>Select child:  <select name="child_id" onChange={this.handleChange} className="appointment_inputs">
                         {this.state.children.map(child => {
                             return <option key={child.id} value={child.id}>{child.first_name} {child.last_name}</option>}
                         )}
                     </select>
                     <br/>
                     </label>
-                    <label>Reason: <select name="reason" onChange={this.handleReasonChange}>
+                    <label>Reason: <select name="reason" onChange={this.handleReasonChange} className="appointment_inputs">
                         {this.state.options.map(option => {
                             return <option key={option} value={option}>{option}</option>}
                         )}
                     </select>
                     <br/>
-                        <label className="mchs_inputs hidden" >Select which visit:
+                        <label className="mchs_inputs appointment_inputs hidden" >Select which visit:
                             <select onChange={this.handleVisitChange}>
                             {this.state.visits.map(visit=>{
                                 return <option key={visit} value={visit}>{visit} Visit</option>
@@ -220,31 +224,32 @@ class AppointmentsForm extends Component{
                             <input type="text" name="other_reason_input"/><button onClick={this.addAnotherReason}>Add</button>
                         </label>
                     </label>
-                    <br/>
                     <label>Date and Time 
-                        <input name="date_and_time" type="datetime-local" onChange={this.handleChange}/>
+                        <input name="date_and_time" type="datetime-local" onChange={this.handleChange} className="appointments_date_input"/>
                     </label>
                     <br/>
-                    <label id="location_inputs_label">Location:
-                        <br/>Business Name: <input className="location_inputs" name="location_name" type="text" onChange={this.handleChange}/>
-                        <br/>Street Number: <input className="location_inputs" name="location_address_number" type="text" onChange={this.handleChange}/>
-                        <br/>Street Name: <input className="location_inputs" name="location_street_name" type="text" onChange={this.handleChange}/>
-                        <br/>Suburb: <input className="location_inputs" name="location_suburb" type="text" onChange={this.handleChange}/>
-                        <br/>Postcode: <input className="location_inputs" name="location_postcode" type="text" onChange={this.handleChange}/>
-                        <br/>City: <input className="location_inputs" name="location_city" type="text" onChange={this.handleChange}/>
-                        <br/>State: <input className="location_inputs" name="location_state" type="text" onChange={this.handleChange}/>
-                        <br/>Country: <input className="location_inputs" name="location_country" type="text" onChange={this.handleChange}/>
-                        <br/>Contact Number: <input className="location_inputs" name="location_contact_number" type="text" onChange={this.handleChange}/>
+                    <br/>
+                    <label id="location_inputs_label">Location:<br/>
+                        <label>Business Name: <input className="appointments_form_inputs location_inputs" name="location_name" type="text" onChange={this.handleChange}/></label>
+                        <label>Street Number: <input className="appointments_form_inputs appointments_form_inputs location_inputs" name="location_address_number" type="text" onChange={this.handleChange}/></label>
+                        <label>Street Name: <input className="appointments_form_inputs appointments_form_inputs location_inputs" name="location_street_name" type="text" onChange={this.handleChange}/></label>
+                        <label>Suburb: <input className="appointments_form_inputs appointments_form_inputs location_inputs" name="location_suburb" type="text" onChange={this.handleChange}/></label>
+                        <label>Postcode: <input className="appointments_form_inputs appointments_form_inputs location_inputs" name="location_postcode" type="text" onChange={this.handleChange}/></label>
+                        <label>City: <input className="appointments_form_inputs appointments_form_inputs location_inputs" name="location_city" type="text" onChange={this.handleChange}/></label>
+                        <label>State: <input className="appointments_form_inputs appointments_form_inputs location_inputs" name="location_state" type="text" onChange={this.handleChange}/></label>
+                        <label>Country: <input className="appointments_form_inputs appointments_form_inputs location_inputs" name="location_country" type="text" onChange={this.handleChange}/></label>
+                        <label>Contact Number: <input className="appointments_form_inputs appointments_form_inputs location_inputs" name="location_contact_number" type="text" onChange={this.handleChange}/></label>
                     </label>
                     <br/>
 
-                    <button type="submit">Submit</button>
+                    <input className="add_appointment_submit" value="Submit" type="submit"/>
                 </form>
                 <div>
                     {
                         this.state.errors ? this.handleErrors() : null
                     }
                 </div>
+                < Footer/>
             </div>
         )
     }

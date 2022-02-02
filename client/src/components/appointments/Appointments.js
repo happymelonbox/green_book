@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import AppointmentsByAppointment from './AppointmentsByAppointment'
 import AppointmentsByChild from './AppointmentsByChild'
+import Navbar from '../../containers/Navbar'
+import Footer from '../../containers/Footer'
 
 class Appointments extends Component{
     constructor(props){
@@ -117,13 +119,23 @@ class Appointments extends Component{
 
 
     handleAppointmentEdit = (event) => {
-        const id = event.target.id
+        const id = event.target.id.split("-")[0]
         const inputs = document.getElementsByClassName(id)
-        const button = document.getElementById(id)
-        for(let i = inputs.length-1; i >= 0; i--){
-            inputs[i].classList.remove("hidden")
+        const button = document.getElementById(event.target.id)
+        const breaks = document.getElementsByClassName("appointment_breaks")
+        if(button.innerHTML !== "Close Editing"){
+            for(let i = inputs.length-1; i >= 0; i--){
+                inputs[i].style.display = "block"
+                breaks[i].classList.add("hidden")
+            }
+            button.innerHTML = "Close Editing"
+        } else {
+            for(let i = inputs.length-1; i >= 0; i--){
+                inputs[i].style.display = "none"
+                breaks[i].style.display = "content"
+            }
+            button.innerHTML = "Edit Appointment"
         }
-        button.classList.add("hidden")
     }
     
     handleErrors = () =>{
@@ -140,26 +152,30 @@ class Appointments extends Component{
 
     render(){
         return(
-            <div>
-                <h3>Important Appointments</h3>
-                <Link to='/'>Back to Dashboard</Link>
-                <Link to='/add_an_appointment'>Add a new appointment</Link>
-                <form>
-                <label>Sort By: <select name="sortBy" onChange={this.handleSort}>
+            <div className="appointments_container">
+                <Navbar />
+                <Link className="appointment_links" to='/'>Back to Dashboard</Link>
+                <Link className="appointment_links" to='/add_an_appointment'>Add a new appointment</Link>
+                <h3 className="appointment_banner">Important Appointments</h3>
+                <form >
+                <label>Sort By: <select className="appointment_inputs" name="sortBy" onChange={this.handleSort}>
                     <option value="Appointment">Appointment Date and Time</option>
                     <option value="Children">Children Last Name</option>
                 </select></label>
-                </form>
-                {this.state.sortBy === "Children" ?
-                    <AppointmentsByChild children={this.state.children} handleAppointmentSubmit={this.handleAppointmentSubmit} handleAppointmentEdit={this.handleAppointmentEdit}/>
-                    :
-                    <AppointmentsByAppointment children={this.state.children} appointments={this.state.appointments} handleAppointmentSubmit={this.handleAppointmentSubmit} handleAppointmentEdit={this.handleAppointmentEdit}/>
-                }
+                </form >
+                <div className="appointments_form">
+                    {this.state.sortBy === "Children" ?
+                        <AppointmentsByChild children={this.state.children} handleAppointmentSubmit={this.handleAppointmentSubmit} handleAppointmentEdit={this.handleAppointmentEdit}/>
+                        :
+                        <AppointmentsByAppointment children={this.state.children} appointments={this.state.appointments} handleAppointmentSubmit={this.handleAppointmentSubmit} handleAppointmentEdit={this.handleAppointmentEdit}/>
+                    }
+                </div>
                 <div>
                     {
                         this.state.errors ? this.handleErrors() : null
                     }
                 </div>
+                < Footer />
             </div>
         )
     }

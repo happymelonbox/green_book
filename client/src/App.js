@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { createBrowserHistory } from 'history'
+import Navbar from './containers/Navbar';
 import Home from './components/Home'
   import Login from './components/registrations/Login'
   import Signup from './components/registrations/Signup'
+
 
 import Children from './components/children/Children'
   import Child from './components/children/Child'

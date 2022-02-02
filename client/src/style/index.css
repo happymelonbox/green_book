@@ -341,7 +341,6 @@ select:-webkit-autofill:focus {
 /*             */
 
 #birth_details_container{
-  text-align: left;
   margin-top: 5%;
   margin-left: auto;
   margin-right: auto;
@@ -380,11 +379,116 @@ select.birth_inputs{
 #birth_inputs_submit{
   margin-top: 10%;
   width: 277px;
-  height: 40px;
+  height: 38px;
 }
 
 .button_edit_birth_details{
   margin-top: 10%;
   width: 277px;
-  height: 40px;
+  height: 38px;
 }
+
+/*              */
+/* Appointments */
+/*              */
+
+.appointments_container{
+  text-align: center;
+  margin: 5%;
+  position: relative;
+  box-sizing: border-box;
+  width: 90%;
+  height: 768px;
+  overflow: scroll;
+  background-color: rgba(255, 228, 196, 0.897);
+  padding: 5%;
+  color: rgb(3, 3, 3);
+}
+
+.appointment_links{
+  text-align: left;
+  display: block;
+  top: 0;
+  left: 0;
+}
+
+.appointment_banner{
+  margin-top: 25%;
+}
+
+.appointments_form{
+  margin-top: 25%;
+}
+
+select.appointment_inputs{
+  margin-top: 50%;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 38px;
+  font-size: 20px;
+  width: 277px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin: auto;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
+}
+
+.appointments_form_inputs{
+  margin-top: 50%;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 38px;
+  font-size: 20px;
+  width: 277px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin: auto;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
+}
+
+.appointments_date_input{
+  margin-top: 50%;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 32px;
+  font-size: 20px;
+  width: 277px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin: auto;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
+}
+
+input.appointment_inputs{
+  margin-top: 50%;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 38px;
+  font-size: 20px;
+  width: 277px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin: auto;
+  display: none;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
+}
+
+.appointment_edit_button{
+  margin-top: 10%;
+}
+
+.appointment_form{
+  margin-top: 25%;
+}
+
+.add_appointment_submit{
+  margin-top: 10%;
+}
+
+
+
+
