@@ -90,22 +90,6 @@ handleErrors = () => {
     )
   }
 render() {
-  const {
-    username,
-    first_name,
-    last_name,
-    contact_number,
-    address_unit_number,
-    address_street_number,
-    address_street_name,
-    address_suburb,
-    address_state,
-    address_city,
-    address_country,
-    email,
-    password,
-    password_confirmation
-  } = this.state
 
 return (
       <div className='signup_container'>

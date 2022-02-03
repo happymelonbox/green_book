@@ -42,7 +42,7 @@ export const BirthDetails = ({child, birth, hospitals, hospitalName, handleClick
                     <option value="true">Yes</option>
                     <option value="false">No</option>
                     </select></label><br className="birth_breaks"/>
-                <label>{birth.newborn_bloodspot_screening_test_completed ? "Bloodspot Date: " + new Date(birth.bloodspot_sample_date).toString().slice(0,10) : null}<input type="date" name="birth-birth.bloodspot_sample_date" className={`${birth.id}_edit birth_inputs hidden`} onChange = {handleChange}/></label><br className="birth_breaks"/>
+                <label>{birth.newborn_bloodspot_screening_test_completed ? "Bloodspot Date: " + new Date(birth.bloodspot_sample_date).toString().slice(0,15) : null}<input type="date" name="birth-birth.bloodspot_sample_date" className={`${birth.id}_edit birth_inputs hidden`} onChange = {handleChange}/></label><br className="birth_breaks"/>
                 <label>Apgar One Minute: {birth.apgar_one_minute}<input type="number" name="birth-apgar_one_minute" className={`${birth.id}_edit birth_inputs hidden`} onChange = {handleChange}/></label><br className="birth_breaks"/>
                 <label>Apgar Five Minute: {birth.apgar_five_minute}<input type="number" name="birth-apgar_five_minute" className={`${birth.id}_edit birth_inputs hidden`} onChange = {handleChange}/></label><br className="birth_breaks"/>
                 <label>Problems Requiring Treatment: {birth.problems_requiring_treatment ? birth.problems_requiring_treatment : "None"}<input type="string" name="birth-problems_requiring_treatment" className={`${birth.id}_edit birth_inputs hidden`} onChange = {handleChange}/></label><br className="birth_breaks"/>

@@ -103,7 +103,7 @@ class Appointments extends Component{
                 visit_age: visit_age,
                 child_id: child_id,
             }
-            axios.put(`http://localhost:3001/api/v1/appointments/${id}`, {appointment}, {withCredentials:true})
+            axios.put(`/api/v1/appointments/${id}`, {appointment}, {withCredentials:true})
             .then(response => {
                 console.log(response)
                 if (response.data.status === 'updated'){
