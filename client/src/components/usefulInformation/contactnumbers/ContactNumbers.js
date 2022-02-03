@@ -3,7 +3,7 @@ import React from 'react'
 
 export const ContactNumbers = () => {
     return(
-        <div>
+        <div className="info_containers">
             <ul>
                 <li>
                     Ambulance / Police / Fire<br/>

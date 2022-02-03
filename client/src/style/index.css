@@ -102,6 +102,10 @@ a{
   
 }
 
+li{
+  list-style-type: none;
+}
+
 .login_form_container{
   margin-top: 10%;
 }
@@ -489,6 +493,10 @@ input.appointment_inputs{
   margin-top: 10%;
 }
 
+/*              */
+/*    Records   */
+/*              */
+
 .records_container{
   text-align: center;
   margin: 5%;
@@ -622,4 +630,81 @@ input.record_inputs{
   margin-top: 10%;
 }
 
+/*   Useful     */
+/* Information  */
+/*              */
+
+.useful_info_container{
+  text-align: center;
+  margin: 5%;
+  position: relative;
+  box-sizing: border-box;
+  width: 90%;
+  height: 768px;
+  overflow: scroll;
+  background-color: rgba(255, 228, 196, 0.897);
+  padding: 5%;
+  color: rgb(3, 3, 3);
+}
+
+.useful_info_banner{
+  margin-top: 25%;
+}
+
+.useful_info_links{
+  text-align: left;
+  display: block;
+  top: 0;
+  left: 0;
+}
+
+.info_banners{
+  margin-top: 50%;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 38px;
+  font-size: 20px;
+  width: 277px;
+  padding-top: 10px;
+  padding-bottom: 0x;
+  margin: auto;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
+}
+
+.info_individual_containers{
+  margin-top: 5%;
+}
+
+.info_cont{
+  margin-top: 25%;
+  margin-bottom: 30%;
+}
+
+.info_containers{
+  text-align: center;
+  margin-top: 15%;
+  display: block;
+}
+
+ul{
+  padding: 0;
+  font-size: 15px;;
+}
+.week_days{
+  float: left;
+  width: 200px;
+  text-align: left;
+  
+}
+.hours{
+  float: right;
+  text-align: right;
+  
+}
+
+li.clinics{
+  display: block;
+  padding-top: 10%;
+}
 
