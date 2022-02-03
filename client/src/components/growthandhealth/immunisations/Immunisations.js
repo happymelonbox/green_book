@@ -105,8 +105,8 @@ class Immunisations extends React.Component{
                     Batch number: {imm.batch_number}<br/>
                     Next dose due: {imm.date_of_next_dose}
                 </p>
-                <button className={`${child.id}ImmunisationEdit pointer`} onClick={this.handleClick}>Edit Immunisation</button><br/>
-                <div id={`${child.id}ImmunisationEdit`} className = "hidden">
+                <button className={`${imm.id}ImmunisationEdit pointer`} onClick={this.handleClick}>Edit Immunisation</button><br/>
+                <div id={`${imm.id}ImmunisationEdit`} className = "hidden">
                     < ImmunisationForm child_id={child.id} handleImmEditSubmit = {this.handleImmEditSubmit} handleChange={this.handleChange} button="Edit"/>
                 </div>
                 <div>

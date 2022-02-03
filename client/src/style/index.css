@@ -489,6 +489,137 @@ input.appointment_inputs{
   margin-top: 10%;
 }
 
+.records_container{
+  text-align: center;
+  margin: 5%;
+  position: relative;
+  box-sizing: border-box;
+  width: 90%;
+  height: 768px;
+  overflow: scroll;
+  background-color: rgba(255, 228, 196, 0.897);
+  padding: 5%;
+  color: rgb(3, 3, 3);
+}
 
+.records_banner{
+  margin-top: 25%;
+}
+
+.records_child_container{
+  margin-top: 25%;
+}
+
+.records_banners{
+  margin-top: 50%;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 38px;
+  font-size: 20px;
+  width: 277px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin: auto;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
+}
+
+.quantities{
+  font-size: 10px;
+  display: block;
+}
+
+.record_individual_containers{
+  margin-top: 5%;
+}
+
+.records_links{
+  text-align: left;
+  display: block;
+  top: 0;
+  left: 0;
+}
+
+
+select.record_inputs{
+  margin-top: 50%;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 38px;
+  font-size: 20px;
+  width: 277px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin: auto;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
+}
+
+.records_form_inputs{
+  margin-top: 50%;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 38px;
+  font-size: 20px;
+  width: 277px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin: auto;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
+}
+
+.records_radio_inputs{
+  margin-top: 50%;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 38px;
+  font-size: 20px;
+  width: 277px;
+  padding-top: 10px;
+  padding-bottom: 0;
+  margin: auto;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
+}
+
+.records_date_input{
+  margin-top: 50%;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 32px;
+  font-size: 20px;
+  width: 277px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin: auto;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
+}
+
+input.record_inputs{
+  margin-top: 50%;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 38px;
+  font-size: 20px;
+  width: 277px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin: auto;
+  display: none;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
+}
+
+.button_add_record_details{
+  margin-top: 10%;
+  width: 277px;
+  height: 38px;
+}
+
+.record_form{
+  margin-top: 10%;
+}
 
 
