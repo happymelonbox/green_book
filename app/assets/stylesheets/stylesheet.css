@@ -1,3 +1,36 @@
-body{
-  background-color: black;
+html{
+    margin: 0;
+    top: 0;
+    left: 0;
+    background-color: rgb(86, 124, 86);
+    font-size: 20px;
+  }
+.google_container{
+    text-align: center;
+    margin: 50% auto;
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    width: 90%;
+    height: 768px;
+    overflow: scroll;
+    background-color: rgba(255, 228, 196, 0.897);
+    padding: 5%;
+    color: rgb(3, 3, 3);
+}
+
+.google{
+    background-color: rgb(228, 174, 109);
+    color: rgb(3, 3, 3);
+    height: 80px;
+    font-size: 40px;
+    width: 350px;
+    text-align: center;
+    padding-top: 6px;
+    padding-bottom: 2px;
+    display: block;
+    margin: auto;
+    margin-top: 8%;
+    box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+    border-radius: 8px;
 }
