@@ -1,26 +1,26 @@
-class Api::V1::VisitsController < Api::V1::BaseController
+class Api::V3::VitaminKsController < Api::V3::BaseController
     before_action :authentication_redirect, :only => [:index, :show]
     before_action :current_user
-    before_action :set_visit, :only => [:show, :edit, :update, :destroy]
+    before_action :set_vitamin_k, :only => [:show, :edit, :update, :destroy]
 
     def index
-        @visits = Visit.all
-        if @visits
-            render json: @visits.to_json(include: {
+        @vitamin_ks = VitaminK.all
+        if @vitamin_ks
+            render json: @vitamin_ks.to_json(include: {
                 child: {}
             })
         else
             render json:{
                 status: 500,
-                errors: ['no visits found']
+                errors: ['no vitamin_ks found']
             }
         end
     end
 
     def create
-        @visit = Visit.new(visit_params)
-        @visit.save
-        if @visit.save
+        @vitamin_k = VitaminK.new(vitamin_k_params)
+        @vitamin_k.save
+        if @vitamin_k.save
             render json: {
                 status: :created,
             }
@@ -33,7 +33,7 @@ class Api::V1::VisitsController < Api::V1::BaseController
     end
 
     def update
-        if @visit.update!(visit_params)
+        if @vitamin_k.update!(vitamin_k_params)
             render json: {
                 status: :updated
             }
@@ -46,17 +46,17 @@ class Api::V1::VisitsController < Api::V1::BaseController
     end
 
     def destroy
-        @visit.destroy
+        @vitamin_k.destroy
     end
 
   private
 
-    def set_visit
-        @visit = Visit.find(params[:id])
+    def set_vitamin_k
+        @vitamin_k = VitaminK.find(params[:id])
     end
 
-    def visit_params
-        params.require(:visit).permit(:visit_age, :date, :name_of_nurse, :weight, :head_circumference, :length, :child_id)
+    def vitamin_k_params
+        params.require(:vitamin_k).permit(:place_given, :date, :dose, :route, :given_by, :child_id)
     end
 
   end

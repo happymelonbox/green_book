@@ -1,4 +1,4 @@
-class Api::V1::AppointmentsController < Api::V1::BaseController
+class Api::V3::AppointmentsController < Api::V3::BaseController
     before_action :authentication_redirect, :only => [:index, :show]
     before_action :current_user
     before_action :set_appointment, :only => [:show, :edit, :update, :destroy]
