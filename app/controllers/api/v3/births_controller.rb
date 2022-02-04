@@ -1,4 +1,4 @@
-class Api::V3::BirthsController < Api::V3::BaseController
+class Api::V1::BirthsController < Api::V1::BaseController
     before_action :authentication_redirect, :only => [:index, :show]
     before_action :current_user
     before_action :set_birth, :only => [:show, :edit, :update, :destroy]

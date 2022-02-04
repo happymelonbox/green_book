@@ -1,4 +1,4 @@
-class Api::V3::HospitalsController < Api::V3::BaseController
+class Api::V1::HospitalsController < Api::V1::BaseController
     before_action :authentication_redirect, :only => [:index, :show]
     before_action :current_user
     before_action :set_hospital, :only => [:show, :edit, :update, :destroy]

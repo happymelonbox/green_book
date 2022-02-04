@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :notes
 
   namespace :api do
-    namespace :v3 do
+    namespace :v1 do
       resources :children, only: [:index, :create, :destroy, :update]
       resources :hospitals, only: [:index, :create, :destroy, :update]
       resources :births, only: [:index, :create, :destroy, :update]

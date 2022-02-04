@@ -1,3 +1,3 @@
-class Api::V3::BaseController < ApplicationController
+class Api::V1::BaseController < ApplicationController
     respond_to :html, :json
 end

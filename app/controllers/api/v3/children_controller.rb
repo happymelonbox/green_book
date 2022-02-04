@@ -1,4 +1,4 @@
-class Api::V3::ChildrenController < Api::V3::BaseController
+class Api::V1::ChildrenController < Api::V1::BaseController
     before_action :authentication_redirect, :only => [:index, :show]
     before_action :current_user
     before_action :set_child, :only => [:edit, :show, :update, :destroy]
