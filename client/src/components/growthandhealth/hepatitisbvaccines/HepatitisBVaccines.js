@@ -8,6 +8,19 @@ class HepatitisBVaccines extends React.Component{
         this.state = {
             errors: [],
             hepatitis_b_vaccine:{
+                place_given: "",
+                date: "",
+                route: "",
+                given_by: "",
+                child_id: 0,
+                id: 0
+            }
+        }
+    }
+
+    componentDidMount(){
+        this.setState({
+            hepatitis_b_vaccine:{
                 place_given: this.props.hepB.place_given,
                 date: this.props.hepB.date,
                 route: this.props.hepB.route,
@@ -15,8 +28,10 @@ class HepatitisBVaccines extends React.Component{
                 child_id: this.props.hepB.child_id,
                 id: this.props.hepB.id
             }
-        }
+        })
     }
+
+    
     handleHepBEditSubmit = (event) => {
         event.preventDefault()
         console.log(event.target)
@@ -89,6 +104,7 @@ class HepatitisBVaccines extends React.Component{
         let day = fullDate[2]
         let date = `${day}-${month}-${year}`
         let child = this.props.child
+        console.log(hepB)
         return(
             <div>
                 <div>

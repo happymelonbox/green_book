@@ -217,7 +217,7 @@ class BirthRecord extends Component{
                     <button className="delivery_details pointer" id={`delivery_details_${this.props.child.id}`} onClick={this.handleDeliveryDetailsClick}>Delivery Details</button>
                     <br/>
                     <div className="delivery_details_content hidden" id={`delivery_details_${this.props.child.id}_content`}>
-                        <BirthDetails child={this.props.child} birth={birth} hospitalName={this.state.hospitalName} hospitals={this.state.hospitals} handleClick={this.handleClick} handleChange ={this.handleChange} handleBirthEditSubmit={this.handleBirthEditSubmit}/>
+                        <BirthDetails child={this.props.child} birth={birth} hospitalName={this.state.hospitalName} hospitals={this.state.hospitals} handleClick={this.handleClick} handleChange={this.handleChange} handleBirthEditSubmit={this.handleBirthEditSubmit}/>
                     </div>
                     <div>
                         {

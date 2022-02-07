@@ -3,32 +3,22 @@ import axios from 'axios'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import Home from './components/Home'
-  import Login from './components/registrations/Login'
-  import Signup from './components/registrations/Signup'
-
-
+import Login from './components/registrations/Login'
+import Signup from './components/registrations/Signup'
 import Children from './components/children/Children'
-  import Child from './components/children/Child'
-  import ChildrenForm  from './components/children/ChildrenForm'
-  import BirthRecord from './components/births/BirthRecord'
-  import BirthsForm from './components/births/BirthsForm'
-  import HospitalForm from './components/hospitals/HospitalForm'
-  import MotherForm from './components/parents/mother/MotherForm'
-  import FatherForm from './components/parents/father/FatherForm'
-
+import Child from './components/children/Child'
+import ChildrenForm  from './components/children/ChildrenForm'
+import BirthRecord from './components/births/BirthRecord'
+import BirthsForm from './components/births/BirthsForm'
+import HospitalForm from './components/hospitals/HospitalForm'
+import MotherForm from './components/parents/mother/MotherForm'
+import FatherForm from './components/parents/father/FatherForm'
 import Appointments from './components/appointments/Appointments'
-  import AppointmentsForm from './components/appointments/AppointmentsForm'
-
+import AppointmentsForm from './components/appointments/AppointmentsForm'
 import GrowthAndHealthRecords from './components/growthandhealth/GrowthAndHealthRecords'
-
 import UsefulInformation from './components/usefulInformation/UsefulInformation'
 
-
-
-
-
 export const HISTORY = createBrowserHistory()
-
 
 class App extends Component {
   constructor(props) {
@@ -43,7 +33,6 @@ class App extends Component {
   componentDidMount() {
     this.loginStatus()
   }
-
 
   loginStatus = () => {
     axios.get('http://localhost:3001/logged_in', {
@@ -78,7 +67,6 @@ class App extends Component {
     })
     .catch(error => console.log(error))
   }
-
 
   handleCreateChildren = (data) => {
     console.log(data)

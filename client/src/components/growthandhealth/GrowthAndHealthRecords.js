@@ -188,10 +188,10 @@ class GrowthAndHealthRecords extends React.Component{
         event.preventDefault()
         const {
             place_given,
-                date,
-                dose,
-                route,
-                given_by
+            date,
+            dose,
+            route,
+            given_by
         } = this.state.hepB
 
         let hepatitis_b_vaccine = {
@@ -281,6 +281,16 @@ class GrowthAndHealthRecords extends React.Component{
                     const day = visits.length > 0 ? last_visit_date.split("-")[2] : ""
                     last_visit_date = visits.length > 0 ? `${day}-${month}-${year}` : ""
                     const imms = immunisations.length > 0 ? immunisations.length : "No immunisations yet"
+                    if(child.birth === undefined || child.birth.id === 0){
+                        return(
+                            <div>
+                                <div className="records_child_container" key={child.id}>
+                                    <h4 >{child.first_name} {child.last_name}</h4>
+                                    <p>This child has no birth records, please add birth details under children tab</p>
+                                </div>
+                            </div>
+                        )
+                    } else {
                     return(
                         <div className="records_child_container" key={child.id}>
                             <h4 >{child.first_name} {child.last_name}</h4>
@@ -336,10 +346,9 @@ class GrowthAndHealthRecords extends React.Component{
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
                     )
-                })}
+    }})}
                 <Footer />
             </div>
         )

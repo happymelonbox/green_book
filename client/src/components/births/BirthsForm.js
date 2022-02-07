@@ -54,11 +54,11 @@ class BirthsForm extends Component {
         this.getHospitalOptions()
     }
 
-    async getHospitalOptions(){
+    getHospitalOptions = () => {
         axios.get('http://localhost:3001/api/v1/hospitals', {
             withCredentials: true,})
         .then(response => {
-            const options = response.data.hospitals.map(data => ({
+            const options = response.data.map(data => ({
                 "value": data.id,
                 "label": data.name
             }))
@@ -68,7 +68,7 @@ class BirthsForm extends Component {
         })
     }
 
-    hospitalChange(event){
+    hospitalChange = (event) => {
         this.setState({
             birth:{
                 ...this.state.birth,
@@ -77,7 +77,7 @@ class BirthsForm extends Component {
         })
     }
 
-    booleanChange(event){
+    booleanChange = (event) => {
         let value = false
         let name = event.target.name
         if (event.target.value === "Yes"){
@@ -93,9 +93,10 @@ class BirthsForm extends Component {
         })
     }
 
-    handleChange(event){
+    handleChange = (event) => {
         const name = event.target.name
         const value = event.target.value
+        console.log(name, value)
         this.setState({
             birth: {
                 ...this.state.birth,
