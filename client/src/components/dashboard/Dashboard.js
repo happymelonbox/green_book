@@ -13,6 +13,8 @@ class Dashboard extends React.Component {
                 </div>
                 <div>
                     <h3 className="welcome_banner">Welcome back, {this.props.user.first_name} </h3>
+                    {console.log(this.props.user)}
+                    {this.props.user.children === undefined ? <p>Please begin by adding children under the "children" tab</p> : null}
                     <DashboardNav />
                     <Footer loggedInStatus={this.props.loggedInStatus} handleLogout={this.props.handleLogout}/>
                 </div>

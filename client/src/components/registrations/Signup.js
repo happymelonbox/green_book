@@ -70,7 +70,7 @@ axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
       console.log(response)
       if (response.data.status === 'created') {
         this.props.handleLogin(response.data)
-        this.props.redirect()
+        window.location.replace("http://localhost:4000/")
       } else {
         this.setState({
           errors: [...this.state.errors, response.data.errors]
@@ -155,7 +155,7 @@ return (
           <label>State<input
           type= "text"
           name= "address_state"
-          requiredrequired
+          required
           onChange={this.handleChange}
           /></label>
           <label>Country<input
