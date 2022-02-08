@@ -28,13 +28,15 @@ class ChildrenForm extends Component {
         const {
             first_name,
             middle_name,
-            last_name
+            last_name,
+            user_id
         } = this.state
 
         let child = {
             first_name: first_name,
             middle_name: middle_name,
-            last_name: last_name
+            last_name: last_name,
+            user_id: user_id
         }
 
         axios.post('http://localhost:3001/api/v1/children.json', {child}, {withCredentials: true})
@@ -53,7 +55,7 @@ class ChildrenForm extends Component {
     }
 
     redirect = () => {
-        this.props.history.push('/children')
+        window.location.replace("http://localhost:4000/children")
     }
 
     handleErrors = () => {

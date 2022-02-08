@@ -24,6 +24,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      errors: [],
       isLoggedIn: false,
       user: {},
       children: []
@@ -45,7 +46,6 @@ class App extends Component {
         this.handleLogout()
       }
     })
-    .catch(error => console.log('api errors:', error))
   }
 
   handleLogin = (data) => {
@@ -91,7 +91,7 @@ class App extends Component {
               <Route
                 exact path='/'
                 element={
-                <Home loggedInStatus = {this.state.isLoggedIn} user={this.state.user} handleLogout={this.handleLogout} handleLogin={this.handleLogin}/>
+                <Home loggedInStatus = {this.state.isLoggedIn} user={this.state.user} children = {this.state.user.children} handleLogout={this.handleLogout} handleLogin={this.handleLogin}/>
                 }
               />
                   <Route

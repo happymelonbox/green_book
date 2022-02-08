@@ -34,14 +34,19 @@ class Login extends Component {
     .then(response => {
       if (response.data.logged_in) {
         this.props.handleLogin(response.data)
-        this.redirect()
       } else {
+        console.log(response.data.errors)
         this.setState({
           errors: [...this.state.errors, response.data.errors]
         })
       }
     })
-    .catch(error => console.log('api errors:', error))
+    .catch(error => {
+      console.log("API error", error)
+      this.setState({
+        errors: [...this.state.errors, error]
+      })
+    })
   };
 
   redirect = () => {
@@ -110,11 +115,10 @@ class Login extends Component {
             <Link className="signup_link" to='/signup'>Sign up</Link>
           </p>
           <div>
-          
-          {
-            this.state.errors ? this.handleErrors() : null
-          }
-        </div>
+            {
+              this.state.errors ? this.handleErrors() : null
+            }
+          </div>
         <Footer/>
       </div>
     );

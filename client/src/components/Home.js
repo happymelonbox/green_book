@@ -9,7 +9,7 @@ class Home extends React.Component{
     return (
       <div className='home_container'>
         {this.props.loggedInStatus ? 
-        <Dashboard loggedInStatus={this.props.loggedInStatus} user={this.props.user} handleLogout={this.props.handleLogout}/>
+        <Dashboard loggedInStatus={this.props.loggedInStatus} user={this.props.user} children={this.props.children} handleLogout={this.props.handleLogout}/>
         :
         <Login loggedInStatus={this.props.loggedInStatus} handleLogin={this.props.handleLogin}/>
   }
