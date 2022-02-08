@@ -262,11 +262,11 @@ class GrowthAndHealthRecords extends React.Component{
             <div className="records_container">
                 <Navbar />
                 <Link className="records_links" to='/'>Back to Dashboard</Link>
-                {/* <div>
+                <div>
                     {
                         this.state.errors ? this.handleErrors() : null
                     }
-                </div> */}
+                </div>
                 <h3 className="records_banner">Records</h3>
                 {this.state.children.map(child =>{
                     const immunisations = child.immunisations
@@ -283,8 +283,8 @@ class GrowthAndHealthRecords extends React.Component{
                     const imms = immunisations.length > 0 ? immunisations.length : "No immunisations yet"
                     if(child.birth === undefined || child.birth.id === 0){
                         return(
-                            <div>
-                                <div className="records_child_container" key={child.id}>
+                            <div key={child.id}>
+                                <div className="records_child_container" >
                                     <h4 >{child.first_name} {child.last_name}</h4>
                                     <p>This child has no birth records, please add birth details under children tab</p>
                                 </div>
