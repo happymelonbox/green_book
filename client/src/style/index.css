@@ -330,6 +330,17 @@ select:-webkit-autofill:focus {
   display: block;
   top: 0;
   left: 0;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 20px;
+  font-size: 20px;
+  width: 170px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  margin-top: 5px;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
 }
 
 .add_child_form{
@@ -414,6 +425,17 @@ select.birth_inputs{
   display: block;
   top: 0;
   left: 0;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 20px;
+  font-size: 20px;
+  width: 210px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  margin-top: 5px;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
 }
 
 .appointment_banner{
@@ -546,6 +568,17 @@ input.appointment_inputs{
   display: block;
   top: 0;
   left: 0;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 20px;
+  font-size: 20px;
+  width: 170px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  margin-top: 5px;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
 }
 
 
@@ -656,6 +689,17 @@ input.record_inputs{
   display: block;
   top: 0;
   left: 0;
+  background-color: rgb(228, 174, 109);
+  color: rgb(3, 3, 3);
+  height: 20px;
+  font-size: 20px;
+  width: 170px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  margin-top: 5px;
+  box-shadow: rgb(37, 37, 37) 1px 1.5px 1.5px;
+  border-radius: 8px;
 }
 
 .info_banners{
