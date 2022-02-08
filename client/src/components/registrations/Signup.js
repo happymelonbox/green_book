@@ -67,17 +67,22 @@ handleSubmit = (event) => {
     }
 axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
     .then(response => {
-      console.log(response)
+      console.log(response.data.status)
       if (response.data.status === 'created') {
         this.props.handleLogin(response.data)
-        window.location.replace("http://localhost:4000/")
+        window.location.replace("/")
       } else {
         this.setState({
           errors: [...this.state.errors, response.data.errors]
         })
       }
     })
-    .catch(error => console.log('api errors:', error))
+    .catch(error => {
+      console.log('API error:', error)
+      this.setState({
+        errors: [...this.state.errors, error]
+      })
+    })
   };
   
 handleErrors = () => {

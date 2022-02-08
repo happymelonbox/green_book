@@ -16,28 +16,14 @@ class UsersController < ApplicationController
         end
     end
 
-    def show
-        @user = User.find(params[:id])
-        if @user
-            render json: @user.to_json(include: {
-                children: {}
-            })
-        else
-            render json: {
-                status: 500,
-                errors: ["User doesn't exist"]
-            }
-        end
-    end
-
     def create
         @user = User.new(user_params)
         if @user.save
             login! 
-            render json: @user.to_json(include: {
-                children: {},
-                appointments: {},
-        })
+            render json: {
+                status: :created,
+                user: @user
+            }
         else 
             render json: {
             status: 500,

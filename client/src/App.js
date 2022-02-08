@@ -42,6 +42,7 @@ class App extends Component {
     .then(response => {
       if (response.data.logged_in) {
         this.handleLogin(response.data)
+        this.redirect("/")
       } else {
         this.handleLogout()
       }
@@ -53,7 +54,7 @@ class App extends Component {
       isLoggedIn: true,
       user: data.user
     })
-    this.redirect("/")
+    
   }
 
   handleLogout = () => {
