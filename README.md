@@ -55,12 +55,12 @@ to ensure stability.
 *        rake db:migrate
 
 #   For trialing, GreenBook can be seeded by running:
-*        rake db:seed.
+*        rake db:seed
 
 To use GreenBook as a new user, a child must be added followed by the child's
 birth details (these can be edited later).
 
 I hope that GreenBook is able there to help those who have enough on their plate already.
 
-Any questions or suggestions please contact me via https://github.com/happymelonbox/green_book
-Justin
+Any questions or suggestions please contact me via https://github.com/happymelonbox/green_book .
+Justin.
