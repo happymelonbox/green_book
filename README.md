@@ -24,7 +24,7 @@ add notes and comments will be implemented shortly also.
 GreenBook will also be hosted to allow for use anywhere any time, currently GreenBook is in a
 localhost state.
 
-In the interest of confidence in GreenBook, the upcoming versions of GreenBook will include
+In the interest of confidence in GreenBook, the upcoming versions of GreenBook will include testing
 to ensure stability.
 
 #   Ruby version:
