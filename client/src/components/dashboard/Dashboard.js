@@ -4,7 +4,6 @@ import DashboardNav from './DashboardNav'
 import Navbar from '../../containers/Navbar'
 import Footer from '../../containers/Footer'
 
-
 class Dashboard extends React.Component {
     constructor(props){
         super(props)

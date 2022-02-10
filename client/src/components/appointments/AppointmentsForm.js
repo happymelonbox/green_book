@@ -197,7 +197,6 @@ class AppointmentsForm extends Component{
                 <Navbar/>
                 <Link className="appointment_links" to="/appointments_to_keep">Back to appointments</Link>
                 <h3 className="appointment_banner">Add a new appointment</h3>
-                
                 <form className="appointment_form" onSubmit = {this.setAppointment}>
                     <label>Select child:  <select name="child_id" onChange={this.handleChange} className="appointment_inputs">
                         {this.state.children.map(child => {
@@ -224,7 +223,7 @@ class AppointmentsForm extends Component{
                             <input type="text" name="other_reason_input"/><button onClick={this.addAnotherReason}>Add</button>
                         </label>
                     </label>
-                    <label>Date and Time 
+                    <label>Date and Time
                         <input name="date_and_time" type="datetime-local" onChange={this.handleChange} className="appointments_date_input"/>
                     </label>
                     <br/>
@@ -241,7 +240,6 @@ class AppointmentsForm extends Component{
                         <label>Contact Number: <input className="appointments_form_inputs appointments_form_inputs location_inputs" name="location_contact_number" type="text" onChange={this.handleChange}/></label>
                     </label>
                     <br/>
-
                     <input className="add_appointment_submit" value="Submit" type="submit"/>
                 </form>
                 <div>

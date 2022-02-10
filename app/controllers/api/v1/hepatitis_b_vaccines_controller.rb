@@ -33,7 +33,6 @@ class Api::V1::HepatitisBVaccinesController < Api::V1::BaseController
     end
 
     def update
-        
         if @hepatitis_b_vaccine.update!(hepatitis_b_vaccine_params)
             render json: {
                 status: :updated

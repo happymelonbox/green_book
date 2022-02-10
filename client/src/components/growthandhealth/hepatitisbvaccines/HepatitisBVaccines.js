@@ -31,7 +31,6 @@ class HepatitisBVaccines extends React.Component{
         })
     }
 
-    
     handleHepBEditSubmit = (event) => {
         event.preventDefault()
         console.log(event.target)

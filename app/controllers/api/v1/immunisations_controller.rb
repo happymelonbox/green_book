@@ -33,7 +33,6 @@ class Api::V1::ImmunisationsController < Api::V1::BaseController
     end
 
     def update
-        
         if @immunisation.update!(immunisation_params)
             render json: {
                 status: :updated

@@ -1,5 +1,4 @@
 export const BirthDetails = ({child, birth, hospitals, hospitalName, handleClick, handleChange, handleBirthEditSubmit}) => {
-
     return(
         <div>
             <form id="birth_details_container" onSubmit={handleBirthEditSubmit}>

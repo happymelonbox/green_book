@@ -145,7 +145,7 @@ class BirthsForm extends Component {
                         last_name === this.state.father_last_name &&
                         birth_day === this.state.father_birth_day &&
                         birth_month === this.state.father_birth_month &&
-                        birth_year === this.state.father_birth_year 
+                        birth_year === this.state.father_birth_year
                     ).id
                 }
             })

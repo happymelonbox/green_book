@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const Websites = () => {
     return(
         <div className="info_containers">

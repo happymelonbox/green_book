@@ -65,7 +65,7 @@ class Appointments extends Component{
 
     handleAppointmentSubmit = (event) => {
         event.preventDefault()
-        
+
             let reason = event.target.appointment_reason.value ? event.target.appointment_reason.value : event.target.appointment_reason.defaultValue
             let other_reason = event.target.appointment_other_reason.value ? event.target.appointment_other_reason.value : null
             let date_and_time = event.target.appointment_date_and_time.value !== "" ?  event.target.appointment_date_and_time.value :  event.target.appointment_date_and_time.defaultValue
@@ -117,7 +117,6 @@ class Appointments extends Component{
             .catch( error => console.log('api errors: ', error))
         }
 
-
     handleAppointmentEdit = (event) => {
         const id = event.target.id.split("-")[0]
         const inputs = document.getElementsByClassName(id)
@@ -137,7 +136,7 @@ class Appointments extends Component{
             button.innerHTML = "Edit Appointment"
         }
     }
-    
+
     handleErrors = () =>{
         return (
             <div>
@@ -148,7 +147,6 @@ class Appointments extends Component{
             </div>
         )
     }
-
 
     render(){
         return(

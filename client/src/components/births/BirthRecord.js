@@ -103,7 +103,7 @@ class BirthRecord extends Component{
                 editButton.innerHTML = "Edit Birth Details"
             }
         }
-        
+
         container.style.textAlign = "center"
     }
 

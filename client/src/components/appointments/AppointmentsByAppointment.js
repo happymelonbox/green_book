@@ -1,9 +1,4 @@
-import React from "react"
-
-
 const AppointmentsByAppointment = ({children, appointments, handleAppointmentSubmit, handleAppointmentEdit}) => {
-
-
     return(
         <div className="by_date_container">
             {appointments.map(appt => {

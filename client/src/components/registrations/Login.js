@@ -3,10 +3,11 @@ import axios from 'axios'
 import {Link} from 'react-router-dom'
 import Navbar from '../../containers/Navbar';
 import Footer from '../../containers/Footer';
+
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       username: '',
       email: '',
       password: '',
@@ -68,12 +69,12 @@ class Login extends Component {
 
   render() {
     const {username, email, password} = this.state
-  return (
+    return (
       <div className="login_container">
         <Navbar/>
         <h3 className="login_banner">Log In</h3>
         <form onSubmit={this.handleSubmit} className="login_form_container">
-          <label>Username <input 
+          <label>Username <input
             className="login_inputs"
             placeholder="username"
             type="text"
@@ -82,7 +83,7 @@ class Login extends Component {
             onChange={this.handleChange}
             required
           /></label>
-          <label>Email<input 
+          <label>Email<input
             className="login_inputs"
             placeholder="email"
             type="text"
@@ -92,7 +93,7 @@ class Login extends Component {
             autoComplete='email'
             required
           /></label>
-          <label>Password<input 
+          <label>Password<input
             className="login_inputs"
             placeholder="password"
             type="password"

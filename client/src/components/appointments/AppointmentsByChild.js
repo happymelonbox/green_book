@@ -1,5 +1,3 @@
-import React from "react"
-
 
 const AppointmentsByChild = ({children, handleAppointmentSubmit, handleAppointmentEdit}) => {
     return(
@@ -21,7 +19,6 @@ const AppointmentsByChild = ({children, handleAppointmentSubmit, handleAppointme
                                     function handleReasonChange(event){
                                         const value = event.target.value
                                         const id = event.target.id.split("_")[0]
-                    
                                         if(value === "Other"){
                                             document.getElementById(`${id}other_reason_input`).classList.remove("hidden")
                                             document.getElementById(`${id}visit_age_select`).classList.add("hidden")
@@ -30,6 +27,7 @@ const AppointmentsByChild = ({children, handleAppointmentSubmit, handleAppointme
                                             document.getElementById(`${id}other_reason_input`).classList.add("hidden")
                                         }
                                     }
+
                                     return(
                                         <div key={appointment.id}>
                                             <form onSubmit={handleAppointmentSubmit}>

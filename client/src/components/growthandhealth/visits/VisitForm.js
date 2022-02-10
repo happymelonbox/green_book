@@ -16,10 +16,8 @@ export const VisitForm = ({handleVisitSubmit, handleChange, handleSelectChange, 
                 <label>Length: <input className="records_form_inputs" type="text" name="visit-length" onChange={handleChange}/></label>
                 <label>Head Circumference: <input className="records_form_inputs" type="text" name="visit-head_circumference" onChange={handleChange}/></label>
                 <input type="hidden" value={child_id} name="child_id"/>
-
                 <input className="button_add_record_details" value="Add" type="submit"/>
             </form>
-            
         </div>
     )
 }

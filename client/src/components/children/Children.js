@@ -40,7 +40,6 @@ class Children extends React.Component {
                     <Navbar />
                     <Link to="/" className="children_links">Back to Dashboard</Link> <Link className="children_links" to='/add_a_child'>Add a new child</Link>
                     <h3 className="children_title">Children</h3>
-                    
                     {this.state.children.map(child => {
                         return (<Child key={child.id} child={child}/>)
                     })}

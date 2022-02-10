@@ -23,10 +23,8 @@ export const VitaminKForm = ({handleVitaminKSubmit, handleVitKEditSubmit, handle
                 </label>
                 <label>Name of Doctor or Nurse: <input className="records_form_inputs" type="text" name="vitamink-given_by" onChange={handleChange}/></label>
                 <input type="hidden" value={child_id} name="child_id"/>
-
                 <input className="button_add_record_details" value={`Submit ${button}`} type="submit"/>
             </form>
-        
         </div>
     )
 }
