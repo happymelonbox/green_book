@@ -1,4 +1,4 @@
-GreenBook
+##GreenBook##
 
 GreenBook is a digital adaptation of the green health and growth record given to
 parents at the birth of their child. In an endeavour to eliminate lost records and for
@@ -27,13 +27,16 @@ localhost state.
 In the interest of confidence in GreenBook, the upcoming versions of GreenBook will include
 to ensure stability.
 
-Ruby version: 3.0.1
+Ruby version:
+        3.0.1
 
 To run GreenBook locally:
-    npm install
-    bundle install
+        npm install
+        bundle install
 
-For PostgreSQL database: Versions 9.3 and up are supported.
+For PostgreSQL database: 
+
+    Versions 9.3 and up are supported.
 
     Install the pg driver:
         gem install pg
@@ -59,23 +62,3 @@ I hope that GreenBook is able there to help those who have enough on their plate
 
 Any questions or suggestions please contact me via https://github.com/happymelonbox/green_book
 Justin
-
-
-
-
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
