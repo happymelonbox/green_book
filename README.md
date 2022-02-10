@@ -1,4 +1,4 @@
-##GreenBook##
+*               ##GreenBook##
 
 GreenBook is a digital adaptation of the green health and growth record given to
 parents at the birth of their child. In an endeavour to eliminate lost records and for
@@ -28,29 +28,29 @@ In the interest of confidence in GreenBook, the upcoming versions of GreenBook w
 to ensure stability.
 
 Ruby version:
-        3.0.1
+#        3.0.1
 
 To run GreenBook locally:
-        npm install
-        bundle install
+#        npm install
+#        bundle install
 
 For PostgreSQL database:
 
-    Versions 9.3 and up are supported.
+#    Versions 9.3 and up are supported.
 
-    Install the pg driver:
-        gem install pg
-    On macOS with Homebrew:
-        gem install pg -- --with-pg-config=/usr/local/bin/pg_config
-    On macOS with MacPorts:
-        gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
-    On Windows:
-        gem install pg
-        Choose the win32 build.
-        Install PostgreSQL and put its /bin directory on your path.
-
-    Configure Using Gemfile
-    gem "pg"
+#    Install the pg driver:
+#        gem install pg
+#    On macOS with Homebrew:
+#        gem install pg -- --with-pg-config=/usr/local/bin/pg_config
+#    On macOS with MacPorts:
+#        gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
+#    On Windows:
+#        gem install pg
+#        Choose the win32 build.
+#        Install PostgreSQL and put its /bin directory on your path.
+#
+#    Configure Using Gemfile
+#    gem "pg"
 
 To migrate the database: rake db:migrate
 For trialing, GreenBook can be seeded by running rake db:seed.
