@@ -38,24 +38,24 @@ to ensure stability.
 
     Versions 9.3 and up are supported.
 *    Install the pg driver:
-        gem install pg
+*        gem install pg
 *    On macOS with Homebrew:
-        gem install pg -- --with-pg-config=/usr/local/bin/pg_config
+*        gem install pg -- --with-pg-config=/usr/local/bin/pg_config
 *    On macOS with MacPorts:
-        gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
+*        gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
 *    On Windows:
-        gem install pg
-        Choose the win32 build.
-        Install PostgreSQL and put its /bin directory on your path.
+*        gem install pg
+*        Choose the win32 build.
+*        Install PostgreSQL and put its /bin directory on your path.
 
 *    Configure Using Gemfile
-    gem "pg"
+*       gem "pg"
 
 #    To migrate the database: 
 *        rake db:migrate
 
 #   For trialing, GreenBook can be seeded by running:
-*    rake db:seed.
+*        rake db:seed.
 
 To use GreenBook as a new user, a child must be added followed by the child's
 birth details (these can be edited later).
