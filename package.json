@@ -1,0 +1,35 @@
+{
+  "name": "green_book",
+  "version": "1.0.0",
+  "description": "GreenBook is a digital adaptation of the green health and growth record given to parents at the birth of their child. In an endeavour to eliminate lost records and for ease of access via mobile phones, GreenBook securely stores this information in a digital database that can be accessed anywhere the internet is available.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/happymelonbox/green_book.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/happymelonbox/green_book/issues"
+  },
+  "homepage": "https://github.com/happymelonbox/green_book#readme",
+  "dependencies": {
+    "@rails/webpacker": "5.4.3",
+    "axios": "^0.25.0",
+    "history": "^5.2.0",
+    "react": "^17.0.2",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "^5.0.0",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3"
+  }
+}
