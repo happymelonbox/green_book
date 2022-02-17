@@ -1,4 +1,4 @@
-class CreateImmunisations < ActiveRecord::Migration[7.0]
+class CreateImmunisations < ActiveRecord::Migration[6.1]
   def change
     create_table :immunisations do |t|
       t.string :age

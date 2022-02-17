@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2022_01_24_131354) do
 
   create_table "appointments", force: :cascade do |t|
     t.string "reason"
-    t.datetime "date_and_time", precision: 6
+    t.datetime "date_and_time"
     t.string "location_name"
     t.string "location_address_number"
     t.string "location_street_name"

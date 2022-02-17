@@ -1,4 +1,4 @@
-class CreateFathers < ActiveRecord::Migration[7.0]
+class CreateFathers < ActiveRecord::Migration[6.1]
   def change
     create_table :fathers do |t|
       t.string :first_name

@@ -1,4 +1,4 @@
-class CreateHospitals < ActiveRecord::Migration[7.0]
+class CreateHospitals < ActiveRecord::Migration[6.1]
   def change
     create_table :hospitals do |t|
       t.string :name

@@ -1,4 +1,4 @@
-class CreateVitaminKs < ActiveRecord::Migration[7.0]
+class CreateVitaminKs < ActiveRecord::Migration[6.1]
   def change
     create_table :vitamin_ks do |t|
       t.string :place_given

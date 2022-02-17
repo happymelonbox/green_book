@@ -1,4 +1,4 @@
-class CreateHepatitisBVaccines < ActiveRecord::Migration[7.0]
+class CreateHepatitisBVaccines < ActiveRecord::Migration[6.1]
   def change
     create_table :hepatitis_b_vaccines do |t|
       t.string :place_given

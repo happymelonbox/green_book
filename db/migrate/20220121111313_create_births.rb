@@ -1,4 +1,4 @@
-class CreateBirths < ActiveRecord::Migration[7.0]
+class CreateBirths < ActiveRecord::Migration[6.1]
   def change
     create_table :births do |t|
       t.integer :birth_day
